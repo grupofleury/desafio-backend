@@ -37,7 +37,7 @@ selecionar um exame e informar data e hora desejado.
 - Aplicação deverá conter um Readme contendo instruções de como realizar o build e rodar a Aplicação
 
 
-##Diferencial
+## Diferencial
 - No readme separe uma sessão para explicar a arquitetura da api
 - Tenha em mente conceitos de SOLID e clean architecture 
 - Docker
