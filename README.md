@@ -14,7 +14,7 @@ selecionar um exame e informar data e hora desejado.
 - Não será possível realizar agendamento de mais de 2 pacientes para o mesmo exame na mesma data e hora, esse valor de 2 deverá ser parametrizado.
 - O cadastro de cliente deverá ter os campos: Nome, CPF e Data de Nascimento
 - Não poderá ser cadastrado mais de um cliente para o mesmo CPF
-- A lista de exames disponíveis para agendamento deverá ser obtida através de integração com API a ser disponibilizada para consumo.
+- A lista de exames disponíveis para agendamento deverá ser consumida da endpoint( http://www.mocky.io/v2/5d681ede33000054e7e65c3f ).
 
 ## Features
 - Deverá haver um endpoint para listagem dos exames disponíveis para agendamento, exibindo apenas nome do exame e id
