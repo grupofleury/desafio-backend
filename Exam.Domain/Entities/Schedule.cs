@@ -8,7 +8,7 @@ namespace Exam.Domain.Entities
     {
         public Schedule() { }
 
-        public Schedule(string idExam, string name, DateTime dateBirth, int clientId)
+        public Schedule(string idExam, string name, DateTime dateSchedule, int clientId)
         {
             IdExam = idExam;
             Name = name;
@@ -18,6 +18,8 @@ namespace Exam.Domain.Entities
         public string IdExam { get; set; }
 
         public string Name { get; set; }
+
+        public DateTime DateSchedule { get; set; }
 
         public int ClientId { get; set; }
     }
