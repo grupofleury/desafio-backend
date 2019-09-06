@@ -49,14 +49,19 @@ namespace Exam.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> PostClient(ClientModel clientModel)
         {
-            
-            Client client = _mapper.Map<Client>(clientModel);
+            try{
+                Client client = _mapper.Map<Client>(clientModel);
 
-            _clientRepository.Add(client);
+                _clientRepository.Add(client);
 
-            _unitOfWork.SaveChanges();
+                _unitOfWork.SaveChanges();
 
-            return Ok(new { id = client.Id });
+                return Ok(new { id = client.Id });
+
+            }
+            catch(Exception e){
+                return ErrorResponse(new ErrorResponseModel(e.InnerException.Message));
+            }
         }
     }
 }

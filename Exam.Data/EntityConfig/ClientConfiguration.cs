@@ -21,6 +21,10 @@ namespace Exam.Data.EntityConfig
                 .IsRequired();
 
             builder
+                .HasIndex(x => new { x.Cpf})
+                .IsUnique();
+                
+            builder
                 .Property(x => x.Cpf)
                 .HasColumnName("NUM_CPF")
                 .HasMaxLength(11)
