@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using MySql.Data.EntityFrameworkCore.Extensions;
-
+using Exam.ExternalServices.ExamRepository;
 
 namespace Exam.CrossCutting.IoC
 {
@@ -31,6 +31,8 @@ namespace Exam.CrossCutting.IoC
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IExamsRepository, ExamRepository>();
 
         }
     }
