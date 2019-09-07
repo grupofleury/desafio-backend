@@ -36,9 +36,18 @@ namespace Exam.Data.EntityConfig
                 .HasColumnName("DT_DATE");
 
             builder
+                .Property(x => x.Value)
+                .HasColumnName("NUM_VALOR")
+                .IsRequired();
+
+            builder
                 .Property(x => x.ClientId)
                 .HasColumnName("ID_CLNTE")
                 .IsRequired();
+
+            builder.HasOne(x => x.Client)
+                .WithMany(x => x.Schedules)
+                .HasForeignKey(x => new { x.ClientId });
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Exam.UI.AutoMapper
         {
 
             CreateMap<ClientModel,Client>();
+            CreateMap<ScheduleModel,Schedule>();
 
         }
     }

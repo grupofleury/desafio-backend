@@ -7,5 +7,6 @@ namespace Exam.Domain.Interfaces.Repositories
 {
     public interface IScheduleRepository : IRepository<Schedule>
     {
+        Schedule GetByIdExamDate(string idExam,DateTime date);
     }
 }

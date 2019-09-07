@@ -13,6 +13,11 @@ namespace Exam.Data.Repositories
         public ScheduleRepository(DbContext context) : base(context)
         {
         }
-
+        public Schedule GetByIdExamDate(string idExam,DateTime date)
+        {
+            var dateTime = date.ToString("dd/MM/yyyy HH");
+            return _dbSet.Where(x => x.IdExam == idExam && x.DateSchedule.ToString("dd/MM/yyyy HH") == dateTime).FirstOrDefault();
+            
+        }        
     }
 }

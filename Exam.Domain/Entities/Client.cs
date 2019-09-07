@@ -19,5 +19,8 @@ namespace Exam.Domain.Entities
         public string Cpf { get; set; }
 
         public DateTime DateBirth { get; set; }        
+
+        public List<Schedule> Schedules { get; set; }
+
     }
 }

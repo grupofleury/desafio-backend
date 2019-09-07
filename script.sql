@@ -3,18 +3,18 @@ use exam
 CREATE TABLE T001_CLNT
 (
 	ID_CLNTE INT auto_increment,
-    NUM_CPF varchar(200) NOT NULL,
+    NUM_CPF varchar(200) UNIQUE NOT NULL,
     DT_DATE DATETIME NOT NULL,
 	DES_NOME varchar(150)NOT NULL,
     primary key(ID_CLNTE)
 );
-
 CREATE TABLE T002_SCHL
 (
 	ID_SCHL INT auto_increment,
 	ID_EXME INT NOT NULL,
     NOME_EXME varchar(200) NOT NULL,
     DT_DATE DATETIME NOT NULL,
+    NUM_VALOR DECIMAL NOT NULL,
     ID_CLNTE INT NOT NULL,
     primary key(ID_SCHL)
 );

@@ -20,6 +20,8 @@ namespace Exam.Data.ContextConfig
         {
             modelBuilder.ApplyConfiguration(new ClientConfiguration());
 
+            modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
 

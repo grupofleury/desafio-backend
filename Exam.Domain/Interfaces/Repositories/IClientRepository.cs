@@ -7,6 +7,10 @@ namespace Exam.Domain.Interfaces.Repositories
 {
     public interface IClientRepository : IRepository<Client>
     {
-        List<Client> GetClientByCpf(string cpf);
+        Client GetClientByCpf(string cpf);
+
+        Client GetAllScheduleByCpf(string cpf);
+
+        Client GetAllScheduleById(int id);
     }
 }

@@ -14,10 +14,18 @@ namespace Exam.Data.Repositories
         {
         }
 
-        public List<Client> GetClientByCpf(string cpf)
+        public Client GetClientByCpf(string cpf)
         {
-            var query = _dbSet.Where(x => x.Cpf == cpf).ToList();
-            return query;
+            return _dbSet.Where(x => x.Cpf == cpf).FirstOrDefault();
         }
+
+        public Client GetAllScheduleByCpf(string cpf) =>
+        _dbSet.Where(x => x.Cpf == cpf)
+        .Include(x => x.Schedules).FirstOrDefault();
+
+        public Client GetAllScheduleById(int id) =>
+        _dbSet.Where(x => x.Id == id)
+        .Include(x => x.Schedules).FirstOrDefault();
+
     }
 }
