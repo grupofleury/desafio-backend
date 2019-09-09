@@ -1,56 +1,38 @@
-Desafio Back-end - Grupo Fleury
-====
+# Exame
 
-## Descrição:
+Este projeto possibilita realizar o CRUD do Cliente, listar exames disponiveis para agendamento e efetuar o CRUD de agendamento para o cliente.   
 
-O Grupo Fleury deseja disponibilizar uma api restfull para realização de agendamentos para seus clientes, 
-para tal o usuário precisará ter um cadastro de cliente em nossa base de dados, 
-selecionar um exame e informar data e hora desejado.
-
-## Regras de Negócio
-
-- Cliente precisa estar cadastrado em base de dados para realizar o agendamento
-- Caso o cliente não exista em base, deverá ser feito o cadastro antecipadamente.
-- Não será possível realizar agendamento de mais de 2 pacientes para o mesmo exame na mesma data e hora, esse valor de 2 deverá ser parametrizado.
-- O cadastro de cliente deverá ter os campos: Nome, CPF e Data de Nascimento
-- Não poderá ser cadastrado mais de um cliente para o mesmo CPF
-- A lista de exames disponíveis para agendamento deverá ser consumida do endpoint ( http://www.mocky.io/v2/5d681ede33000054e7e65c3f).
-
-## Features
-- Deverá haver um endpoint para listagem dos exames disponíveis para agendamento, exibindo apenas nome do exame e id
-- Deverá haver um endpoint para criação de um cliente
-- Deverá haver um endpoint para atualização de um cliente
-- Deverá haver um endpoint para exclusão de um cliente
-- Deverá haver um endpoint para busca de um cliente baseado no seu cpf
-- Deverá haver um endpoint para listagem de todos os clientes cadastrados
-
-- Deverá haver um endpoint para listagem dos agendamentos de um cliente por cpf, deverá conter o valor total (soma dos valores dos exames selecionados para o agendamento)
-- Deverá haver um endpoint para edição de um agendamento realizado, apenas dia e hora poderão ser editados
-- Deverá haver um endpoint para exclusão de um agendamento realizado
-
-## Requisitos
-
-- A API deverá ter um swagger
-- Teste unitário
-- Utilizar uma estrutura de dados a sua escolha para simular a base de dados em memória
-- Para vaga de Back-end NodeJS utilizar Typecript, para Vaga de .net utilizar .net core 2.x
-- Aplicação deverá conter um Readme contendo instruções de como realizar o build e rodar a Aplicação
+## Pré-Requisitos
 
 
-## Diferencial
-- No readme separe uma sessão para explicar a arquitetura da api
-- Tenha em mente conceitos de SOLID e clean architecture 
-- Docker
-- Esteira de CI/CD no github (exemplo Travis CI)
+```bash
+docker
+```
 
-## Como submeter?
+ou
 
-Deverá ser enviado um PULL REQUEST com o seu teste.
+```bash
+.Net Core 2.2
+```
 
-### Como funciona?
+## Buildar utilizando o Docker
+Abrir o diretório raiz do projeto e rodar o seguinte comando no terminal
+```bash
+docker build -t place --build-arg deploy_env='dev' . && docker run -p 8080:8080 place
+```
 
-- Fork deste repositório
-- Clonar a partir do repositório que foi criada na sua conta
-- Procure fazer o máximo de commits com todas as suas decisões
-- Abra um Pull Request para este repositório
+## Documentação
+Ao Buildar a aplicação, localhost:{{Porta}}/swagger, exemplo:
+```bash
+https://localhost:5002/swagger
+```
 
+## Postman
+O Postman Collection e o Postman Environment estão no diretório
+Postman
+
+## Arquitetura da api
+A arquitetura conta com o auxilio do DDD(Domain-Driven Design), ajudando na estruturação do projeto, contando também com Entity Framework, AutoMapper, IoC.
+
+## GitHub
+[@flaviodmussio](https://github.com/flaviodmussio/exam)
