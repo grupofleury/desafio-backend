@@ -51,7 +51,7 @@ namespace Exam.UI.Controllers
         {
             try
             {
-                Client client = _mapper.Map<Client>(clientModel);
+                var client = new Client(clientModel.Name,clientModel.Cpf,clientModel.DateBirth);
 
                 _clientRepository.Add(client);
 
