@@ -31,5 +31,8 @@ https://localhost:5002/swagger
 O Postman Collection e o Postman Environment estão no diretório
 Postman
 
+## Arquitetura da api
+A arquitetura conta com o auxilio do DDD(Domain-Driven Design), ajudando na estruturação do projeto, contando também com Entity Framework, AutoMapper, IoC.
+
 ## GitHub
 [@flaviodmussio](https://github.com/flaviodmussio/exam)
