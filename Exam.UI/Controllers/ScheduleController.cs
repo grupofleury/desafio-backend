@@ -105,7 +105,7 @@ namespace Exam.UI.Controllers
             }
         }
 
-                [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetSchedule()
         {
             try
@@ -141,7 +141,7 @@ namespace Exam.UI.Controllers
 
                 _unitOfWork.SaveChanges();
 
-                return Ok(new {id = id});
+                return Ok(new { id = id });
             }
             catch (Exception e)
             {

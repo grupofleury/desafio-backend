@@ -36,7 +36,6 @@ namespace Exam.UI.Controllers
 
         public ExamController(IDomainNotificationHandler domainNotificationHandler,
                IOptions<AppSettings> settings,
-               IClientRepository clientRepository,
                IExamsRepository examsFleuryRepository,
                IMapper mapper,
                IUnitOfWork unitOfWork) : base(domainNotificationHandler)
