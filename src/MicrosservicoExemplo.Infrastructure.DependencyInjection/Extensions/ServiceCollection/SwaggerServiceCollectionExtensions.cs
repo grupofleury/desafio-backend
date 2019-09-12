@@ -9,7 +9,7 @@ namespace Fleury.Agendamento.Infrastructure.Bootstrap.Extensions.ServiceCollecti
     public static class SwaggerServiceCollectionExtensions
     {
 
-        public static void AddAGendamentoSwagger(this IServiceCollection services)
+        public static void AddAgendamentoSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(config =>
             {
@@ -23,7 +23,8 @@ namespace Fleury.Agendamento.Infrastructure.Bootstrap.Extensions.ServiceCollecti
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
-                var filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, xmlFile);
+                var basePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                var filePath = Path.Combine(basePath, xmlFile);
                 config.IncludeXmlComments(filePath);
             });
         }

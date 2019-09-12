@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fleury.Agendamento.API</name>
+    </assembly>
+    <members>
+        <member name="M:Fleury.Agendamento.API.Exames.ExamesController.ObterExames">
+            <summary>
+            Consulta exames
+            </summary>
+            <response code="200">Consulta realizada com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a consulta </response>
+        </member>
+    </members>
+</doc>

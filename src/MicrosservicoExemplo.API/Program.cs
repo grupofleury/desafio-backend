@@ -2,11 +2,10 @@
 using App.Metrics.AspNetCore;
 using App.Metrics.Formatters;
 using App.Metrics.Formatters.Prometheus;
-using Fleury.Agendamento.API;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace MicrosservicoExemplo.API
+namespace Fleury.Agendamento.API
 {
     public class Program
     {

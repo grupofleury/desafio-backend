@@ -1,4 +1,5 @@
-﻿using Fleury.Agendamento.Infrastructure.Bootstrap;
+﻿using Fleury.Agendamento.Application.Settings;
+using Fleury.Agendamento.Infrastructure.Bootstrap;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace Fleury.Agendamento.API
         public void ConfigureServices(IServiceCollection services)
         {
             _startup.ConfigureServices(services);
+            services.Configure<Configuracoes>(Configuration.GetSection(nameof(Configuracoes)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,8 +1,7 @@
-﻿using Fleury.Agendamento.API;
-using Fleury.Agendamento.Application;
+﻿using Fleury.Agendamento.Application;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MicrosservicoExemplo.API.Controllers
+namespace Fleury.Agendamento.API.Controllers
 {
     public abstract class BasePresenter<T> where T : Result
     {

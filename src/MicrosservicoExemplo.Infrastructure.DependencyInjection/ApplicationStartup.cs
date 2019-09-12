@@ -20,8 +20,10 @@ namespace Fleury.Agendamento.Infrastructure.Bootstrap
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
 
+            services.AddExames();
+            services.AddFleuryRestClient();
             services.AddAgendamentoHealthChecks();
-            services.AddAGendamentoSwagger();
+            services.AddAgendamentoSwagger();
             services.AddAgendamentoResponseCompression();
             services.AddMetrics();
         }
