@@ -4,7 +4,23 @@
         <name>Fleury.Agendamento.API</name>
     </assembly>
     <members>
-        <member name="M:Fleury.Agendamento.API.Exames.ExamesController.ObterExames">
+        <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.Post(Fleury.Agendamento.Application.UseCases.Cliente.ClienteRequest)">
+            <summary>
+            Cria um novo cliente
+            </summary>
+            <param name="request">Parametros para criação de um cliente</param>
+            <response code="201">Cliente criada com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a criação do cliente</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.Put(Fleury.Agendamento.Application.UseCases.Cliente.ClienteRequest)">
+            <summary>
+            Alterar cliente
+            </summary>
+            <param name="request">Parametros para alterar um cliente</param>
+            <response code="201">Cliente alterado com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a alteração do cliente</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Exames.ExamesController.ObterExames">
             <summary>
             Consulta exames
             </summary>
