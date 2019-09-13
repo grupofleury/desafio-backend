@@ -13,6 +13,7 @@ namespace Fleury.Agendamento.Infrastructure.Bootstrap
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddClientes();
+            services.AddAgendamentos();
 
             services.AddMvc().AddJsonOptions(options =>
             {

@@ -9,7 +9,7 @@ namespace Fleury.Agendamento.Infrastructure.Bootstrap.Extensions.ServiceCollecti
     {
         public static void AddClientes(this IServiceCollection services)
         {
-            services.AddSingleton<IClienteRepositorio, InMemoryClientRepository>();
+            services.AddSingleton<IClienteRepositorio, MemoriaClienteRepositorio>();
             services.AddScoped<IClienteUseCase, ClienteUseCase>();
         }
     }

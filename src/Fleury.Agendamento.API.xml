@@ -4,6 +4,14 @@
         <name>Fleury.Agendamento.API</name>
     </assembly>
     <members>
+        <member name="M:Fleury.Agendamento.API.Controllers.Agendamento.AgendamentoController.Post(Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente.AgendamentoRequest)">
+            <summary>
+            Cria um novo agendamento
+            </summary>
+            <param name="request">Parametros para de um agendamento</param>
+            <response code="201">Agendamento criado com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a criação do agendamento</response>
+        </member>
         <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.Post(Fleury.Agendamento.Application.UseCases.Cliente.ClienteRequest)">
             <summary>
             Cria um novo cliente

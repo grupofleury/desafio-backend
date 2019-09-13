@@ -14,8 +14,4 @@
     <ProjectReference Include="..\MicrosservicoExemplo.Domain\Fleury.Agendamento.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Cliente\CadastrarCliente\" />
-  </ItemGroup>
-
 </Project>

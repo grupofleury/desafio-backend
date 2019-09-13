@@ -5,7 +5,7 @@ using Fleury.Agendamento.Domain.Cliente.Repositorio;
 
 namespace Fleury.Agendamento.Infrastructure.Data
 {
-    public class InMemoryClientRepository : IClienteRepositorio
+    public class MemoriaClienteRepositorio : IClienteRepositorio
     {
         private readonly Dictionary<string, Cliente> _db = new Dictionary<string, Cliente>();
 
