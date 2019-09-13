@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fleury.Agendamento.Application.UseCases.Cliente
 {
@@ -8,6 +10,7 @@ namespace Fleury.Agendamento.Application.UseCases.Cliente
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
 
+       
 
         public static ClienteResult FromDomain(Domain.Cliente.Cliente cliente)
         {
@@ -18,5 +21,7 @@ namespace Fleury.Agendamento.Application.UseCases.Cliente
                DataNascimento = cliente.DataNascimento
             };
         }
+
+       
     }
 }

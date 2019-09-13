@@ -15,6 +15,12 @@ namespace Fleury.Agendamento.API.Controllers
                 return;
             }
 
+            if (resultado == null || resultado.Error == ErrorCode.NoContent)
+            {
+                ViewModel = new NoContentResult();
+                return;
+            }
+
             if (resultado.Invalid)
             {
                 ViewModel = new UnprocessableEntityObjectResult(ApiError.FromResult(resultado));

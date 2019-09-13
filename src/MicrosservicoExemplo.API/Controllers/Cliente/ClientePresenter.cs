@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fleury.Agendamento.API.Controllers.Cliente
 {
-    public class CadastrarClientePresenter : BasePresenter<ClienteResult>
+    public class ClientePresenter : BasePresenter<ClienteResult>
     {
         protected override void OnPopular(ClienteResult resultado)
         {

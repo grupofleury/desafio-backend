@@ -12,6 +12,11 @@ namespace Fleury.Agendamento.Domain.Cliente
         public DateTime DataNascimento { get; set; }
 
 
+        public Cliente()
+        {
+          
+        }
+
         public Cliente(string nome, string cpf, DateTime datanascimento)
         {
             Nome = nome;
@@ -19,6 +24,11 @@ namespace Fleury.Agendamento.Domain.Cliente
             DataNascimento = datanascimento;
             Validate();
 
+        }
+
+        public Cliente(string cpf)
+        {
+            Cpf = cpf;
         }
 
         public Cliente(string nome, DateTime datanascimento)

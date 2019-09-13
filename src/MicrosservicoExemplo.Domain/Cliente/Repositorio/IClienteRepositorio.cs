@@ -7,9 +7,10 @@ namespace Fleury.Agendamento.Domain.Cliente.Repositorio
     public interface IClienteRepositorio
     {
         Cliente Obter(string cpf);
-        void Salvar(Cliente cliente);
+        Cliente Salvar(Cliente cliente);
         List<Cliente> ObterClientes();
 
-        void Atualizar(Cliente cliente);
+        Cliente Atualizar(Cliente cliente);
+        Cliente Excluir(string cpf);
     }
 }

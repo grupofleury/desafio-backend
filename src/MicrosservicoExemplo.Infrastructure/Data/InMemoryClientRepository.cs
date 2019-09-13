@@ -19,9 +19,10 @@ namespace Fleury.Agendamento.Infrastructure.Data
             return _db[cpf];
         }
 
-        public void Salvar(Cliente cliente)
+        public Cliente Salvar(Cliente cliente)
         {
             _db[cliente.Cpf] = cliente;
+            return cliente;
         }
 
         public List<Cliente> ObterClientes()
@@ -29,12 +30,29 @@ namespace Fleury.Agendamento.Infrastructure.Data
             return _db.Values.ToList();
         }
 
-        public void Atualizar(Cliente cliente)
+        public Cliente Atualizar(Cliente cliente)
         {
             if (_db.ContainsKey(cliente.Cpf))
             {
                 _db[cliente.Cpf] = cliente;
+                return cliente;
             }
+
+            return null;
+        }
+
+        public Cliente Excluir(string cpf)
+        {
+            Cliente cliente = null;
+
+            if (_db.ContainsKey(cpf))
+            {
+                 cliente = _db[cpf];
+                _db.Remove(cpf);
+               
+            }
+
+            return cliente;
         }
     }
 }

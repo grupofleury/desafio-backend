@@ -4,6 +4,7 @@
     {
         NotFound,
         Invalid,
-        Business
+        Business,
+        NoContent
     }
 }
