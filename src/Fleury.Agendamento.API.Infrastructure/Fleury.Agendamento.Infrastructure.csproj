@@ -12,11 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicrosservicoExemplo.Application\Fleury.Agendamento.Application.csproj" />
-    <ProjectReference Include="..\MicrosservicoExemplo.Domain\Fleury.Agendamento.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions">
       <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
     </Reference>
@@ -27,6 +22,11 @@
 
   <ItemGroup>
     <Folder Include="Web\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fleury.Agendamento.API.Application\Fleury.Agendamento.Application.csproj" />
+    <ProjectReference Include="..\Fleury.Agendamento.API.Domain\Fleury.Agendamento.Domain.csproj" />
   </ItemGroup>
 
 </Project>

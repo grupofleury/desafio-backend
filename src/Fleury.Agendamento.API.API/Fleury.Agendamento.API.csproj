@@ -29,11 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<ProjectReference Include="..\..\MicrosservicoExemplo.Infrastructure.Web\MicrosservicoExemplo.Infrastructure.Bootstrap.csproj" />-->
-    <ProjectReference Include="..\MicrosservicoExemplo.Application\Fleury.Agendamento.Application.csproj" />
-    <ProjectReference Include="..\MicrosservicoExemplo.Domain\Fleury.Agendamento.Domain.csproj" />
-    <ProjectReference Include="..\MicrosservicoExemplo.Infrastructure.DependencyInjection\MicrosservicoExemplo.Infrastructure.Bootstrap.csproj" />
-    <ProjectReference Include="..\MicrosservicoExemplo.Infrastructure\Fleury.Agendamento.Infrastructure.csproj" />
+    <ProjectReference Include="..\Fleury.Agendamento.API.Application\Fleury.Agendamento.Application.csproj" />
+    <ProjectReference Include="..\Fleury.Agendamento.API.Infrastructure.DependencyInjection\Fleury.Agendamento.Infrastructure.Bootstrap.csproj" />
   </ItemGroup>
 
 </Project>

@@ -95,7 +95,7 @@ namespace Fleury.Agendamento.API.Controllers.Paciente
         /// </summary>
         /// <response code="200">Clientes retornado com sucesso</response>
         /// <response code="204">Ocorreu um erro de validação durante a busca dos clientes</response>
-        [HttpGet("obter-clientes")]
+        [HttpGet("obter-pacientes")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(IEnumerable<Notification>), 422)]
         public IActionResult Obter()

@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicrosservicoExemplo.Domain\Fleury.Agendamento.Domain.csproj" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <ProjectReference Include="..\Fleury.Agendamento.API.Domain\Fleury.Agendamento.Domain.csproj" />
   </ItemGroup>
 
 </Project>

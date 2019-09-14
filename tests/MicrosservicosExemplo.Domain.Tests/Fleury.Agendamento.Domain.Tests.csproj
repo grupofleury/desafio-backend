@@ -26,7 +26,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MicrosservicoExemplo.Domain\Fleury.Agendamento.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Fleury.Agendamento.API.Application\Fleury.Agendamento.Application.csproj" />
+    <ProjectReference Include="..\..\src\Fleury.Agendamento.API.Domain\Fleury.Agendamento.Domain.csproj" />
   </ItemGroup>
 
 </Project>
