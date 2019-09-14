@@ -28,9 +28,6 @@ Po
 3) Infrastructure - aqui são as implementaçõees contretas para todos os "detalhes". A camada que conhece frameworks e bits da aplicaçãoo como qual banco de dados, qual ORM, filtros e middlewares de Web API, etc.
 
 
-
-
-
 ### Projetos:
 
 No desenvolvimento da solução foram utilizados os seguintes targets de compilação:
