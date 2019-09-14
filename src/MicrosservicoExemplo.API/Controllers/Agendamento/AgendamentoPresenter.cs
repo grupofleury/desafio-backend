@@ -1,4 +1,4 @@
-﻿using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente;
+﻿using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPaciente;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fleury.Agendamento.API.Controllers.Agendamento

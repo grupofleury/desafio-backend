@@ -1,4 +1,4 @@
-﻿namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente
+﻿namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPaciente
 {
     public interface ICadastrarAgendamentoUseCase
     {

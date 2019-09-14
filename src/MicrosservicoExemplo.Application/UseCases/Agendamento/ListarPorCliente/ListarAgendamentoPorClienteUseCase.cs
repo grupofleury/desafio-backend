@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente;
 using Fleury.Agendamento.Domain.Agendamento.Repositorio;
 using Fleury.Agendamento.Domain.Paciente.Repositorio;
 

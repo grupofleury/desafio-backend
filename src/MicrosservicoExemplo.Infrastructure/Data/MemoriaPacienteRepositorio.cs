@@ -34,8 +34,14 @@ namespace Fleury.Agendamento.Infrastructure.Data
 
         public Paciente Alterar(Paciente paciente)
         {
-            _db[paciente.Cpf] = paciente;
-            return paciente;
+
+            if (_db.ContainsKey(paciente.Cpf))
+            {
+                _db[paciente.Cpf] = paciente;
+                return paciente;
+            }
+
+            return null;
         }
 
         public List<Paciente> ObterClientes()

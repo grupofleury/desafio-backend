@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
-using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente;
+using Fleury.Agendamento.Application.UseCases.Agendamento.AlterarAgendamento;
+using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPaciente;
 using Fleury.Agendamento.Application.UseCases.Agendamento.ListarPorCliente;
 using Flunt.Notifications;
 using Microsoft.AspNetCore.Mvc;
+using AgendamentoRequest = Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPaciente.AgendamentoRequest;
 
 namespace Fleury.Agendamento.API.Controllers.Agendamento
 {
@@ -14,11 +16,13 @@ namespace Fleury.Agendamento.API.Controllers.Agendamento
     {
         private readonly ICadastrarAgendamentoUseCase _cadastrarAgendamentoUseCase;
         private readonly IListarAgendamentoPorClienteUseCase _agendamentoPorClienteUseCase;
+        private readonly IAlterarAgendamentoUseCase _alterarAgendamentoUseCase;
 
-        public AgendamentoController(ICadastrarAgendamentoUseCase cadastrarAgendamentoUseCase, IListarAgendamentoPorClienteUseCase agendamentoPorClienteUseCase)
+        public AgendamentoController(ICadastrarAgendamentoUseCase cadastrarAgendamentoUseCase, IListarAgendamentoPorClienteUseCase agendamentoPorClienteUseCase, IAlterarAgendamentoUseCase alterarAgendamentoUseCase)
         {
             _cadastrarAgendamentoUseCase = cadastrarAgendamentoUseCase;
             _agendamentoPorClienteUseCase = agendamentoPorClienteUseCase;
+            _alterarAgendamentoUseCase = alterarAgendamentoUseCase;
         }
 
         /// <summary>
@@ -52,6 +56,23 @@ namespace Fleury.Agendamento.API.Controllers.Agendamento
         {
             var resultado = _agendamentoPorClienteUseCase.Obter(cpf);
             var presenter = new DefaultPresenter<ListarPorClienteResult>();
+            presenter.Popular(resultado);
+            return presenter.ViewModel;
+        }
+
+        /// <summary>
+        /// Alterar agendamento
+        /// </summary>
+        /// <param name="request">Parametros para alterar um agendamento</param>
+        /// <response code="200">Agendamento alterado com sucesso</response>
+        /// <response code="422">Ocorreu um erro de validação durante a alteração do agendamento</response>
+        [HttpPut("alterar-agendamento")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(IEnumerable<Notification>), 422)]
+        public IActionResult Put([FromBody]AlterarAgendamentoRequest request)
+        {
+            var resultado = _alterarAgendamentoUseCase.Alterar(request);
+            var presenter = new AlterarAgendamentoPresenter();
             presenter.Popular(resultado);
             return presenter.ViewModel;
         }

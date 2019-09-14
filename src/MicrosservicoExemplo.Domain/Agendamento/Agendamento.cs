@@ -16,6 +16,8 @@ namespace Fleury.Agendamento.Domain.Agendamento
 
         public DateTime DataAgendamento { get; set; }
 
+        public DateTime DataAlteracaoAgendamento { get; set; }
+
         public Decimal ValorTotalDeExames { get; set; }
 
 
@@ -33,15 +35,33 @@ namespace Fleury.Agendamento.Domain.Agendamento
             Validate();
         }
 
+        public Agendamento(Paciente.Paciente paciente, DateTime dataAgendamento, DateTime dataAlteracaoAgendamento)
+        {
+           
+            Paciente = paciente;
+            DataAgendamento = dataAgendamento;
+            DataAlteracaoAgendamento = dataAlteracaoAgendamento;
+            ValidarAlteracaoAgendamento();
+        }
+
         public void Validate()
         {
             if (Valid)
             {
-                
                 AddNotifications(new Contract()
-
                     .IsNotNullOrEmpty(Paciente.Cpf, nameof(Paciente.Cpf), "Informe o cpf")
                     .IsNotNull(Exames, nameof(Exames),"Nenhum exame informado")
+                    .IsGreaterThan(DataAgendamento, DateTime.Now, nameof(DataAgendamento), "Data agendamento deve ser maior que a data de hoje"));
+
+            }
+        }
+
+        public void ValidarAlteracaoAgendamento()
+        {
+            if (Valid)
+            {
+                AddNotifications(new Contract()
+                    .IsNotNullOrEmpty(Paciente.Cpf, nameof(Paciente.Cpf), "Informe o cpf")
                     .IsGreaterThan(DataAgendamento, DateTime.Now, nameof(DataAgendamento), "Data agendamento deve ser maior que a data de hoje"));
 
             }

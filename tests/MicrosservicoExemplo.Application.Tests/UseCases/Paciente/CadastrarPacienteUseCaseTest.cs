@@ -84,6 +84,33 @@ namespace Fleury.Agendamento.Application.Tests.UseCases.Paciente
             resultado.Notifications.FirstOrDefault().Message.Should().Be("Data de nascimento inválida");
         }
 
+        [Fact]
+        public void Deve_aprensentar_erro_ao_cadastrar_mesmo_paciente()
+        {
+            var pacienteUseCase = PacienteUseCase();
+
+            var request = new PacienteRequest
+            {
+                Cpf = "1254566456",
+                DataNascimento = new DateTime(1978, 10, 01),
+                Nome = "Jose"
+            };
+
+            _mockPacienteRepositorio.Setup(p => p.Salvar(It.IsAny<Domain.Paciente.Paciente>()))
+                .Returns<Domain.Paciente.Paciente>(null);
+
+            var resultado = pacienteUseCase.Cadastrar(request);
+            
+
+            resultado.Should().BeOfType<PacienteResult>();
+            resultado.Valid.Should().BeFalse();
+            resultado.Invalid.Should().BeTrue();
+            resultado.Notifications.Should().NotBeNullOrEmpty();
+            resultado.Notifications.Should().HaveCount(1);
+            resultado.Notifications.FirstOrDefault().Property.Should().Be("Paciente");
+            resultado.Notifications.FirstOrDefault().Message.Should().Be("Paciente já cadastrado");
+        }
+
 
     }
 }

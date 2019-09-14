@@ -1,4 +1,5 @@
-﻿using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente;
+﻿using Fleury.Agendamento.Application.UseCases.Agendamento.AlterarAgendamento;
+using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPaciente;
 using Fleury.Agendamento.Application.UseCases.Agendamento.ListarPorCliente;
 using Fleury.Agendamento.Domain.Agendamento.Repositorio;
 using Fleury.Agendamento.Infrastructure.Data;
@@ -12,6 +13,7 @@ namespace Fleury.Agendamento.Infrastructure.Bootstrap.Extensions.ServiceCollecti
         {
             services.AddSingleton<IAgendamentoRepositorio, MemoriaAgendamentoRepositorio>();
             services.AddScoped<ICadastrarAgendamentoUseCase, CadastrarAgendamentoUseCase>();
+            services.AddScoped<IAlterarAgendamentoUseCase, AlterarAgendamentoUseCase>();
             services.AddScoped<IListarAgendamentoPorClienteUseCase, ListarAgendamentoPorClienteUseCase>();
         }
     }

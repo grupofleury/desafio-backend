@@ -56,26 +56,30 @@ namespace Fleury.Agendamento.Application.UseCases.Paciente
 
         public PacienteResult Atualizar(PacienteRequest request)
         {
-            var resultado = new PacienteResult();
+            var resultado = ValidarPacienteRequest(request);
 
-            if (_pacienteRepositorio.Obter(request.Cpf) == null)
-            {
-                resultado.AddNotification(nameof(request.Cpf), "Paciente não cadastrado");
-                resultado.Error = ErrorCode.NotFound;
+            if (resultado.Invalid)
                 return resultado;
-            }
 
-            var cliente =
+            var paciente =
                 new Domain.Paciente.Paciente(request.Nome, request.Cpf, request.DataNascimento);
 
-            if (cliente.Invalid)
+            if (paciente.Invalid)
             {
-                resultado.AddNotifications(cliente.Notifications);
+                resultado.AddNotifications(paciente.Notifications);
                 return resultado;
             }
 
-            _pacienteRepositorio.Alterar(cliente);
-            return PacienteResult.FromDomain(cliente);
+            paciente = _pacienteRepositorio.Alterar(paciente);
+
+            if (paciente == null)
+            {
+                resultado.AddNotification("Paciente", "Paciente não cadastrado");
+                resultado.Error = ErrorCode.Business;
+                return resultado;
+            }
+
+            return PacienteResult.FromDomain(paciente);
         }
 
         public PacienteResult Excluir(string cpf)

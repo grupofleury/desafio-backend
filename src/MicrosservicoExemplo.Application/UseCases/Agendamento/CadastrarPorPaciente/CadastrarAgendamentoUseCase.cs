@@ -3,7 +3,7 @@ using Fleury.Agendamento.Domain.Agendamento.Repositorio;
 using Fleury.Agendamento.Domain.Exame.Externo;
 using Fleury.Agendamento.Domain.Paciente.Repositorio;
 
-namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente
+namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPaciente
 {
     public class CadastrarAgendamentoUseCase : ICadastrarAgendamentoUseCase
     {
@@ -20,11 +20,14 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
 
         public AgendamentoResult Cadastrar(AgendamentoRequest request)
         {
-            var resultado = new AgendamentoResult();
+            var resultado = ValidarAgendamentoRequest(request);
+
+            if (resultado.Invalid)
+                return resultado;
 
             if (_pacienteRepositorio.Obter(request.Paciente.Cpf) == null)
             {
-                resultado.AddNotification(nameof(request.Paciente.Cpf), "Paciente cadastrado");
+                resultado.AddNotification(nameof(request.Paciente.Cpf), "Paciente não cadastrado");
                 resultado.Error = ErrorCode.Business;
                 return resultado;
 
@@ -50,8 +53,29 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
                 return resultado;
             }
 
-            _agendamentoRepositorio.SalvarAgendamento(agendamento);
+            agendamento = _agendamentoRepositorio.SalvarAgendamento(agendamento);
+
+            if (agendamento == null)
+            {
+                resultado.AddNotification("Agendamento", "Não foi possível realizar o agendamento, selecione outra data e horário");
+                resultado.Error = ErrorCode.Business;
+                return resultado;
+            }
+
+
             return AgendamentoResult.FromDomain(agendamento);
+        }
+
+        private AgendamentoResult ValidarAgendamentoRequest(AgendamentoRequest request)
+        {
+            var resultado = new AgendamentoResult();
+            if (request == null)
+            {
+                resultado.AddNotification("Request", "Requisição inválida");
+                return resultado;
+            }
+
+            return resultado;
         }
     }
 }

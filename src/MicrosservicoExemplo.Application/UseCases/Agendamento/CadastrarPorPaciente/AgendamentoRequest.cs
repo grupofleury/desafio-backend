@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente
+namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPaciente
 {
     public class AgendamentoRequest
     {

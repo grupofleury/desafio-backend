@@ -7,6 +7,9 @@ namespace Fleury.Agendamento.Domain.Agendamento.Repositorio
     {
         List<Agendamento> ObterAgendamentosPorCliente(string cpf);
         Agendamento SalvarAgendamento(Agendamento agendamento);
-       
+
+        Agendamento AlterarAgendamento(Agendamento agendamento);
+
+        bool ExcluirAgendamento(Agendamento agendamento);
     }
 }
