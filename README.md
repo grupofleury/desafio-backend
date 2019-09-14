@@ -66,11 +66,14 @@ Os testes unitários foram escritos usando XUnit e as seguintes bibliotecas:
 
 
 Buid - Acessar a pasta da aplicação e rodar o comando
+
 dotnet build
+
 Execução - Acessar o Projeto API e executar o comando 
 dotnet run
 
 Obter a porta na linha de comando e realizar os test atráves do Postman
+
 Anexo o projeto
 
 
