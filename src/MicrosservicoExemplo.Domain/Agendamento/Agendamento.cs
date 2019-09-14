@@ -26,6 +26,12 @@ namespace Fleury.Agendamento.Domain.Agendamento
             
         }
 
+        public Agendamento(Paciente.Paciente paciente, DateTime dataAgendamento)
+        {
+            Paciente = paciente;
+            DataAgendamento = dataAgendamento;
+        }
+
         public Agendamento(Paciente.Paciente paciente, List<Exame.Exame> exames, DateTime dataAgendamento)
         {
             Id = Guid.NewGuid();
@@ -37,7 +43,6 @@ namespace Fleury.Agendamento.Domain.Agendamento
 
         public Agendamento(Paciente.Paciente paciente, DateTime dataAgendamento, DateTime dataAlteracaoAgendamento)
         {
-           
             Paciente = paciente;
             DataAgendamento = dataAgendamento;
             DataAlteracaoAgendamento = dataAlteracaoAgendamento;
