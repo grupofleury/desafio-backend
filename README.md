@@ -13,29 +13,27 @@ Embora estes arquetipos variem em algum ou outro detalhe, todos possuem o mesmo 
 > Separar a logica da aplicaçãode detalhes externos.
 
 
-Na nossa estrutura, as Regras de Negocios e os Casos de Uso devem ser implementados dentro da Camada Core (Aplicaçãoo e Domínio) e serao mantidas em toda a vida do produto.  
-Por outro lado tudo que d� suporte a recursos externos s�o apenas detalhes. Eles podem ser substitu�dos por diferentes raz�es, e n�o queremos que as regras de neg�cios sejam acopladas ou afetadas por estas mudan�as.
+Regras de Negocios e os Casos de Uso são ser implementados dentro da Camada Core (Aplicaçãoo e Domínio) e são mantidas em toda a vida do produto.  
 
-Por isso, a divis�o do projeto em 
-1) Entrypoint (Projeto(s) com WebAPI, listeners de filas, worker de um job agendado, etc.) N�o deve ter  regras de neg�cio nem de aplica��o. Apenas obt�m as entradas e delega para a camada de aplica��o. Pode executar alguma formata��o na sa�da para o formato apropriado do seu consumidor.
-2) Core - bibliotecas sem dependencias de frameworks com o principal da aplica��o: as Regras de Neg�cio e Caso de Uso.
+
+Po
+1) Entrypoint (Projeto(s) com WebAPI, listeners de filas, worker de um job agendado, etc.) Não deve ter  regras de negócio nem de aplicação. Apenas obtém as entradas e delega para a camada de aplicaçãoo. Pode executar alguma formatação na saída para o formato apropriado do seu consumidor.
+2) Core - bibliotecas sem dependencias de frameworks com o principal da aplicaçãoo: as Regras de Negócio e Caso de Uso.
    Aqui dividimos em duas camadas: 
-   - Domain - onde ficar�o as regras de neg�cio (em tempos de DDD tamb�m chamadas de dom�nio e expressadas atrav�s de  entidades, servi�os de dominio, value objects, interfaces de reposit�rios, etc.) 
-     Gosto bastante da defini��o do Uncle Bob para a "camada" de dom�nio:
-    > S�o as regras de neg�cios que fazem ou economizariam o dinheiro da empresa, independentemente de terem sido implementadas em um computador. Elas fariam ou economizariam dinheiro mesmo se fossem executadas manualmente.
-  - Application  - onde iremos implementar as regras espec�ficas da aplica��o. S�o aquelas regras que existem apemas porqu� estamos desenvolvendo este sistema / servi�o. Aqui vem nossos casos de uso da aplica��o.
+   - Domain - onde ficam as regras de negócio (em tempos de DDD também chamadas de domínio e expressadas através de  entidades, serviçoos de dominio, value objects, interfaces de repositórios, etc.) 
+     Gosto bastante da definiçãoo do Uncle Bob para a "camada" de domínio:
+    > São as regras de negócios que fazem ou economizariam o dinheiro da empresa, independentemente de terem sido implementadas em um computador. Elas fariam ou economizariam dinheiro mesmo se fossem executadas manualmente.
+  - Application  - onde iremos implementar as regras específicas da aplicação
 
-3) Infrastructure - aqui s�o as implementa��es contretas para todos os "detalhes". � a camada que conhece frameworks e bits da aplica��o como qual banco de dados, qual ORM, filtros e middlewares de Web API, etc.
+3) Infrastructure - aqui são as implementaçõees contretas para todos os "detalhes". A camada que conhece frameworks e bits da aplicaçãoo como qual banco de dados, qual ORM, filtros e middlewares de Web API, etc.
 
 
-- Mais detalhes sobre a Arquitetura Limpa pode ser encontrada nesse v�deo do UncleBob: https://www.youtube.com/watch?v=Nsjsiz2A9mg
-- Outro exemplo, com algumas diferen�as, e descri��o das camadas e suas responsabilidades pode ser encontrado em https://github.com/ivanpaulovich/clean-architecture-manga 
 
 
 
 ### Projetos:
 
-No desenvolvimento da solução foram utilizados os seguintes targets de compila��o:
+No desenvolvimento da solução foram utilizados os seguintes targets de compilação:
 
 - Bibliotecas - .Net Standard 2.0
 - Entrypoint\Web API - .Net Core 2.2
@@ -44,24 +42,22 @@ No desenvolvimento da solução foram utilizados os seguintes targets de compila
 ### Base de dados
 - Base de dados em memória
 
-### Documenta��o de API 
+### Documentaçaoo de API 
 
 Foi utizado o pacote [SwashBuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) para gerar a documentaçãoo da API no formato OpenAPI / Swagger. Para explorar a API, acesse https://localhost:5000/swagger.
 
 As configurações podem ser encontradas no projeto `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap`, nos arquivos `/ApplicationBuilder/SwaggerApplicationBuilderExtensions.cs` e  `/ServiceCollection/SwaggerServiceCollectionExtensions.cs`.
 
-Maiores informa��es podem ser encontradas na documenta��o da biblioteca em 
-https://github.com/domaindrivendev/Swashbuckle.AspNetCore#include-descriptions-from-xml-comments
 
 ### HealthChecks
 Utilizamos a biblioteca Microsoft.AspNetCore.Diagnostics.HealthChecks - https://docs.microsoft.com/pt-br/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-2.2.
-A configura��o est� dispon�vel em `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap` nos arquivos `/ApplicationBuilderExtensions/HealthChecksApplicationBuilderExtensions` e `/ServiceCollectionExtensions/HealthChecksServiceCollectionExtensions`.
+A configuração esté disponível em `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap` nos arquivos `/ApplicationBuilderExtensions/HealthChecksApplicationBuilderExtensions` e `/ServiceCollectionExtensions/HealthChecksServiceCollectionExtensions`.
 
 http://localhost:5000/health
 
-### Testes Unit�rios
+### Testes Unitários
 
-Os testes unit�rios foram escritos usando XUnit e as seguintes bibliotecas:
+Os testes unitários foram escritos usando XUnit e as seguintes bibliotecas:
 - FluentAssertions - https://fluentassertions.com/ - para asserts mais expressivos
 - Moq - https://github.com/Moq/moq4/wiki/Quickstart - para mocks
 
