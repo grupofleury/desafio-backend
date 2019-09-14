@@ -7,5 +7,6 @@ namespace Fleury.Agendamento.Domain.Exame.Externo
     public interface IExameServicoExterno
     {
         List<Exame> ListarTodos();
+        List<Exame> ObterExamesPorId(List<int> ids);
     }
 }

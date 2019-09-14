@@ -9,7 +9,9 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
 
         public Domain.Cliente.Cliente Cliente { get; set; }
 
-        public List<Domain.Exame.ExameDto> Exames { get; set; }
+        public List<Domain.Exame.Exame> Exames { get; set; }
+
+        public DateTime DataAgendamento { get; set; }
 
 
     }

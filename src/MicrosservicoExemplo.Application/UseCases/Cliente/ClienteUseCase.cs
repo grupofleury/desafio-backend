@@ -57,7 +57,7 @@ namespace Fleury.Agendamento.Application.UseCases.Cliente
                 return resultado;
             }
 
-            _clienteRepositorio.Atualizar(cliente);
+            _clienteRepositorio.Salvar(cliente);
             return ClienteResult.FromDomain(cliente);
         }
 

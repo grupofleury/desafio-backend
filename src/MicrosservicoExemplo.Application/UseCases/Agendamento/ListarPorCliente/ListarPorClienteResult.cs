@@ -14,7 +14,7 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.ListarPorCliente
             {
                 Cliente = x.Cliente,
                 Exames = x.Exames,
-                Valor = x.Exames.Sum(dto => dto.Valor)
+                ValorTotalDeExames = x.Exames.Sum(dto => dto.Value)
             
             }).ToList();
         }

@@ -9,8 +9,6 @@ namespace Fleury.Agendamento.Domain.Cliente.Repositorio
         Cliente Obter(string cpf);
         Cliente Salvar(Cliente cliente);
         List<Cliente> ObterClientes();
-
-        Cliente Atualizar(Cliente cliente);
         Cliente Excluir(string cpf);
     }
 }

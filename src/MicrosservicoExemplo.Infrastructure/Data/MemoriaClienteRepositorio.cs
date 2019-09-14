@@ -21,6 +21,12 @@ namespace Fleury.Agendamento.Infrastructure.Data
 
         public Cliente Salvar(Cliente cliente)
         {
+            if (_db.ContainsKey(cliente.Cpf))
+            {
+                _db[cliente.Cpf] = cliente;
+                return cliente;
+            }
+
             _db[cliente.Cpf] = cliente;
             return cliente;
         }
@@ -30,16 +36,7 @@ namespace Fleury.Agendamento.Infrastructure.Data
             return _db.Values.ToList();
         }
 
-        public Cliente Atualizar(Cliente cliente)
-        {
-            if (_db.ContainsKey(cliente.Cpf))
-            {
-                _db[cliente.Cpf] = cliente;
-                return cliente;
-            }
-
-            return null;
-        }
+      
 
         public Cliente Excluir(string cpf)
         {

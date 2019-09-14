@@ -53,8 +53,8 @@ namespace Fleury.Agendamento.API.Controllers.Agendamento
         public IActionResult Get(string cpf)
         {
             var resultado = _agendamentoPorClienteUseCase.Obter(cpf);
-            var presenter = new DefaultPresenter.DefaultPresenter<ListarPorClienteResult>();
-            presenter..Popular(resultado);
+            var presenter = new DefaultPresenter<ListarPorClienteResult>();
+            presenter.Popular(resultado);
             return presenter.ViewModel;
         }
     }

@@ -12,11 +12,11 @@ namespace Fleury.Agendamento.Domain.Agendamento
 
         public Cliente.Cliente Cliente { get; set; }
 
-        public List<Exame.ExameDto> Exames { get; set; }
+        public List<Exame.Exame> Exames { get; set; }
 
         public DateTime DataAgendamento { get; set; }
 
-        public Decimal Valor { get; set; }
+        public Decimal ValorTotalDeExames { get; set; }
 
 
         public Agendamento()
@@ -24,21 +24,25 @@ namespace Fleury.Agendamento.Domain.Agendamento
             
         }
 
-        public Agendamento(Cliente.Cliente cliente, List<ExameDto> exames, DateTime dataAgendamento)
+        public Agendamento(Cliente.Cliente cliente, List<Exame.Exame> exames, DateTime dataAgendamento)
         {
             Id = Guid.NewGuid();
             Cliente = cliente;
             Exames = exames;
             DataAgendamento = dataAgendamento;
+            Validate();
         }
 
         public void Validate()
         {
             if (Valid)
             {
+                
                 AddNotifications(new Contract()
-                    
-                    .IsNotNullOrEmpty(Cliente.Cpf, nameof(Cliente.Cpf), "Informe o cpf"));
+
+                    .IsNotNullOrEmpty(Cliente.Cpf, nameof(Cliente.Cpf), "Informe o cpf")
+                    .IsNotNull(Exames, nameof(Exames),"Nenhum exame informado")
+                    .IsGreaterThan(DataAgendamento, DateTime.Now, nameof(DataAgendamento), "Data agendamento deve ser maior que a data de hoje"));
 
             }
         }
