@@ -1,19 +1,19 @@
 ## Desafio Backend
 
-Esse projeto cont�m uma estrutura microsservi�o desenvolvido em .Net Core com arquitetura limpa/hexagonal.
+Esse projeto contém uma estrutura desenvolvido em .Net Core com arquitetura limpa/hexagonal.
 
-A Arquitetura Hexagonal (tamb�m conhecida como Portas e Adaptadores) � uma estrat�gia para dissociar os casos de uso dos detalhes externos. Foi inventado por Alistar Cockburn h� mais de 13 anos. 
+A Arquitetura Hexagonal (também conhecida como Portas e Adaptadores) é uma estratégia para dissociar os casos de uso dos detalhes externos. Foi inventado por Alistar Cockburn há mais de 13 anos. 
 
-Ao longo do tempo outros engenheiros trabalharam em veria��es dela:
+Ao longo do tempo outros engenheiros trabalharam em veriaçoes dela:
 - Onion Architecture - Jeffrey Palermo https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 - Clean Architecture - Uncle Bob.
 
-Embora estes arqu�tipos variem em algum ou outro detalhe, todos possuem o mesmo objetivo: 
+Embora estes arquetipos variem em algum ou outro detalhe, todos possuem o mesmo objetivo: 
 
-> Separar a l�gica da aplica��o de detalhes externos.
+> Separar a logica da aplicaçãode detalhes externos.
 
 
-Na nossa estrutura, as Regras de Neg�cios e os Casos de Uso devem ser implementados dentro da Camada Core (Aplica��o e Dom�nio) e ser�o mantidas em toda a v�da do produto.  
+Na nossa estrutura, as Regras de Negocios e os Casos de Uso devem ser implementados dentro da Camada Core (Aplicaçãoo e Domínio) e serao mantidas em toda a vida do produto.  
 Por outro lado tudo que d� suporte a recursos externos s�o apenas detalhes. Eles podem ser substitu�dos por diferentes raz�es, e n�o queremos que as regras de neg�cios sejam acopladas ou afetadas por estas mudan�as.
 
 Por isso, a divis�o do projeto em 
@@ -31,11 +31,11 @@ Por isso, a divis�o do projeto em
 - Mais detalhes sobre a Arquitetura Limpa pode ser encontrada nesse v�deo do UncleBob: https://www.youtube.com/watch?v=Nsjsiz2A9mg
 - Outro exemplo, com algumas diferen�as, e descri��o das camadas e suas responsabilidades pode ser encontrado em https://github.com/ivanpaulovich/clean-architecture-manga 
 
-## TechStack
+
 
 ### Projetos:
 
-No desenvolvimento da solu��o foram utilizados os seguintes targets de compila��o:
+No desenvolvimento da solução foram utilizados os seguintes targets de compila��o:
 
 - Bibliotecas - .Net Standard 2.0
 - Entrypoint\Web API - .Net Core 2.2
@@ -46,9 +46,9 @@ No desenvolvimento da solu��o foram utilizados os seguintes targets de compi
 
 ### Documenta��o de API 
 
-Foi utizado o pacote [SwashBuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) para gerar a documenta��o da API no formato OpenAPI / Swagger. Para explorar a API, acesse https://localhost:5000/swagger.
+Foi utizado o pacote [SwashBuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) para gerar a documentaçãoo da API no formato OpenAPI / Swagger. Para explorar a API, acesse https://localhost:5000/swagger.
 
-As configura��es podem ser encontradas no projeto `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap`, nos arquivos `/ApplicationBuilder/SwaggerApplicationBuilderExtensions.cs` e  `/ServiceCollection/SwaggerServiceCollectionExtensions.cs`.
+As configurações podem ser encontradas no projeto `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap`, nos arquivos `/ApplicationBuilder/SwaggerApplicationBuilderExtensions.cs` e  `/ServiceCollection/SwaggerServiceCollectionExtensions.cs`.
 
 Maiores informa��es podem ser encontradas na documenta��o da biblioteca em 
 https://github.com/domaindrivendev/Swashbuckle.AspNetCore#include-descriptions-from-xml-comments
