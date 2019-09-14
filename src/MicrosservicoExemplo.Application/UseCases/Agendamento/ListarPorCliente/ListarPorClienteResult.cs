@@ -12,7 +12,7 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.ListarPorCliente
         {
             Agendamentos = agendamentos.Select(x => new Domain.Agendamento.Agendamento
             {
-                Cliente = x.Cliente,
+                Paciente = x.Paciente,
                 Exames = x.Exames,
                 ValorTotalDeExames = x.Exames.Sum(dto => dto.Value)
             

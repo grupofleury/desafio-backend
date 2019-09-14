@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Fleury.Agendamento.Application.UseCases.Cliente
+namespace Fleury.Agendamento.Application.UseCases.Paciente
 {
-    public class ClienteRequest
+    public class PacienteRequest
     {
         public string Nome { get; set; }
         public string Cpf { get; set; }

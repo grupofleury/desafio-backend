@@ -10,7 +10,7 @@ namespace Fleury.Agendamento.Infrastructure.Data
         private readonly Dictionary<Guid, Domain.Agendamento.Agendamento> _db = new Dictionary<Guid, Domain.Agendamento.Agendamento>();
         public List<Domain.Agendamento.Agendamento> ObterAgendamentosPorCliente(string cpf)
         {
-            var agendamentos = _db.Values.Where(a => a.Cliente.Cpf == cpf);
+            var agendamentos = _db.Values.Where(a => a.Paciente.Cpf == cpf);
             return agendamentos.ToList();
         }
 

@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using Fleury.Agendamento.API.Controllers.Cliente;
 using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente;
 using Fleury.Agendamento.Application.UseCases.Agendamento.ListarPorCliente;
-using Fleury.Agendamento.Application.UseCases.Cliente;
 using Flunt.Notifications;
 using Microsoft.AspNetCore.Mvc;
 

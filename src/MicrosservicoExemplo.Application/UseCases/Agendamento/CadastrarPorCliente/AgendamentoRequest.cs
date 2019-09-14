@@ -7,7 +7,7 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
     {
         public Guid Id { get; set; }
 
-        public Domain.Cliente.Cliente Cliente { get; set; }
+        public Domain.Paciente.Paciente Paciente { get; set; }
 
         public List<Domain.Exame.Exame> Exames { get; set; }
 

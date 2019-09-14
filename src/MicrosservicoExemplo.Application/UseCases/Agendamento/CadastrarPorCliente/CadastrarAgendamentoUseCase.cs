@@ -1,20 +1,20 @@
 ﻿using System.Linq;
 using Fleury.Agendamento.Domain.Agendamento.Repositorio;
-using Fleury.Agendamento.Domain.Cliente.Repositorio;
 using Fleury.Agendamento.Domain.Exame.Externo;
+using Fleury.Agendamento.Domain.Paciente.Repositorio;
 
 namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente
 {
     public class CadastrarAgendamentoUseCase : ICadastrarAgendamentoUseCase
     {
         private readonly IAgendamentoRepositorio _agendamentoRepositorio;
-        private readonly IClienteRepositorio _clienteRepositorio;
+        private readonly IPacienteRepositorio _pacienteRepositorio;
         private readonly IExameServicoExterno _exameServicoExterno;
 
-        public CadastrarAgendamentoUseCase(IAgendamentoRepositorio agendamentoRepositorio, IClienteRepositorio clienteRepositorio, IExameServicoExterno exameServicoExterno)
+        public CadastrarAgendamentoUseCase(IAgendamentoRepositorio agendamentoRepositorio, IPacienteRepositorio pacienteRepositorio, IExameServicoExterno exameServicoExterno)
         {
             _agendamentoRepositorio = agendamentoRepositorio;
-            _clienteRepositorio = clienteRepositorio;
+            _pacienteRepositorio = pacienteRepositorio;
             _exameServicoExterno = exameServicoExterno;
         }
 
@@ -22,9 +22,9 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
         {
             var resultado = new AgendamentoResult();
 
-            if (_clienteRepositorio.Obter(request.Cliente.Cpf) == null)
+            if (_pacienteRepositorio.Obter(request.Paciente.Cpf) == null)
             {
-                resultado.AddNotification(nameof(request.Cliente.Cpf), "Cliente cadastrado");
+                resultado.AddNotification(nameof(request.Paciente.Cpf), "Paciente cadastrado");
                 resultado.Error = ErrorCode.Business;
                 return resultado;
 
@@ -42,7 +42,7 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
             var exames = _exameServicoExterno.ObterExamesPorId(ids.ToList());
 
             var agendamento =
-                new Domain.Agendamento.Agendamento(request.Cliente, exames, request.DataAgendamento);
+                new Domain.Agendamento.Agendamento(request.Paciente, exames, request.DataAgendamento);
 
             if (agendamento.Invalid)
             {

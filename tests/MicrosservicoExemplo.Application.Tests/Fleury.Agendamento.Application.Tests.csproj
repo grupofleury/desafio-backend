@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\" />
+    <Folder Include="UseCases\Exames\" />
+    <Folder Include="UseCases\Agendamento\" />
   </ItemGroup> 
 </Project>

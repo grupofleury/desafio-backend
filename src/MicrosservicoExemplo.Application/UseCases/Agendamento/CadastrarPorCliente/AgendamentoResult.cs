@@ -8,7 +8,7 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
     {
         public Guid Id { get; set; }
 
-        public Domain.Cliente.Cliente Cliente { get; set; }
+        public Domain.Paciente.Paciente Paciente { get; set; }
 
         public List<Domain.Exame.Exame> Exames { get; set; }
 
@@ -19,7 +19,7 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorClient
             return new AgendamentoResult
             {
                Id = agendamento.Id,
-               Cliente = agendamento.Cliente,
+               Paciente = agendamento.Paciente,
                Exames = agendamento.Exames,
                ValorTotalDeExames = agendamento.Exames.Sum(e => e.Value)
             };

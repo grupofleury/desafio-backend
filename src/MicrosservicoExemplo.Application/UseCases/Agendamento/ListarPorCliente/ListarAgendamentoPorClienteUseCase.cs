@@ -5,18 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente;
 using Fleury.Agendamento.Domain.Agendamento.Repositorio;
-using Fleury.Agendamento.Domain.Cliente.Repositorio;
+using Fleury.Agendamento.Domain.Paciente.Repositorio;
 
 namespace Fleury.Agendamento.Application.UseCases.Agendamento.ListarPorCliente
 {
     public class ListarAgendamentoPorClienteUseCase : IListarAgendamentoPorClienteUseCase
     {
         private readonly IAgendamentoRepositorio _agendamentoRepositorio;
-        private readonly IClienteRepositorio _clienteRepositorio;
+        private readonly IPacienteRepositorio _pacienteRepositorio;
 
-        public ListarAgendamentoPorClienteUseCase(IClienteRepositorio clienteRepositorio, IAgendamentoRepositorio agendamentoRepositorio)
+        public ListarAgendamentoPorClienteUseCase(IPacienteRepositorio pacienteRepositorio, IAgendamentoRepositorio agendamentoRepositorio)
         {
-            _clienteRepositorio = clienteRepositorio;
+            _pacienteRepositorio = pacienteRepositorio;
             _agendamentoRepositorio = agendamentoRepositorio;
         }
 
@@ -25,16 +25,16 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.ListarPorCliente
 
             var resultado = new ListarPorClienteResult();
 
-            if (_clienteRepositorio.Obter(cpf) == null)
+            if (_pacienteRepositorio.Obter(cpf) == null)
             {
-                resultado.AddNotification(nameof(cpf), "Cliente nao cadastrado");
+                resultado.AddNotification(nameof(cpf), "Paciente nao cadastrado");
                 resultado.Error = ErrorCode.Business;
                 return resultado;
             }
 
             var agendamentos = _agendamentoRepositorio.ObterAgendamentosPorCliente(cpf);
 
-            resultado.FromDomain(agendamentos.OrderBy(a => a.Cliente.Nome).ToList());
+            resultado.FromDomain(agendamentos.OrderBy(a => a.Paciente.Nome).ToList());
 
             return resultado;
         }

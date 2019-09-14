@@ -2,9 +2,9 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace Fleury.Agendamento.Domain.Cliente
+namespace Fleury.Agendamento.Domain.Paciente
 {
-    public class Cliente : Notifiable, IValidatable
+    public class Paciente : Notifiable, IValidatable
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -12,12 +12,12 @@ namespace Fleury.Agendamento.Domain.Cliente
         public DateTime DataNascimento { get; set; }
 
 
-        public Cliente()
+        public Paciente()
         {
           
         }
 
-        public Cliente(string nome, string cpf, DateTime datanascimento)
+        public Paciente(string nome, string cpf, DateTime datanascimento)
         {
             Nome = nome;
             Cpf = cpf;
@@ -26,12 +26,12 @@ namespace Fleury.Agendamento.Domain.Cliente
 
         }
 
-        public Cliente(string cpf)
+        public Paciente(string cpf)
         {
             Cpf = cpf;
         }
 
-        public Cliente(string nome, DateTime datanascimento)
+        public Paciente(string nome, DateTime datanascimento)
         {
             Nome = nome;
             DataNascimento = datanascimento;
@@ -45,7 +45,9 @@ namespace Fleury.Agendamento.Domain.Cliente
             if (Valid)
             {
                 AddNotifications(new Contract()
-                    .IsNotNullOrEmpty(Nome, nameof(Nome), "Informe o nome do cliente")
+                    .IsNotNullOrEmpty(Nome, nameof(Nome), "Informe o nome do paciente")
+                    .IsLowerThan(DataNascimento, DateTime.Now,  nameof(DataNascimento),"Data de nascimento deve ser menor que a data de hoje")
+                    .IsBetween(DataNascimento, new DateTime(1900,01,01), DateTime.Now, nameof(DataNascimento),"Data de nascimento inválida" )
                     .IsNotNullOrEmpty(Cpf, nameof(Cpf), "Informe o Cpf"));
             }
         }
@@ -55,7 +57,7 @@ namespace Fleury.Agendamento.Domain.Cliente
             if (Valid)
             {
                 AddNotifications(new Contract()
-                    .IsNotNullOrEmpty(Nome, nameof(Nome), "Informe o nome do cliente"));
+                    .IsNotNullOrEmpty(Nome, nameof(Nome), "Informe o nome do paciente"));
 
             }
         }
