@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "82ab7003-063c-4391-991b-fdd1515911a7",
+		"name": "Fleury",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obter cliente por cpf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/paciente/12578912511/obter-paciente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"paciente",
+						"12578912511",
+						"obter-paciente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir cliente",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Cpf\": \"46466564465465\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/cliente/excluir-cliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cliente",
+						"excluir-cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter exames",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/exames",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"exames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar paciente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Nome\": \"Isabella Fonseca Galante Mans\",\n\t\"Cpf\": \"12578912511\",\n\t\"DataNascimento\": \"2017-09-18\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/paciente/cadastrar-paciente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"paciente",
+						"cadastrar-paciente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar paciente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Nome\": \"Isabella Fonseca Galante Mans\",\n\t\"Cpf\": \"12578912511\",\n\t\"DataNascimento\": \"1977-06-24\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/paciente/alterar-paciente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"paciente",
+						"alterar-paciente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter todos os pacientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/paciente/obter-pacientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"paciente",
+						"obter-pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter agendamento por cpf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/agendamento/obter-agendamento/12578912511",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"agendamento",
+						"obter-agendamento",
+						"12578912511"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar agendamento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"DataAgendamento\": \"2019-09-28 19:00\",\r\n   \"Paciente\": \r\n      { \r\n         \"Cpf\":\"12578912511\",\r\n         \"Nome\":\"Isabella\"\r\n      },\r\n   \"Exames\":[ \r\n      { \r\n    \t \"Id\": 2\r\n      },\r\n      { \r\n         \"Id\": 3\r\n        \r\n      },\r\n      { \r\n      \"Id\": 4\r\n      },\r\n       { \r\n      \"Id\": 10\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/agendamento/cadastrar-agendamento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"agendamento",
+						"cadastrar-agendamento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar agendamento",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n   \"Paciente\": \r\n      { \r\n         \"Cpf\":\"1\",\r\n         \"Nome\":\"FAbio\"\r\n      },\r\n      \"DataAgendamento\": \"2019-09-18 19:00\",\r\n      \"DataAlteracaoAgendamento\": \"2019-09-21 10:30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/agendamento/alterar-agendamento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"agendamento",
+						"alterar-agendamento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir agendamento",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n\t\"DataAgendamento\": \"2019-09-28 19:00\",\r\n   \"Paciente\": \r\n      { \r\n         \"Cpf\":\"12578912511\"\r\n      }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/agendamento/excluir-agendamento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"agendamento",
+						"excluir-agendamento"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

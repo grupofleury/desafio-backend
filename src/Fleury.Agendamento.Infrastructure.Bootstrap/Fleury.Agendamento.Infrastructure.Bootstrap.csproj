@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Fleury.Agendamento.Infrastructure.Bootstrap</AssemblyName>
+    <RootNamespace>Fleury.Agendamento.Infrastructure.Bootstrap</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="App.Metrics.AspNetCore.Mvc" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fleury.Agendamento.Application\Fleury.Agendamento.Application.csproj" />
+    <ProjectReference Include="..\Fleury.Agendamento.Domain\Fleury.Agendamento.Domain.csproj" />
+    <ProjectReference Include="..\Fleury.Agendamento.Infrastructure\Fleury.Agendamento.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

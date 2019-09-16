@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fleury.Agendamento.API</name>
+    </assembly>
+    <members>
+        <member name="M:Fleury.Agendamento.API.Controllers.Agendamento.AgendamentoController.Post(Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorCliente.AgendamentoRequest)">
+            <summary>
+            Cria um novo agendamento
+            </summary>
+            <param name="request">Parametros para de um agendamento</param>
+            <response code="201">Agendamento criado com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a criação do agendamento</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.Post(Fleury.Agendamento.Application.UseCases.Cliente.ClienteRequest)">
+            <summary>
+            Cria um novo cliente
+            </summary>
+            <param name="request">Parametros para criação de um cliente</param>
+            <response code="201">Cliente criada com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a criação do cliente</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.Put(Fleury.Agendamento.Application.UseCases.Cliente.ClienteRequest)">
+            <summary>
+            Alterar cliente
+            </summary>
+            <param name="request">Parametros para alterar um cliente</param>
+            <response code="200">Cliente alterado com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a alteração do cliente</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.Delete(Fleury.Agendamento.Application.UseCases.Cliente.ClienteRequest)">
+            <summary>
+            Excluir cliente
+            </summary>
+            <param name="request">Parametros para excluir um cliente</param>
+            <response code="200">Cliente excluido com sucesso</response>
+            <response code="204">Ocorreu um erro de validação durante a exclusão do cliente</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.ObterPorCpf(System.String)">
+            <summary>
+            Busca de um cliente baseado no seu cpf
+            </summary>
+            <param name="cpf">Parametros pesquisar um cliente</param>
+            <response code="200">Cliente retornado com sucesso</response>
+            <response code="204">Ocorreu um erro de validação durante a busca do cliente</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Cliente.ClienteController.Obter">
+            <summary>
+            Listagem de todos os clientes cadastrados
+            </summary>
+            <response code="200">Clientes retornado com sucesso</response>
+            <response code="204">Ocorreu um erro de validação durante a busca dos clientes</response>
+        </member>
+        <member name="M:Fleury.Agendamento.API.Controllers.Exames.ExamesController.ObterExames">
+            <summary>
+            Consulta exames
+            </summary>
+            <response code="200">Consulta realizada com sucesso</response>
+            <response code="422">Ocorreu um erro de validação durante a consulta </response>
+        </member>
+    </members>
+</doc>

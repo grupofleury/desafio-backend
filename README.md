@@ -1,56 +1,76 @@
-Desafio Back-end - Grupo Fleury
-====
+## Desafio Backend
 
-## Descrição:
+Esse projeto contém uma estrutura desenvolvido em .Net Core com arquitetura limpa/hexagonal.
 
-O Grupo Fleury deseja disponibilizar uma api restfull para realização de agendamentos para seus clientes, 
-para tal o usuário precisará ter um cadastro de cliente em nossa base de dados, 
-selecionar um exame e informar data e hora desejado.
+A Arquitetura Hexagonal (também conhecida como Portas e Adaptadores) é uma estratégia para dissociar os casos de uso dos detalhes externos. Foi inventado por Alistar Cockburn há mais de 13 anos. 
 
-## Regras de Negócio
+Ao longo do tempo outros engenheiros trabalharam em veriaçoes dela:
+- Onion Architecture - Jeffrey Palermo https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
+- Clean Architecture - Uncle Bob.
 
-- Cliente precisa estar cadastrado em base de dados para realizar o agendamento
-- Caso o cliente não exista em base, deverá ser feito o cadastro antecipadamente.
-- Não será possível realizar agendamento de mais de 2 pacientes para o mesmo exame na mesma data e hora, esse valor de 2 deverá ser parametrizado.
-- O cadastro de cliente deverá ter os campos: Nome, CPF e Data de Nascimento
-- Não poderá ser cadastrado mais de um cliente para o mesmo CPF
-- A lista de exames disponíveis para agendamento deverá ser consumida do endpoint ( http://www.mocky.io/v2/5d681ede33000054e7e65c3f).
+Embora estes arquetipos variem em algum ou outro detalhe, todos possuem o mesmo objetivo: 
 
-## Features
-- Deverá haver um endpoint para listagem dos exames disponíveis para agendamento, exibindo apenas nome do exame e id
-- Deverá haver um endpoint para criação de um cliente
-- Deverá haver um endpoint para atualização de um cliente
-- Deverá haver um endpoint para exclusão de um cliente
-- Deverá haver um endpoint para busca de um cliente baseado no seu cpf
-- Deverá haver um endpoint para listagem de todos os clientes cadastrados
-
-- Deverá haver um endpoint para listagem dos agendamentos de um cliente por cpf, deverá conter o valor total (soma dos valores dos exames selecionados para o agendamento)
-- Deverá haver um endpoint para edição de um agendamento realizado, apenas dia e hora poderão ser editados
-- Deverá haver um endpoint para exclusão de um agendamento realizado
-
-## Requisitos
-
-- A API deverá ter um swagger
-- Teste unitário
-- Utilizar uma estrutura de dados a sua escolha para simular a base de dados em memória
-- Para vaga de Back-end NodeJS utilizar Typecript, para Vaga de .net utilizar .net core 2.x
-- Aplicação deverá conter um Readme contendo instruções de como realizar o build e rodar a Aplicação
+> Separar a logica da aplicaçãode detalhes externos.
 
 
-## Diferencial
-- No readme separe uma sessão para explicar a arquitetura da api
-- Tenha em mente conceitos de SOLID e clean architecture 
-- Docker
-- Esteira de CI/CD no github (exemplo Travis CI)
+Regras de Negocios e os Casos de Uso são ser implementados dentro da Camada Core (Aplicaçãoo e Domínio) e são mantidas em toda a vida do produto.  
 
-## Como submeter?
 
-Deverá ser enviado um PULL REQUEST com o seu teste.
+Po
+1) Entrypoint (Projeto(s) com WebAPI, listeners de filas, worker de um job agendado, etc.) Não deve ter  regras de negócio nem de aplicação. Apenas obtém as entradas e delega para a camada de aplicaçãoo. Pode executar alguma formatação na saída para o formato apropriado do seu consumidor.
+2) Core - bibliotecas sem dependencias de frameworks com o principal da aplicaçãoo: as Regras de Negócio e Caso de Uso.
+   Aqui dividimos em duas camadas: 
+   - Domain - onde ficam as regras de negócio (em tempos de DDD também chamadas de domínio e expressadas através de  entidades, serviçoos de dominio, value objects, interfaces de repositórios, etc.) 
+     Gosto bastante da definiçãoo do Uncle Bob para a "camada" de domínio:
+    > São as regras de negócios que fazem ou economizariam o dinheiro da empresa, independentemente de terem sido implementadas em um computador. Elas fariam ou economizariam dinheiro mesmo se fossem executadas manualmente.
+  - Application  - onde iremos implementar as regras específicas da aplicação
 
-### Como funciona?
+3) Infrastructure - aqui são as implementaçõees contretas para todos os "detalhes". A camada que conhece frameworks e bits da aplicaçãoo como qual banco de dados, qual ORM, filtros e middlewares de Web API, etc.
 
-- Fork deste repositório
-- Clonar a partir do repositório que foi criada na sua conta
-- Procure fazer o máximo de commits com todas as suas decisões
-- Abra um Pull Request para este repositório
+
+### Projetos:
+
+No desenvolvimento da solução foram utilizados os seguintes targets de compilação:
+
+- Bibliotecas - .Net Standard 2.0
+- Entrypoint\Web API - .Net Core 2.2
+- Tests - .Net Core 2.0 / xUnit
+
+### Base de dados
+- Base de dados em memória
+
+### Documentaçaoo de API 
+
+Foi utizado o pacote [SwashBuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) para gerar a documentaçãoo da API no formato OpenAPI / Swagger. Para explorar a API, acesse https://localhost:5000/swagger.
+
+As configurações podem ser encontradas no projeto `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap`, nos arquivos `/ApplicationBuilder/SwaggerApplicationBuilderExtensions.cs` e  `/ServiceCollection/SwaggerServiceCollectionExtensions.cs`.
+
+
+### HealthChecks
+Utilizamos a biblioteca Microsoft.AspNetCore.Diagnostics.HealthChecks - https://docs.microsoft.com/pt-br/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-2.2.
+A configuração esté disponível em `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap` nos arquivos `/ApplicationBuilderExtensions/HealthChecksApplicationBuilderExtensions` e `/ServiceCollectionExtensions/HealthChecksServiceCollectionExtensions`.
+
+http://localhost:5000/health
+
+### Testes Unitários
+
+Os testes unitários foram escritos usando XUnit e as seguintes bibliotecas:
+- FluentAssertions - https://fluentassertions.com/ - para asserts mais expressivos
+- Moq - https://github.com/Moq/moq4/wiki/Quickstart - para mocks
+
+
+### Buid e execução a aplicação
+
+
+Buid - Acessar a pasta da aplicação e rodar o comando
+
+dotnet build
+
+Execução - Acessar o Projeto API e executar o comando 
+dotnet run
+
+Obter a porta na linha de comando e realizar os test atráves do Postman
+
+Anexo o projeto
+
 
