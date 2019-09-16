@@ -13,10 +13,10 @@ Embora estes arquetipos variem em algum ou outro detalhe, todos possuem o mesmo 
 > Separar a logica da aplicaçãode detalhes externos.
 
 
-Regras de Negocios e os Casos de Uso são ser implementados dentro da Camada Core (Aplicaçãoo e Domínio) e são mantidas em toda a vida do produto.  
+Regras de Negocios e os Casos de Uso são ser implementados dentro da Camada Core (Aplicação e Domínio) e são mantidas em toda a vida do produto.  
 
 
-Po
+
 1) Entrypoint (Projeto(s) com WebAPI, listeners de filas, worker de um job agendado, etc.) Não deve ter  regras de negócio nem de aplicação. Apenas obtém as entradas e delega para a camada de aplicaçãoo. Pode executar alguma formatação na saída para o formato apropriado do seu consumidor.
 2) Core - bibliotecas sem dependencias de frameworks com o principal da aplicaçãoo: as Regras de Negócio e Caso de Uso.
    Aqui dividimos em duas camadas: 
@@ -51,6 +51,7 @@ Utilizamos a biblioteca Microsoft.AspNetCore.Diagnostics.HealthChecks - https://
 A configuração esté disponível em `Fleury.Agendamento.Infrastructure.Bootstrap.Infrastructure.Bootstrap` nos arquivos `/ApplicationBuilderExtensions/HealthChecksApplicationBuilderExtensions` e `/ServiceCollectionExtensions/HealthChecksServiceCollectionExtensions`.
 
 http://localhost:5000/health
+(Parta configurada launchSettings.json)
 
 ### Testes Unitários
 
@@ -70,7 +71,11 @@ Execução - Acessar o Projeto API e executar o comando
 dotnet run
 
 Obter a porta na linha de comando e realizar os test atráves do Postman
+launchSettings.json
 
-Anexo o projeto
+Postaman anexo no projeto API
+
+https://github.com/fabiogalante/desafio-backend/tree/feature/agendamento-1309/src/Fleury.Agendamento.API/Postman
+
 
 
