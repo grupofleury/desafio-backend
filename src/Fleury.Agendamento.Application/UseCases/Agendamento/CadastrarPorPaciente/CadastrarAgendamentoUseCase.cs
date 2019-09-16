@@ -69,6 +69,13 @@ namespace Fleury.Agendamento.Application.UseCases.Agendamento.CadastrarPorPacien
         private AgendamentoResult ValidarAgendamentoRequest(AgendamentoRequest request)
         {
             var resultado = new AgendamentoResult();
+
+            if (request.Paciente == null)
+            {
+                resultado.AddNotification("RequestPaciente", "Paciente não informado");
+                return resultado;
+            }
+
             if (request == null)
             {
                 resultado.AddNotification("Request", "Requisição inválida");
