@@ -60,7 +60,7 @@ Os testes unitários foram escritos usando XUnit e as seguintes bibliotecas:
 - Moq - https://github.com/Moq/moq4/wiki/Quickstart - para mocks
 
 
-### Buid e execução a aplicação
+### Buid e execução da aplicação
 
 
 Buid - Acessar a pasta da aplicação e rodar o comando
