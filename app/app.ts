@@ -74,7 +74,6 @@ app.post('/find_client',async(req: any,resp: any) =>{
         "count_last_record":0
     }
  */
-
 app.post('/lista_client',async(req: any,resp: any) =>{
     let cliente = req.body
     resp.json(await database.listaClientes(cliente));

@@ -16,5 +16,11 @@ export class Agendamento {
 
     @Column({nullable:true})
     exame_valor: number;
+
+    @Column({nullable:true})
+    data: number;
+
+    @Column({nullable:true})
+    hora: number;
     
 }
