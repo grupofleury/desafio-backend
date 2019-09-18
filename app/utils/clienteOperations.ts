@@ -38,11 +38,18 @@ export class ClienteOperations{
         .where("cliente.cpf = :cpf", { cpf: body.cpf })
         .getOne();
     }
-    
+
     async listaClientes(connection,body){
-        return await connection.getRepository(Cliente)
-       .createQueryBuilder("cliente")
-       .where("cliente.cpf = :cpf", { cpf: body.cpf })
-       .getOne();
+        let total = await connection.getRepository(Cliente).createQueryBuilder().getCount();
+        let resPag = await connection.getRepository(Cliente)
+        .find({ 
+            skip: 0, 
+            take: 10 
+        });
+        return {
+            total,
+            resPag
+        }
    }
+
 }

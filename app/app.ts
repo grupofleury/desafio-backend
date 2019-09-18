@@ -63,15 +63,21 @@ app.delete('/delete_client',async(req: any,resp: any) =>{
         "cpf":"00000000000"
     }
  */
+
 app.post('/find_client',async(req: any,resp: any) =>{
     let cliente = req.body
     resp.json(await database.buscaCliente(cliente));
  })
 
+ /** creation client example
+ * {
+        "count_last_record":0
+    }
+ */
 
-app.get('/lista_client',async(req: any,resp: any) =>{
+app.post('/lista_client',async(req: any,resp: any) =>{
     let cliente = req.body
-    resp.json(await database.buscaCliente(cliente));
+    resp.json(await database.listaClientes(cliente));
  })
 
 
