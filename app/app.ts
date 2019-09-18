@@ -30,13 +30,10 @@ app.get('/list_exams',async(req: any,resp: any)=>{
         cidade:'sp'
     }
  */
-
-
  app.post('/new_client',async(req: any,resp: any) =>{
     let cliente = req.body
     resp.json(await database.saveCliente(cliente));
  })
-
 
  /** creation client example
  * {
@@ -51,7 +48,6 @@ app.get('/list_exams',async(req: any,resp: any)=>{
     resp.json(await database.updateCliente(cliente));
  })
 
-
  /** creation client example
  * {
         id:4
@@ -62,7 +58,23 @@ app.delete('/delete_client',async(req: any,resp: any) =>{
     resp.json(await database.deleteCliente(cliente));
  })
 
- 
+  /** creation client example
+ * {
+        "cpf":"00000000000"
+    }
+ */
+app.post('/find_client',async(req: any,resp: any) =>{
+    let cliente = req.body
+    resp.json(await database.buscaCliente(cliente));
+ })
+
+
+app.get('/lista_client',async(req: any,resp: any) =>{
+    let cliente = req.body
+    resp.json(await database.buscaCliente(cliente));
+ })
+
+
 app.listen(9090,async ()=>{
     console.log('api is running');   
 })

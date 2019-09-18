@@ -39,6 +39,16 @@ export class DatabaseOperations{
         let newClient = new ClienteOperations();
         return await newClient.deleteCliente(await this.connection,body);
     }
+
+    async buscaCliente(body){
+        let newClient = new ClienteOperations();
+        return await newClient.buscaCliente(await this.connection,body);
+    }
+
+    async listaClientes(body){
+        let newClient = new ClienteOperations();
+        return await newClient.listaClientes(await this.connection,body);
+    }
 }
 
 

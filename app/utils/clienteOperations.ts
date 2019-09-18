@@ -31,4 +31,18 @@ export class ClienteOperations{
         .where("id = :id", { id: body.id })
         .execute();
     }
+
+    async buscaCliente(connection,body){
+         return await connection.getRepository(Cliente)
+        .createQueryBuilder("cliente")
+        .where("cliente.cpf = :cpf", { cpf: body.cpf })
+        .getOne();
+    }
+    
+    async listaClientes(connection,body){
+        return await connection.getRepository(Cliente)
+       .createQueryBuilder("cliente")
+       .where("cliente.cpf = :cpf", { cpf: body.cpf })
+       .getOne();
+   }
 }
