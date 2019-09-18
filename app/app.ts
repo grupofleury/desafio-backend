@@ -1,8 +1,12 @@
 import express from 'express'
-const app:any = express()
+import {Calls} from './utils/calls'
 
-app.get('/',(req: any,resp: any)=>{
-    resp.send('Hello World');
+const app:any = express()
+const call:any = new Calls();
+
+app.get('/list_exams',async(req: any,resp: any)=>{
+    let response = await call.getListExams();
+    resp.json(response.data);
 })
 
 app.listen(9090,()=>{
