@@ -26,11 +26,19 @@ export class DatabaseOperations{
 
 
     async saveCliente(cliente){
-        let newClient = new ClienteOperations(cliente);
-        return await newClient.saveCliente( await this.connection);
+        let newClient = new ClienteOperations();
+        return await newClient.saveCliente( await this.connection,cliente);
     }
     
+    async updateCliente(body){
+        let newClient = new ClienteOperations();
+        return await newClient.updateCliente(await this.connection,body);
+    }
 
+    async deleteCliente(body){
+        let newClient = new ClienteOperations();
+        return await newClient.deleteCliente(await this.connection,body);
+    }
 }
 
 

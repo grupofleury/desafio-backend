@@ -37,6 +37,32 @@ app.get('/list_exams',async(req: any,resp: any)=>{
     resp.json(await database.saveCliente(cliente));
  })
 
+
+ /** creation client example
+ * {
+        id:4,
+        update:{
+            nome:"aaa"
+        }
+    }
+ */
+ app.post('/update_client',async(req: any,resp: any) =>{
+    let cliente = req.body
+    resp.json(await database.updateCliente(cliente));
+ })
+
+
+ /** creation client example
+ * {
+        id:4
+    }
+ */
+app.delete('/delete_client',async(req: any,resp: any) =>{
+    let cliente = req.body
+    resp.json(await database.deleteCliente(cliente));
+ })
+
+ 
 app.listen(9090,async ()=>{
     console.log('api is running');   
 })
