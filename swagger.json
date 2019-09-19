@@ -1,0 +1,8 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Backend challenge NodeJS Luiz Filho",
+        "description": "Patient Registration and Appointment Scheduling API"
+    }
+}
