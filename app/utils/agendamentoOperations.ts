@@ -36,8 +36,19 @@ export class AgendamentoOperations{
         return await connection.getRepository(Agendamento)
         .createQueryBuilder("agendamento")
         .where("agendamento.cpf = :cpf", { cpf: body.cpf })
-        .getOne();
+        .execute();
     }
 
+    async updateAgendamento(connection,body){
+        let jsonFiltro = {
+            data:body.update.data,
+            horario:body.update.horario
+        }
+        return await connection.createQueryBuilder()
+        .update(Agendamento)
+        .set(jsonFiltro)
+        .where("id = :id", { id: body.id })
+        .execute();
+    }
 
 }

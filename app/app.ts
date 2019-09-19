@@ -101,6 +101,19 @@ app.post('/lista_client',async(req: any,resp: any) =>{
     resp.json(await database.buscaAgendamento(body));
  })
 
+  /** creation client example
+ * {
+        id:4,
+        update:{
+            data:"aaa"
+            horario:"aaa"
+        }
+    }
+ */
+ app.post('/update_agendamento',async(req: any,resp: any) =>{
+    let cliente = req.body
+    resp.json(await database.updateAgendamento(cliente));
+ })
 
 app.listen(9090,async ()=>{
     console.log('api is running');   

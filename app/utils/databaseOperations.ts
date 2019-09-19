@@ -60,6 +60,12 @@ export class DatabaseOperations{
         let newAgendamentos = new AgendamentoOperations();
         return await newAgendamentos.buscaAgendamento(await this.connection,body);
     }
+
+    async updateAgendamento(body){
+        let newAgendamentos = new AgendamentoOperations();
+        return await newAgendamentos.updateAgendamento(await this.connection,body);
+    }
+
 }
 
 
