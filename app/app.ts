@@ -18,7 +18,6 @@ app.get('/list_exams',async(req: any,resp: any)=>{
     resp.json(response.data);
 })
 
-
 /** creation client example
  * {
         nome:'jose',
@@ -28,11 +27,23 @@ app.get('/list_exams',async(req: any,resp: any)=>{
         genero:0,
         endereco:'Rua xxxx Bairro XX numero 11',
         cidade:'sp'
+        agendamentos:[
+            {
+                "name":  "aa",
+                "value": 35.6,
+                "data":"yyyy-mm-dd"
+                "horario":"hh:mm"
+            }
+        ]
     }
  */
+
  app.post('/new_client',async(req: any,resp: any) =>{
-    let cliente = req.body
-    resp.json(await database.saveCliente(cliente));
+    let cliente = req.body;
+    let ret:any = {}
+    ret.AgendamentosRetorno = await await database.salvaAgendamento(cliente);
+    ret.clienteCadastrado = await database.saveCliente(cliente);
+    resp.json(await ret);
  })
 
  /** creation client example
@@ -74,9 +85,20 @@ app.post('/find_client',async(req: any,resp: any) =>{
         "count_last_record":0
     }
  */
+
 app.post('/lista_client',async(req: any,resp: any) =>{
     let cliente = req.body
     resp.json(await database.listaClientes(cliente));
+ })
+
+/**
+ * {
+	"cpf":"00000001111"
+    }
+ */
+ app.post('/find_agendamentos',async(req: any,resp: any) =>{
+    let body = req.body
+    resp.json(await database.buscaAgendamento(body));
  })
 
 

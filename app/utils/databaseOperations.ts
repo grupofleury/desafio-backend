@@ -1,5 +1,6 @@
 import {createConnection} from "typeorm";
 import { ClienteOperations } from "./clienteOperations";
+import { AgendamentoOperations } from "./agendamentoOperations";
 
 export class DatabaseOperations{
     connection: any
@@ -48,6 +49,16 @@ export class DatabaseOperations{
     async listaClientes(body){
         let newClient = new ClienteOperations();
         return await newClient.listaClientes(await this.connection,body);
+    }
+
+    async salvaAgendamento(body){
+        let newAgendamentos = new AgendamentoOperations();
+        return await newAgendamentos.saveAgendamentos(await this.connection,body.agendamentos,body.cpf);
+    }
+
+    async buscaAgendamento(body){
+        let newAgendamentos = new AgendamentoOperations();
+        return await newAgendamentos.buscaAgendamento(await this.connection,body);
     }
 }
 

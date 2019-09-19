@@ -2,7 +2,7 @@ import { Cliente } from "../entities/cliente";
 
 export class ClienteOperations{
     clienteOrm: Cliente
-
+    
     async saveCliente(connection,cliente){
         this.clienteOrm = new Cliente();
         this.clienteOrm.nome = cliente.nome;
