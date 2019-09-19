@@ -35,7 +35,7 @@ app.get('/list_exams',async(req: any,resp: any)=>{
  app.post('/new_client',async(req: any,resp: any) =>{
     let cliente = req.body;
     let ret:any = {}
-    ret.AgendamentosRetorno = await await database.salvaAgendamento(cliente);
+    ret.AgendamentosRetorno = await database.salvaAgendamento(cliente);
     ret.clienteCadastrado = await database.saveCliente(cliente);
     resp.json(await ret);
  })
@@ -119,6 +119,27 @@ app.delete('/delete_agendamento',async(req: any,resp: any) =>{
     let cliente = req.body
     resp.json(await database.deleteAgendamento(cliente));
  })
+
+
+/** creation client example
+ * 
+ * {
+	"cpf":"00000001111",
+	"agendamentos":[
+            {
+                "name":  "aa",
+                "value": 35.6,
+                "data":"yyyy-mm-dd",
+                "horario":"hh:mm"
+            }
+        ]
+}
+ */
+ app.post('/agendamento_cliente',async(req: any,resp: any) =>{
+    let cliente = req.body
+    resp.json(await database.salvaAgendamento(cliente));
+ })
+
 
 app.listen(9090,async ()=>{
     console.log('api is running');   

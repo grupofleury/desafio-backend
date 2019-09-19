@@ -6,6 +6,7 @@ export class AgendamentoOperations{
     agendamentoOrm:any;
 
     async saveAgendamentos(connection,agendamentos,cpf){
+        
         let arrRet = [];
         for(let ag of agendamentos){        
             let a;a=ag;
@@ -17,17 +18,24 @@ export class AgendamentoOperations{
             this.agendamentoOrm.horario = a.horario;
 
             let err:any = new Promise((resolve)=>validate(this.agendamentoOrm).then(errors => {
-                if(errors.length > 0){
                     resolve(errors);
-                }
             }))
-
+            console.log('aqui')
             let errAwait = await err;
-            if(await errAwait.length > 0 ){
-                arrRet.push(errAwait);
-            }else{
-                arrRet.push(this.agendamentoOrm);
-            }
+
+            switch(errAwait.length >0) { 
+                case true : { 
+                    console.log('aqui1')
+                    arrRet.push(errAwait);
+                   break; 
+                } 
+                default: { 
+                    console.log('aqui2')
+                    arrRet.push(this.agendamentoOrm);
+                   break; 
+                } 
+            } 
+
         }
         return await arrRet;
     }

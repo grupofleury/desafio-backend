@@ -5,7 +5,7 @@ import {MinLength,MaxLength} from "class-validator";
 export class Agendamento {
     @PrimaryGeneratedColumn()
     id: number;
-
+    
     
     @Column({nullable:false})
     @MinLength(10, {
