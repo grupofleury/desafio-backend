@@ -15,7 +15,7 @@ export class Cliente {
     @Column({nullable:true})
     email: string;
 
-    @Column({nullable:true})
+    @Column({nullable:false})
     cpf: string;
 
     @Column({nullable:true})

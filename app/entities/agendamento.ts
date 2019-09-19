@@ -19,7 +19,7 @@ export class Agendamento {
     @Column({nullable:true})
     name: string;
 
-    @Column({nullable:true})
+    @Column({nullable:true,type:'double'})
     value: number;
 
     @Column({nullable:true, type:"date"})
@@ -27,5 +27,7 @@ export class Agendamento {
 
     @Column({nullable:true})
     horario: string;
-    
+
+    @Column({nullable:false})
+    idAgendamento: string;
 }

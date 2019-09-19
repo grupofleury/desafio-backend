@@ -13,20 +13,22 @@ app.get('/list_exams',async(req: any,resp: any)=>{
 })
 
 /** creation client example
+ * 
  * {
-        nome:'jose',
-        idade:18,
-        email:'jase@joao.com',
-        cpf:'00000000000',
-        genero:0,
-        endereco:'Rua xxxx Bairro XX numero 11',
-        cidade:'sp'
-        agendamentos:[
-            {
-                "name":  "aa",
+        "nome":"jose",
+        "idade":18,
+        "email":"jase@joao.com",
+        "cpf":"00000000000",
+        "genero":0,
+        "endereco":"Rua xxxx Bairro XX numero 11",
+        "cidade":"sp",
+        "agendamentos":[
+            {   
+                "id":"1",
+                "name":  "17 Hidroxi-pregnenolona, após estímulo com ACTH, soro",
                 "value": 35.6,
-                "data":"yyyy-mm-dd"
-                "horario":"hh:mm"
+                "data":"2018-09-22",
+                "horario":"11"
             }
         ]
     }
@@ -35,9 +37,14 @@ app.get('/list_exams',async(req: any,resp: any)=>{
  app.post('/new_client',async(req: any,resp: any) =>{
     let cliente = req.body;
     let ret:any = {}
+    let existClient = await database.existCliente(cliente);
+    if(existClient){
+        resp.send('cpf ja registrado');
+    }else{
     ret.AgendamentosRetorno = await database.salvaAgendamento(cliente);
     ret.clienteCadastrado = await database.saveCliente(cliente);
     resp.json(await ret);
+    }
  })
 
  /** creation client example
@@ -126,18 +133,36 @@ app.delete('/delete_agendamento',async(req: any,resp: any) =>{
  * {
 	"cpf":"00000001111",
 	"agendamentos":[
-            {
-                "name":  "aa",
+            {   
+                "id":"1"
+                "name":  "17 Hidroxi-pregnenolona, após estímulo com ACTH, soro",
                 "value": 35.6,
-                "data":"yyyy-mm-dd",
-                "horario":"hh:mm"
+                "data":"22-09-2018",
+                "horario":"11"
             }
         ]
 }
  */
  app.post('/agendamento_cliente',async(req: any,resp: any) =>{
     let cliente = req.body
-    resp.json(await database.salvaAgendamento(cliente));
+    let existClient = await database.existCliente(cliente);
+    let existAgendamento = await database.existAgendamento(cliente);
+    console.log(existAgendamento)
+    switch(existAgendamento) { 
+        case false : { 
+            if(existClient){
+                resp.json(await database.salvaAgendamento(cliente));
+            }else{
+                resp.json('cliente não encontrado, favor realizar cadastro');
+            }
+           break; 
+        } 
+        case true : { 
+            resp.send('Já existem dois pacientes p/ essa data e horário');
+           break; 
+        }
+    } 
+        
  })
 
 

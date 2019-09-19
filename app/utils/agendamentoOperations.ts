@@ -1,22 +1,22 @@
 import { Agendamento } from "../entities/agendamento";
 import {validate} from "class-validator";
- 
+import { Cliente } from "../entities/cliente";
+
 
 export class AgendamentoOperations{
     agendamentoOrm:any;
 
-    async saveAgendamentos(connection,agendamentos,cpf){
-        
+    async saveAgendamentos(connection,agendamentos,bodycpf){
         let arrRet = [];
         for(let ag of agendamentos){        
             let a;a=ag;
             this.agendamentoOrm = new Agendamento();
-            this.agendamentoOrm.cpf = cpf;
+            this.agendamentoOrm.cpf = bodycpf;
             this.agendamentoOrm.name = a.name;
             this.agendamentoOrm.value = a.value;
             this.agendamentoOrm.data = a.data;
             this.agendamentoOrm.horario = a.horario;
-
+            this.agendamentoOrm.idAgendamento = a.id;
             let err:any = new Promise((resolve)=>validate(this.agendamentoOrm).then(errors => {
                     resolve(errors);
             }))
@@ -27,7 +27,7 @@ export class AgendamentoOperations{
                    break; 
                 } 
                 default: { 
-                    arrRet.push(this.agendamentoOrm);
+                    arrRet.push(await connection.manager.save(this.agendamentoOrm));
                    break; 
                 } 
             } 
@@ -61,5 +61,22 @@ export class AgendamentoOperations{
         .from(Agendamento)
         .where("id = :id", { id: body.id })
         .execute();
+    }
+
+    async alreadyExistAgendamento(connection,body){
+        console.log(await connection.getRepository(Agendamento)
+        .createQueryBuilder("agendamento")
+        .where("agendamento.idAgendamento = :idagendamento", { idAgendamento: body.id })
+        .andWhere("agendamento.horario = :horario", { horario: body.horario })
+        .andWhere("agendamento.data = :data", { data: body.data }).getSql())
+
+        console.log(body)
+        return await connection.getRepository(Agendamento)
+        .createQueryBuilder("agendamento")
+        .where("agendamento.idAgendamento = :idagendamento", { idAgendamento: body.agendamentos[0].id })
+        .andWhere("agendamento.horario like :horario", { horario: body.agendamentos[0].horario })
+        .andWhere('data >= :data', { data: body.agendamentos[0].data })
+        .andWhere('data < :data', { data: body.agendamentos[0].data })
+        .getMany();;
     }
 }

@@ -38,6 +38,13 @@ export class ClienteOperations{
         .getOne();
     }
 
+    async qtdCliente(connection,body){
+        return await connection.getRepository(Cliente)
+       .createQueryBuilder("cliente")
+       .where("cliente.cpf = :cpf", { cpf: body.cpf })
+       .execute();
+   }
+
     async listaClientes(connection,body){
         let total = await connection.getRepository(Cliente).createQueryBuilder().getCount();
         let resPag = await connection.getRepository(Cliente)

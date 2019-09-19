@@ -70,6 +70,27 @@ export class DatabaseOperations{
         let newAgendamentos = new AgendamentoOperations();
         return await newAgendamentos.deleteAgendamento(await this.connection,body);
     }
+
+    async existCliente(body){
+        let newClient = new ClienteOperations();
+        let exist = false;
+        let clients = await newClient.qtdCliente(await this.connection,body);
+        if(clients.length > 0){
+            exist = true
+        }
+        return exist;
+    }
+
+    async existAgendamento(body){
+        let newAgendamentos = new AgendamentoOperations();
+        let exist = false;
+        let agendamento = await newAgendamentos.alreadyExistAgendamento(await this.connection,body);
+        console.log(agendamento.length)
+        if(agendamento.length > 2){
+            exist = true
+        }
+        return exist;
+    }
 }
 
 
