@@ -51,4 +51,12 @@ export class AgendamentoOperations{
         .execute();
     }
 
+    async deleteAgendamento(connection,body){
+        console.log(body.id)
+        return await connection.createQueryBuilder()
+        .delete()
+        .from(Agendamento)
+        .where("id = :id", { id: body.id })
+        .execute();
+    }
 }

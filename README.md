@@ -1,5 +1,9 @@
 Desafio Back-end - Grupo Fleury
 ====
+## Como Rodar o Projeto
+1) Clonar o repositório
+2) Execute: npm install
+3) P/ rodar execute o comando: npm run dev
 
 ## Descrição:
 

@@ -115,6 +115,17 @@ app.post('/lista_client',async(req: any,resp: any) =>{
     resp.json(await database.updateAgendamento(cliente));
  })
 
+
+  /** creation client example
+ * {
+        id:4
+    }
+ */
+app.delete('/delete_agendamento',async(req: any,resp: any) =>{
+    let cliente = req.body
+    resp.json(await database.deleteAgendamento(cliente));
+ })
+
 app.listen(9090,async ()=>{
     console.log('api is running');   
 })

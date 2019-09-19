@@ -50,7 +50,7 @@ export class DatabaseOperations{
         let newClient = new ClienteOperations();
         return await newClient.listaClientes(await this.connection,body);
     }
-
+    
     async salvaAgendamento(body){
         let newAgendamentos = new AgendamentoOperations();
         return await newAgendamentos.saveAgendamentos(await this.connection,body.agendamentos,body.cpf);
@@ -66,6 +66,10 @@ export class DatabaseOperations{
         return await newAgendamentos.updateAgendamento(await this.connection,body);
     }
 
+    async deleteAgendamento(body){
+        let newAgendamentos = new AgendamentoOperations();
+        return await newAgendamentos.deleteAgendamento(await this.connection,body);
+    }
 }
 
 
