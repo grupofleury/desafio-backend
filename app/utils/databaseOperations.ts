@@ -86,7 +86,7 @@ export class DatabaseOperations{
         let exist = false;
         let agendamento = await newAgendamentos.alreadyExistAgendamento(await this.connection,body);
         console.log(agendamento.length)
-        if(agendamento.length > 2){
+        if(agendamento.length >= 2){
             exist = true
         }
         return exist;

@@ -21,16 +21,7 @@ app.get('/list_exams',async(req: any,resp: any)=>{
         "cpf":"00000000000",
         "genero":0,
         "endereco":"Rua xxxx Bairro XX numero 11",
-        "cidade":"sp",
-        "agendamentos":[
-            {   
-                "id":"1",
-                "name":  "17 Hidroxi-pregnenolona, após estímulo com ACTH, soro",
-                "value": 35.6,
-                "data":"2018-09-22",
-                "horario":"11"
-            }
-        ]
+        "cidade":"sp"
     }
  */
 
@@ -41,7 +32,6 @@ app.get('/list_exams',async(req: any,resp: any)=>{
     if(existClient){
         resp.send('cpf ja registrado');
     }else{
-    ret.AgendamentosRetorno = await database.salvaAgendamento(cliente);
     ret.clienteCadastrado = await database.saveCliente(cliente);
     resp.json(await ret);
     }
@@ -134,7 +124,7 @@ app.delete('/delete_agendamento',async(req: any,resp: any) =>{
 	"cpf":"00000001111",
 	"agendamentos":[
             {   
-                "id":"1"
+                "idAgendamento":"1"
                 "name":  "17 Hidroxi-pregnenolona, após estímulo com ACTH, soro",
                 "value": 35.6,
                 "data":"22-09-2018",
