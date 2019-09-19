@@ -1,17 +1,11 @@
-import * as express from 'express'
 import {Calls} from './utils/calls'
 import { DatabaseOperations } from './utils/databaseOperations';
-import * as bodyParser  from 'body-parser'
+import { ExpressConf } from './conf/expressConf';
 
-const app:any = express()
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-}));
-app.use(express.json());       // to support JSON-encoded bodies
-app.use(express.urlencoded()); // to support URL-encoded bodies
+const app:any = new ExpressConf();
 const call:any = new Calls()
 const database:any = new DatabaseOperations();
+
 
 app.get('/list_exams',async(req: any,resp: any)=>{
     let response = await call.getListExams();
