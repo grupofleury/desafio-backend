@@ -4,7 +4,7 @@
   "description": "Desafio Backend em NodeJS",
   "main": "server.js",
   "scripts": {
-    "tsc":"tsc"
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/LUIZFH/desafio-backend#readme",
   "devDependencies": {
+    "@types/express": "^4.17.1",
     "typescript": "^3.6.3"
   }
 }
