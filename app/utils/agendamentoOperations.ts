@@ -20,17 +20,13 @@ export class AgendamentoOperations{
             let err:any = new Promise((resolve)=>validate(this.agendamentoOrm).then(errors => {
                     resolve(errors);
             }))
-            console.log('aqui')
             let errAwait = await err;
-
             switch(errAwait.length >0) { 
                 case true : { 
-                    console.log('aqui1')
                     arrRet.push(errAwait);
                    break; 
                 } 
                 default: { 
-                    console.log('aqui2')
                     arrRet.push(this.agendamentoOrm);
                    break; 
                 } 
@@ -60,7 +56,6 @@ export class AgendamentoOperations{
     }
 
     async deleteAgendamento(connection,body){
-        console.log(body.id)
         return await connection.createQueryBuilder()
         .delete()
         .from(Agendamento)

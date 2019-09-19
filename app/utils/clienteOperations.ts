@@ -24,7 +24,6 @@ export class ClienteOperations{
     }
 
     async deleteCliente(connection,body){
-        console.log(body.id)
         return await connection.createQueryBuilder()
         .delete()
         .from(Cliente)
