@@ -1,0 +1,19 @@
+{
+  "name": "desafio-backend",
+  "version": "1.0.0",
+  "description": "Desafio Backend em NodeJS",
+  "main": "server.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LUIZFH/desafio-backend.git"
+  },
+  "author": "Luiz Filho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LUIZFH/desafio-backend/issues"
+  },
+  "homepage": "https://github.com/LUIZFH/desafio-backend#readme"
+}
