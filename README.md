@@ -2,9 +2,13 @@ Desafio Back-end - Grupo Fleury
 ====
 ## Estrutura do projeto
 app - pasta com principais arquivos e pastas p/ funcionamento da api
+
     --conf -> pasta com configuração e encapsulamento do express e efuncionamento do swagger
+
     --entities -> pasta com modelos de tabelas do banco de dados
+    
     --test -> arquivo responsavel pela execução dos testes
+
     --utils arquivos com chamadas de api e de bancho de dados
 
     .package.json -> arquivo de configuração do projeto, execução de comandos e gerenciamento de pacotes
