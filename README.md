@@ -1,5 +1,8 @@
 Desafio Back-end - Grupo Fleury
 ====
+## Rota Swagger
+http://localhost:9090/api-docs/#/
+
 ## Como Rodar o Projeto
 1) Clonar o repositório
 2) Execute: npm install
