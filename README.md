@@ -29,7 +29,8 @@ Neste repositório contem um exemplo de API de agendamento de exames, ela consis
     prettierrc.yml # arquivo de configuração do prettier, ferramenta de padronização de código
     deploy.sh # script para rodar e deploy a aplicação
     tsconfig.json # arquivo de configuração de build e desenvolvimento do typescript
-    swagger.yml # arquivo con a documentação da API
+    swagger.yml # arquivo com a documentação da API
+    .travis.yml # arquivo de configuração do Travic CI
   ```
 
 ## Configuração
