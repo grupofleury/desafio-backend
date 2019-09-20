@@ -30,9 +30,7 @@ then
         -p 80:80 scheduleapi
     elif [ $1 = 'staging' ]
     then
-        export DATABASE_NAME=$DATABASE_NAME
-        export EXAM_URL=$EXAM_URL
-
+        DATABASE_NAME=$DATABASE_NAME
         npm run migration:local:generate Client
         npm run build
         docker build --build-arg database_name=$DATABASE_NAME -t scheduleapi .

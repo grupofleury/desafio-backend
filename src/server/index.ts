@@ -52,4 +52,4 @@ class Server {
   }
 }
 
-export default new Server()
+export default new Server(parseInt(process.env.SCHEDULE_API_PORT))
