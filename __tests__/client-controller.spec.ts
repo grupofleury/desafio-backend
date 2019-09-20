@@ -52,8 +52,7 @@ describe('Make test of client controller', () => {
       expect(result.body).not.toBe(null)
       const { body } = result
 
-      expect(body.cpf).toEqual(bodyToCreate.cpf)
-      expect(body.name).toEqual(bodyToCreate.name)
+      expect(body.id).toEqual(1)
       done()
     } catch (error) {
       done(error)

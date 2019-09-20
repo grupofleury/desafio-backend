@@ -10,8 +10,8 @@ class Server {
   port: number
   app: express.Express = null
 
-  constructor (port: number = 80) {
-    this.port = port
+  constructor (port) {
+    this.port = port || 80
     this.app = express()
   }
 

@@ -4,10 +4,9 @@ import Exam from '../entities/exam'
 
 class ExamIntegration {
   examAxios: any
-
   constructor () {
     this.examAxios = axios.create({
-      baseURL: process.env.EXAM_URL
+      baseURL: process.env.EXAM_URL || 'http://www.mocky.io/v2'
     })
   }
 
