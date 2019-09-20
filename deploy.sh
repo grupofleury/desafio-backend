@@ -6,7 +6,6 @@ then
         export EXAM_URL=http://www.mocky.io/v2
         export DATABASE_NAME=dataset.db
 
-        npm run migration:local:generate Client
         npm run migration:local:run
         npm run start:local
     elif [ $1 = 'dev' ]
