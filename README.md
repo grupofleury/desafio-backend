@@ -9,7 +9,7 @@ Desafio Back-end - Grupo Fleury
 
     --test -> arquivo responsavel pela execução dos testes
 
-    --utils arquivos com chamadas de api e de bancho de dados
+    --utils -> arquivos com chamadas de api e de bancho de dados
 
     .package.json -> arquivo de configuração do projeto, execução de comandos e gerenciamento de pacotes
      tsconfig.json -> configuração do typescript
