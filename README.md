@@ -73,4 +73,4 @@ npm run test:coverage
 ```
 
 ## Documentação da API
-Este projeto contem a documentação da API em swagger, que se encontra no arquivo swagger.yml, caso queria visualiza-lo realize a importação do conteudo no swagger editor
+Este projeto contem a documentação da API em swagger, que se encontra no arquivo swagger.yml, caso queira visualiza-lo realize a importação do conteúdo no swagger editor
