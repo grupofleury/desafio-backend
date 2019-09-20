@@ -113,6 +113,7 @@ class ScheduleController {
         .innerJoin('schedule.client', 'client')
         .innerJoin('schedule.exam', 'exam')
         .where('client.cpf = :cpf', { cpf })
+        .andWhere('schedule.isActive = :isActive', { isActive: true })
         .execute()
 
       let totalValue = 0
