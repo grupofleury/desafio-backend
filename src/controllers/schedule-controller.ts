@@ -107,9 +107,19 @@ class ScheduleController {
 
     try {
       const scheduleRepository = getRepository(Schedule)
+      const select = [
+        'schedule.initialDate',
+        'schedule.finalDate',
+        'schedule.id',
+        'schedule.isActive',
+        'exam.name',
+        'exam.value',
+        'client.name',
+        'client.cpf'
+      ]
       const schedules = await scheduleRepository
         .createQueryBuilder('schedule')
-        .select('schedule.initialDate, schedule.finalDate, schedule.id, schedule.isActive, exam.name, exam.value, client.name, client.cpf')
+        .select(select.join(','))
         .innerJoin('schedule.client', 'client')
         .innerJoin('schedule.exam', 'exam')
         .where('client.cpf = :cpf', { cpf })

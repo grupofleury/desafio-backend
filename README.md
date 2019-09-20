@@ -1,4 +1,6 @@
 # Schedule API
+[![Build Status](https://travis-ci.org/JeffersonApolinario/desafio-backend.svg?branch=master)](https://travis-ci.org/JeffersonApolinario/desafio-backend)
+
 Neste repositório contem um exemplo de API de agendamento de exames, ela consiste em um CRUD para realizar agendamentos de exames para um cliente.
 
 ## Guia
