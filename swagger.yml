@@ -14,6 +14,33 @@ paths:
       responses:
         200:
           description: list with success
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                cpf:
+                  type: string
+                name:
+                  type: string
+                birthDate:
+                  type: string
+                isActive:
+                  type: boolean
+                createdAt:
+                  type: string
+                updatedAt:
+                  type: string
+                id:
+                  type: integer
+            example:
+              - id: 1
+                cpf: '44846138836'
+                name: 'Jeff'
+                isActive: true
+                birthDate: '1996-02-04T03:00:00.000Z'
+                createdAt: '2019-09-20T14:37:02.000Z'
+                updatedAt: '2019-09-20T14:37:02.000Z'
     post:
       description: create client
       consumes:

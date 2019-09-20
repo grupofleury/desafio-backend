@@ -48,6 +48,7 @@ Este projeto pode ser executado localmente ou em um container docker, para execu
 
 Local:
 ```
+npm i
 ./deploy.sh local
 ```
 

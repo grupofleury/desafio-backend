@@ -14,6 +14,11 @@ then
         DATABASE_NAME='dataset.db'
         EXAM_URL='http://www.mocky.io/v2'
 
+        export DATABASE_NAME=$DATABASE_NAME
+        export EXAM_URL=$EXAM_URL
+
+        npm run migration:local:generate Client
+        
         npm run build
         docker build --build-arg database_name=$DATABASE_NAME -t scheduleapi .
         docker stop container_scheduleapi
