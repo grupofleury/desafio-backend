@@ -4,6 +4,7 @@ Desafio Back-end - Grupo Fleury
 http://localhost:9090/api-docs/#/
 
 ## Como Rodar o Projeto
+0)npm install -g mocha
 1) Clonar o repositório
 2) Execute: npm install
 3) P/ rodar execute o comando: npm run dev
