@@ -1,5 +1,5 @@
 import axios from 'axios'
-import ExamsService from '../../../src/services/exams'
+import ApiExamsService from '../../../src/services/apiExams'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
@@ -19,6 +19,6 @@ test('should return exam list', () => {
 
     mockedAxios.get.mockResolvedValue({ data: exams })
 
-    return ExamsService.list().then( data => expect(data).toEqual(expected))
+    return ApiExamsService.list().then( data => expect(data).toEqual(expected))
 
 })
