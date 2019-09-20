@@ -1,0 +1,364 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Servidor-typescript-node-express-chalange",
+        "description": "Descrição de rotas e objetos a serem enviados",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": "Local"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Desafio Back-end - Grupo Fleury",
+            "description": "API Desafio Back-end - Grupo Fleury"
+        }
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/list_exams": {
+            "get": {
+                "tags": [
+                    "Listagem exames"
+                ],
+                "summary": "Lista todos os exames disponíveis",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/new_client": {
+            "post": {
+                "tags": [
+                    "cliente"
+                ],
+                "summary": "Cria um novo cliente",
+                "requestBody": {
+                    "description": "Cat Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/new_client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/update_client": {
+            "post": {
+                "tags": [
+                    "cliente"
+                ],
+                "summary": "Atualiza um cliente pelo id",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/update_client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/delete_client": {
+            "delete": {
+                "tags": [
+                    "cliente"
+                ],
+                "summary": "Deleta um cliente pelo id",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/delete_client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/find_client": {
+            "post": {
+                "tags": [
+                    "cliente"
+                ],
+                "summary": "Busca um cliente pelo cpf",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/find_client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/lista_cliente": {
+            "post": {
+                "tags": [
+                    "cliente"
+                ],
+                "summary": "Lista clientes de 10 em 10 a partir do ultimo registro parametrizado",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/lista_cliente"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/find_agendamentos": {
+            "post": {
+                "tags": [
+                    "agendamentos"
+                ],
+                "summary": "Busca agendamentos por cpf",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/find_agendamentos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/update_agendamento": {
+            "post": {
+                "tags": [
+                    "agendamentos"
+                ],
+                "summary": "Atualiza agendamento por id",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/update_agendamento"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/delete_agendamento": {
+            "delete": {
+                "tags": [
+                    "agendamentos"
+                ],
+                "summary": "deleta agendamento por id",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/delete_agendamento"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/agendamento_cliente": {
+            "post": {
+                "tags": [
+                    "agendamentos"
+                ],
+                "summary": "Marca o agendamento pelo cpf",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/agendamento_cliente"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+        
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "new_client": {
+            "type": "object",
+            "properties": {
+                "nome":{"type": "string"},
+                "idade":{"type": "number"},
+                "email":{"type": "string"},
+                "cpf":{"type": "string"},
+                "genero":{"type": "boolean"},
+                "endereco":{"type": "string"},
+                "cidade":{"type": "string"}
+            }
+        },
+
+        "update_client": {
+            "type": "object",
+            "properties": {
+                "id":{"type": "number"},
+                "update":{
+                    "type": "object",
+                    "properties": {
+                        "nome":{"type": "string"},
+                        "idade":{"type": "number"},
+                        "email":{"type": "string"},
+                        "cpf":{"type": "string"},
+                        "genero":{"type": "boolean"},
+                        "endereco":{"type": "string"},
+                        "cidade":{"type": "string"}
+                    }
+                }
+            }
+        },
+
+        "delete_client": {
+            "type": "object",
+            "properties": {
+                "id":{"type": "number"}
+            }
+        },
+       
+        "find_client": {
+            "type": "object",
+            "properties": {
+                "cpf":{"type": "string"}
+            }
+        },
+        
+        "lista_cliente":{
+            "properties": {
+                "count_since_record":{"type": "number"}
+            }
+        },
+
+        "find_agendamentos":{
+            "properties": {
+                "cpf":{"type": "string"}
+            }
+        },
+
+        "update_agendamento":{
+            "properties": {
+                "id":{"type": "number"},
+                "update":{
+                    "type":"object",
+                    "properties":{
+                        "data":{  "type": "string", "format": "date" },
+                        "horario":{"type": "string", "format": "date-time" }
+                    }
+                }
+            }
+        },
+
+        "agendamento_cliente":{
+            "properties": {
+                "cpf":{"type": "string"},
+                "agendamentos":{
+                    "type":"object",
+                    "properties":{ 
+                        "idAgendamento":{"type": "string"},
+                        "name":  {"type": "string"},
+                        "value": {"type": "number"},
+                        "data":{"type": "string", "format": "date"},
+                        "horario":{"type": "string", "format": "date-time" }
+                        }
+                }
+            }
+        },
+        
+        "delete_agendamento":{
+            "properties": {
+                "id":{"type": "number"}
+            }
+        }
+
+    }
+}
