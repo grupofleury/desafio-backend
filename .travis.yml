@@ -3,7 +3,7 @@ sudo: false
 cache:
   npm: true
 node_js:
-  - 10
+  - '10'
 branches:
   only:
     - schedule-api
