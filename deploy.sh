@@ -28,6 +28,15 @@ then
         -e DATABASE_NAME=$DATABASE_NAME \ 
         -e EXAM_URL=$EXAM_URL \ 
         -p 80:80 scheduleapi
+    elif [ $1 = 'staging' ]
+    then
+        export DATABASE_NAME=$DATABASE_NAME
+        export EXAM_URL=$EXAM_URL
+
+        npm run migration:local:generate Client
+        npm run build
+        docker build --build-arg database_name=$DATABASE_NAME -t scheduleapi .
+        echo 'push your image'
     else
         echo 'stage on development'
     fi
