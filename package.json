@@ -1,0 +1,75 @@
+{
+  "name": "desafio-backend",
+  "version": "1.0.0",
+  "description": "Desafio Back-end - Grupo Fleury\r ====",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "start": "node index.js",
+    "start:local": "ts-node index.ts",
+    "watch": "tsc --watch",
+    "migration:local:create": "typeorm migration:create -n",
+    "migration:local:generate": "npx ts-node ./node_modules/typeorm/cli.js migration:generate -n",
+    "migration:local:run": "npx ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migration:run": "npx typeorm migration:run",
+    "migration:generate": "npx typeorm migration:generate -n"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffersonApolinario/desafio-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeffersonApolinario/desafio-backend/issues"
+  },
+  "homepage": "https://github.com/JeffersonApolinario/desafio-backend#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.5",
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
+    "eslint": "^6.4.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.1.0",
+    "typeorm": "^0.2.19"
+  },
+  "jest": {
+    "verbose": true,
+    "bail": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "src/controllers/*.ts",
+      "src/integrations/*.ts"
+    ],
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  }
+}

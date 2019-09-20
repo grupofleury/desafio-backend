@@ -1,0 +1,15 @@
+language: node_js
+sudo: false
+cache:
+  npm: true
+node_js:
+  - '10'
+branches:
+  only:
+    - master
+    - schedule-api
+before_install:
+  - chmod +x deploy.sh
+script:
+  - npm run test:coverage
+  - ./deploy.sh staging

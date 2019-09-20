@@ -1,56 +1,78 @@
-Desafio Back-end - Grupo Fleury
-====
+# Schedule API
+[![Build Status](https://travis-ci.org/JeffersonApolinario/desafio-backend.svg?branch=master)](https://travis-ci.org/JeffersonApolinario/desafio-backend)
 
-## Descrição:
+Neste repositório contem um exemplo de API de agendamento de exames, ela consiste em um CRUD para realizar agendamentos de exames para um cliente.
 
-O Grupo Fleury deseja disponibilizar uma api restfull para realização de agendamentos para seus clientes, 
-para tal o usuário precisará ter um cadastro de cliente em nossa base de dados, 
-selecionar um exame e informar data e hora desejado.
+## Guia
+- Estrutura do projeto
+- Configuração
+- Execução
+- Execução dos testes
+- Documentação da API
 
-## Regras de Negócio
+## Estrutura do projeto
+  ```
+    /migrations # pasta que contem os arquivos de migração
+    /__tests__ # pasta que contem os arquivos de test
+    /src # pasta que contem o source do projeto
+    /src/controllers # pasta que contem as controllers
+    /src/entitites # pasta que contem as entidades do projeto
+    /src/integrations # pasta que contem arquivos que executam chamadas externas
+    /src/server # pasta que contem o http server da API
+    /src/validators # pasta que contem schemas de validação e classes de validação
 
-- Cliente precisa estar cadastrado em base de dados para realizar o agendamento
-- Caso o cliente não exista em base, deverá ser feito o cadastro antecipadamente.
-- Não será possível realizar agendamento de mais de 2 pacientes para o mesmo exame na mesma data e hora, esse valor de 2 deverá ser parametrizado.
-- O cadastro de cliente deverá ter os campos: Nome, CPF e Data de Nascimento
-- Não poderá ser cadastrado mais de um cliente para o mesmo CPF
-- A lista de exames disponíveis para agendamento deverá ser consumida do endpoint ( http://www.mocky.io/v2/5d681ede33000054e7e65c3f).
+    index.ts # arquivo que inicia a aplicação
+    .dockerignore # arquivo de configuração para ignorar arquivos de build do docker
+    .eslinrc # arquivo de configuração do eslint, ferramenta de padronização de código
+    Dockerfile # arquivo de configuração para build da imagem docker
+    ormconfig.yml # arquivo de configuração para o orm
+    prettierrc.yml # arquivo de configuração do prettier, ferramenta de padronização de código
+    deploy.sh # script para rodar e deploy a aplicação
+    tsconfig.json # arquivo de configuração de build e desenvolvimento do typescript
+    swagger.yml # arquivo com a documentação da API
+    .travis.yml # arquivo de configuração do Travic CI
+  ```
 
-## Features
-- Deverá haver um endpoint para listagem dos exames disponíveis para agendamento, exibindo apenas nome do exame e id
-- Deverá haver um endpoint para criação de um cliente
-- Deverá haver um endpoint para atualização de um cliente
-- Deverá haver um endpoint para exclusão de um cliente
-- Deverá haver um endpoint para busca de um cliente baseado no seu cpf
-- Deverá haver um endpoint para listagem de todos os clientes cadastrados
+## Configuração
+Neste projeto contem variáveis de ambiente, para configura-la altere o arquivo de deploy.sh, as variáveis são:
 
-- Deverá haver um endpoint para listagem dos agendamentos de um cliente por cpf, deverá conter o valor total (soma dos valores dos exames selecionados para o agendamento)
-- Deverá haver um endpoint para edição de um agendamento realizado, apenas dia e hora poderão ser editados
-- Deverá haver um endpoint para exclusão de um agendamento realizado
+- EXAM_URL
+- DATABASE_NAME
 
-## Requisitos
+Exemplo:
 
-- A API deverá ter um swagger
-- Teste unitário
-- Utilizar uma estrutura de dados a sua escolha para simular a base de dados em memória
-- Para vaga de Back-end NodeJS utilizar Typecript, para Vaga de .net utilizar .net core 2.x
-- Aplicação deverá conter um Readme contendo instruções de como realizar o build e rodar a Aplicação
+```
+EXAM_URL=http://www.mocky.io/v2
+DATABASE_NAME=dataset.db
+```
 
+## Execução
+Este projeto pode ser executado localmente ou em um container docker, para executar localmente devera ter instalado o Node 8+. Para executar siga as instruções:
 
-## Diferencial
-- No readme separe uma sessão para explicar a arquitetura da api
-- Tenha em mente conceitos de SOLID e clean architecture 
-- Docker
-- Esteira de CI/CD no github (exemplo Travis CI)
+Local:
+```
+npm i
+./deploy.sh local
+```
 
-## Como submeter?
+Docker:
+```
+.deploy.sh dev
+```
 
-Deverá ser enviado um PULL REQUEST com o seu teste.
+## Execução dos testes
+Este projeto utiliza o jest como framework de teste, pode ser executado de duas maneiras que são com relatório ou sem, se executar com o relatório irá aparecer uma pasta chamada coverage, ela irá conter o relatório de cobertura em HTML. Para executar siga as instruções:
 
-### Como funciona?
+Sem relatório:
+```
+npm test
+```
 
-- Fork deste repositório
-- Clonar a partir do repositório que foi criada na sua conta
-- Procure fazer o máximo de commits com todas as suas decisões
-- Abra um Pull Request para este repositório
+Com relatorio:
+```
+npm run test:coverage
+```
 
+## Documentação da API
+Este projeto contem a documentação da API em swagger, que se encontra no arquivo swagger.yml,
+caso queira visualiza-lo realize a importação do conteúdo no swagger editor. Você também poderá importar o arquivo "schedule-api.postman_collection.json" no Postman.

@@ -1,0 +1,278 @@
+swagger: "2.0"
+info:
+  description: "This is a sample api to manager schedule of exams"
+  version: "1.0.0"
+  title: "Schedule API"
+schemes:
+- "http"
+paths:
+  /clients:
+    get:
+      description: list client
+      consumes:
+        - application/json
+      responses:
+        200:
+          description: list with success
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                cpf:
+                  type: string
+                name:
+                  type: string
+                birthDate:
+                  type: string
+                isActive:
+                  type: boolean
+                createdAt:
+                  type: string
+                updatedAt:
+                  type: string
+                id:
+                  type: integer
+            example:
+              - id: 1
+                cpf: '44846138836'
+                name: 'Jeff'
+                isActive: true
+                birthDate: '1996-02-04T03:00:00.000Z'
+                createdAt: '2019-09-20T14:37:02.000Z'
+                updatedAt: '2019-09-20T14:37:02.000Z'
+    post:
+      description: create client
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name, cpf and birthDate
+          required: true
+          schema:
+            type: object
+            properties:
+              cpf:
+                type: string
+              name:
+                type: string
+              birthDate:
+                type: string
+            example:
+              cpf: '44846138836'
+              name: 'Jeff'
+              birthDate: '1996-02-04T00:00:00-03:00'
+      responses:
+        201:
+          description: create success
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+        400:
+          description: body is invalid
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+        422:
+          description: body is valid, but rule of business fail
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+  /clients/cpf/{cpf}:
+    get:
+      description: find client by cpf
+      parameters:
+        - in: path
+          name: cpf
+          type: string
+          required: true
+      responses:
+        200:
+          description: find client success
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              cpf:
+                type: string
+              name:
+                type: string
+              birthDate:
+                type: string
+              isActive:
+                type: boolean
+              createdAt:
+                type: string
+              updateAt:
+                type: string
+        404:
+          description: cliet not found
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+  /clients/{id}:
+    put:
+      description: update one client by id
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+        - in: body
+          name: name and birthDate
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              birthDate:
+                type: string
+            example:
+              name: 'André'
+              birthDate: '1996-02-04T00:00:00-03:00'
+      responses:
+        204:
+          description: update with success
+        404:
+          description: cliet not found
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+    delete:
+      description: logic delete one client by id
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        204:
+          description: update with success
+        404:
+          description: cliet not found
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+  /clients/cpf/{cpf}/schedules:
+    get:
+      description: list schdules of client that find by cpf
+      parameters:
+        - in: path
+          name: cpf
+          type: string
+          required: true
+      consumes:
+        - application/json
+      responses:
+        200:
+          description: list with success
+  /schedules:
+    post:
+      description: create schedule
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: examId, userId, initialDate and finalDate
+          required: true
+          schema:
+            type: object
+            properties:
+              examId:
+                type: integer
+              userId:
+                type: integer
+              initialDate:
+                type: string
+              finalDate:
+                type: string
+            example:
+              examId: 1,
+              clientId: 1
+              initialDate: '2019-12-04T13:00:00-03:00'
+              finalDate: '2019-12-04T14:00:00-03:00'
+      responses:
+        201:
+          description: create success
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+        400:
+          description: body is invalid
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+        422:
+          description: body is valid, but rule of business fail
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+  /schedules/{id}:
+    put:
+      description: update one schedule by id
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+        - in: body
+          name: initialDate and finalDate
+          required: true
+          schema:
+            type: object
+            properties:
+              initialDate:
+                type: string
+              finalDate:
+                type: string
+            example:
+              initialDate: '2019-12-04T13:00:00-03:00'
+              finalDate: '2019-12-04T14:00:00-03:00'
+      responses:
+        204:
+          description: update with success
+        404:
+          description: schedule not found
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
+        
+    delete:
+      description: logic delete one schedule by id
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        204:
+          description: update with success
+        404:
+          description: schedule not found
+          schema:
+            type: object
+            properties:
+              errorMessage:
+                type: string
