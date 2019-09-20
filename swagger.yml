@@ -31,6 +31,10 @@ paths:
                 type: string
               birthDate:
                 type: string
+            example:
+              cpf: '44846138836'
+              name: 'Jeff'
+              birthDate: '1996-02-04T00:00:00-03:00'
       responses:
         201:
           description: create success
@@ -39,18 +43,6 @@ paths:
             properties:
               id:
                 type: integer
-              cpf:
-                type: string
-              name:
-                type: string
-              birthDate:
-                type: string
-              isActive:
-                type: boolean
-              createdAt:
-                type: string
-              updateAt:
-                type: string
         400:
           description: body is invalid
           schema:
@@ -118,6 +110,9 @@ paths:
                 type: string
               birthDate:
                 type: string
+            example:
+              name: 'André'
+              birthDate: '1996-02-04T00:00:00-03:00'
       responses:
         204:
           description: update with success
@@ -128,7 +123,6 @@ paths:
             properties:
               errorMessage:
                 type: string
-        
     delete:
       description: logic delete one client by id
       parameters:
@@ -179,9 +173,19 @@ paths:
                 type: string
               finalDate:
                 type: string
+            example:
+              examId: 1,
+              clientId: 1
+              initialDate: '2019-12-04T13:00:00-03:00'
+              finalDate: '2019-12-04T14:00:00-03:00'
       responses:
         201:
           description: create success
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
         400:
           description: body is invalid
           schema:
@@ -205,15 +209,18 @@ paths:
           type: string
           required: true
         - in: body
-          name: name and birthDate
+          name: initialDate and finalDate
           required: true
           schema:
             type: object
             properties:
-              name:
+              initialDate:
                 type: string
-              birthDate:
+              finalDate:
                 type: string
+            example:
+              initialDate: '2019-12-04T13:00:00-03:00'
+              finalDate: '2019-12-04T14:00:00-03:00'
       responses:
         204:
           description: update with success

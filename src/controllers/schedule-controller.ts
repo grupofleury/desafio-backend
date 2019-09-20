@@ -47,8 +47,8 @@ class ScheduleController {
       schedule.client = client
       schedule.isActive = true
 
-      const result = await scheduleRepository.save(schedule)
-      return res.status(201).send(result)
+      const { id } = await scheduleRepository.save(schedule)
+      return res.status(201).send({ id })
     } catch (error) {
       return res.status(500).send({ errorMessage: error.message })
     }

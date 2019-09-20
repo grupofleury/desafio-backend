@@ -57,8 +57,8 @@ class ClientController {
       client.name = name
 
       const clientRepository = getRepository(Client)
-      const result = await clientRepository.save(client)
-      return res.status(201).send(result)
+      const { id } = await clientRepository.save(client)
+      return res.status(201).send({ id })
     } catch (error) {
       console.log('error', error)
 
