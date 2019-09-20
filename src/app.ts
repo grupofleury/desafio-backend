@@ -1,5 +1,6 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
+import routes from './routes'
 import * as swaggerDocument from '../swagger.json'
 
 class App {
@@ -7,7 +8,12 @@ class App {
 
     public constructor () {
         this.express = express()
+        this.routes()
         this.swagger()
+    }
+
+    private routes (): void {
+        this.express.use(routes)
     }
 
     private swagger (): void {
