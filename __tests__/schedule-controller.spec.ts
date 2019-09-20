@@ -204,8 +204,8 @@ describe('Make tests schedule controller', () => {
       .expect(422)
 
     expect(result.body).not.toBe(null)
-
     const { body } = result
+
     expect(body.errorMessage).toEqual('Alredy exists schedule on date')
     done()
   })
@@ -358,10 +358,30 @@ describe('Make tests schedule controller', () => {
 
     await scheduleRepository.save(schedule)
 
+    const secondSchedule = new Schedule()
+
+    initialDate.setDate(now.getDate() + 6)
+    finalDate.setDate(now.getDate() + 7)
+
+    secondSchedule.exam = exam
+    secondSchedule.client = client
+    secondSchedule.initialDate = initialDate
+    secondSchedule.finalDate = finalDate
+    secondSchedule.isActive = true
+
+    await scheduleRepository.save(secondSchedule)
+
     const result = await request(Server.app)
       .get(`/clients/cpf/${cpf}/schedules`)
       .expect(200)
-    console.log(result.body)
+
+    expect(result.body).not.toBe(null)
+    const { body } = result
+
+    const totalToCompare = exam.value * 2
+
+    expect(body.schedules).toHaveLength(2)
+    expect(body.totalValue).toEqual(totalToCompare)
     done()
   })
 })

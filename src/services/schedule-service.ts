@@ -32,6 +32,7 @@ class ScheduleService {
         initialDateFormated,
         finalDateFormated
       })
+      .andWhere('isActive = :isActive', { isActive: true })
       .getOne()
 
     if (scheduleOnRange) {
