@@ -1,0 +1,11 @@
+- name: default
+  type: sqlite
+  database: dataset.db
+  entities:
+    - "src/entities/*.ts"
+    - "src/entities/*.js"
+  migrations:
+    - "migrations/*.ts"
+    - "migrations/*.js"
+  cli:
+    migrationsDir: migrations

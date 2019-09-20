@@ -1,0 +1,10 @@
+.git
+.gitignore
+node_modules
+coverage
+__tests__
+*.db
+.eslintrc
+README.md
+swagger.yml
+prettierrc.yml
