@@ -4,10 +4,11 @@
   "description": "Desafio Back-end - Grupo Fleury\r ====",
   "main": "index.js",
   "scripts": {
+    "build": "npx tsc",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "start": "node index.js",
-    "start:dev": "ts-node index.ts",
+    "start:local": "ts-node index.ts",
     "watch": "tsc --watch",
     "migration:local:create": "typeorm migration:create -n",
     "migration:local:generate": "npx ts-node ./node_modules/typeorm/cli.js migration:generate -n",

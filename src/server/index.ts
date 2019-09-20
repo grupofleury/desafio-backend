@@ -31,6 +31,9 @@ class Server {
   }
 
   routes (): void {
+    this.app.get('/', (req, res) => {
+      res.json({ message: 'Welcome Schedule API' })
+    })
     this.app.get('/clients', ClientController.findAll)
     this.app.get('/clients/cpf/:cpf', ClientController.findByCPF)
     this.app.get('/clients/cpf/:cpf/schedules', ScheduleController.findByCPF)

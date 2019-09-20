@@ -6,10 +6,12 @@ ADD package.json /usr/src/scheduleapi
 
 RUN npm i --production
 
-ADD ormconfig.json /usr/src/scheduleapi
+ARG database_name=default_value
+ENV DATABASE_NAME=$database_name
+
+ADD ormconfig.js /usr/src/scheduleapi
 ADD build /usr/src/scheduleapi/
 
-RUN npm run migration:generate Client
 RUN npm run migration:run
 
 EXPOSE 80
