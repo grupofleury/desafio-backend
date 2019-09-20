@@ -6,6 +6,7 @@ Neste repositório contem um exemplo de API de agendamento de exames, ela consis
 - Configuração
 - Execução
 - Execução dos testes
+- Documentação da API
 
 ## Estrutura do projeto
   ```
@@ -67,3 +68,6 @@ Com relatorio:
 ```
 npm run test:coverage
 ```
+
+## Documentação da API
+Este projeto contem a documentação da API em swagger, que se encontra no arquivo swagger.yml, caso queria visualiza-lo realize a importação do conteudo no swagger editor
