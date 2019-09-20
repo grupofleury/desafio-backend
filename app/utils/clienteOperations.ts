@@ -49,7 +49,7 @@ export class ClienteOperations{
         let total = await connection.getRepository(Cliente).createQueryBuilder().getCount();
         let resPag = await connection.getRepository(Cliente)
         .find({ 
-            skip: 0, 
+            skip: body.count_since_record, 
             take: 10 
         });
         return {
