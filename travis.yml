@@ -3,6 +3,9 @@ cache:
   npm: true
 node_js:
   - 10
+branches:
+  only:
+    - schedule-api
 script:
     npm run test:coverage
     ./deploy.sh staging
