@@ -11,11 +11,8 @@ then
         npm run start:local
     elif [ $1 = 'dev' ]
     then
-        DATABASE_NAME='dataset.db'
-        EXAM_URL='http://www.mocky.io/v2'
-
-        export DATABASE_NAME=$DATABASE_NAME
-        export EXAM_URL=$EXAM_URL
+        export DATABASE_NAME='dataset.db'
+        export EXAM_URL='http://www.mocky.io/v2'
 
         npm run migration:local:generate Client
         
@@ -24,14 +21,10 @@ then
         docker stop container_scheduleapi
         docker rm -v container_scheduleapi
 
-        docker run --name container_scheduleapi -d \ 
-        -e DATABASE_NAME=$DATABASE_NAME \ 
-        -e EXAM_URL=$EXAM_URL \ 
-        -p 80:80 scheduleapi
+        docker run --name container_scheduleapi -d -e DATABASE_NAME=$DATABASE_NAME -e EXAM_URL=$EXAM_URL -p 80:80 scheduleapi
     elif [ $1 = 'staging' ]
     then
         DATABASE_NAME=$DATABASE_NAME
-        npm run migration:local:generate Client
         npm run build
         docker build --build-arg database_name=$DATABASE_NAME -t scheduleapi .
         echo 'push your image'
