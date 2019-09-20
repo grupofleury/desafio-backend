@@ -1,10 +1,21 @@
 Desafio Back-end - Grupo Fleury
 ====
+## Estrutura do projeto
+app - pasta com principais arquivos e pastas p/ funcionamento da api
+    --conf -> pasta com configuração e encapsulamento do express e efuncionamento do swagger
+    --entities -> pasta com modelos de tabelas do banco de dados
+    --test -> arquivo responsavel pela execução dos testes
+    --utils arquivos com chamadas de api e de bancho de dados
+
+    .package.json -> arquivo de configuração do projeto, execução de comandos e gerenciamento de pacotes
+     tsconfig.json -> configuração do typescript
+     swagger.json -> arquivo de configuração do swagger
+
 ## Rota Swagger
 http://localhost:9090/api-docs/#/
 
 ## Como Rodar o Projeto
-0)npm install -g mocha
+0)  npm install -g mocha
 1) Clonar o repositório
 2) Execute: npm install
 3) P/ rodar execute o comando: npm run dev
