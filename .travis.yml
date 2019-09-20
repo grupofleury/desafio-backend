@@ -9,5 +9,5 @@ branches:
     - master
     - schedule-api
 script:
-  npm run test:coverage
-  ./deploy.sh staging
+  - npm run test:coverage
+  - ./deploy.sh staging
