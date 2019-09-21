@@ -18,6 +18,10 @@ class CustomerService {
     public remove(cpf: String): any {
         return this.connection.removeCustomer(cpf)
     }
+
+    public find(cpf: String): any {
+        return this.connection.findCustomer(cpf)
+    }
 }
 
 export default CustomerService

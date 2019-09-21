@@ -9,7 +9,7 @@ test('should save a client to the database', () => {
 
     const customerStored = connection.addCustomer(customer)
     const otherConnection = database.connection()
-    const searched = otherConnection.getCustomer(customer.cpf)
-    expect(customer).toEqual(searched)
-    expect(customerStored.data).toEqual(searched)
+    const searched = otherConnection.findCustomer(customer.cpf)
+    expect(customer).toEqual(searched.data)
+    expect(customerStored.data).toEqual(searched.data)
 })

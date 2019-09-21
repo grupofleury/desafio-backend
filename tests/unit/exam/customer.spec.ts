@@ -89,3 +89,34 @@ test('should not delete a customer', () => {
 
     expect(customerRemoved.success).toEqual(false)
 })
+
+test('should be returned a customer by cpf', () => {
+
+    const customer = {
+        name: 'Giovanni Santos',
+        cpf: '101010101-10'
+    }
+
+    const service = new CustomerService()
+    service.save(customer)
+    const customerSeached = service.find(customer.cpf)
+
+    expect(customerSeached.success).toEqual(true)
+    expect(customerSeached.data).toEqual(customer)
+})
+
+test('should not return a customer by cpf', () => {
+
+    const customer = {
+        name: 'Giovanni Santos',
+        cpf: '101010101-10'
+    }
+
+    const service = new CustomerService()
+    service.save(customer)
+    customer.cpf = '121121121-12'
+    const customerSeached = service.find(customer.cpf)
+
+    expect(customerSeached.success).toEqual(false)
+    expect(customerSeached.data).toEqual(null)
+})

@@ -15,8 +15,13 @@ class DB {
         return DB.instance
     }
 
-    public getCustomer(cpf: String) {
-        return DB.customer.find( item => item.cpf === cpf)
+    public findCustomer(cpf: String) {
+        const customer =  DB.customer.find( item => item.cpf === cpf)
+        return {
+            success: customer ? true: false,
+            data: customer || null,
+            message: customer ? 'item successfully find' : 'item not found'
+        }
     }
 
     public addCustomer(data: any) {
@@ -45,7 +50,7 @@ class DB {
 
     public removeCustomer(cpf: String): any {
         let customer =  DB.customer.find( item => item.cpf === cpf )
-        console.log(customer)
+
         if (customer) {
             DB.customer = DB.customer.filter( item => item.cpf !== cpf)
         }
