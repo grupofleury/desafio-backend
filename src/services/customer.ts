@@ -11,7 +11,7 @@ class CustomerService {
         return this.connection.addCustomer(data)
     }
 
-    public update(data: {cpf: String, name: String}): any {
+    public update(data: any): any {
         return this.connection.updateCustomer(data)
     }
 
@@ -21,6 +21,10 @@ class CustomerService {
 
     public find(cpf: String): any {
         return this.connection.findCustomer(cpf)
+    }
+    
+    public list() {
+        return this.connection.listCustomer()
     }
 }
 

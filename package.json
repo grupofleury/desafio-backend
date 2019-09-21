@@ -28,9 +28,11 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
+    "@types/faker": "^4.1.5",
     "@types/request-promise-native": "^1.0.16",
     "@types/swagger-ui-express": "^3.0.1",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "request-promise-native": "^1.0.7",
     "swagger-ui-express": "^4.1.1"
   }

@@ -1,11 +1,11 @@
 class DB {
     private static instance: DB
-    private static customer: Array<any>
-    private static schedule: Array<any>
+    private static customers: Array<any>
+    private static schedules: Array<any>
 
     private constructor() {
-        DB.customer = []
-        DB.schedule = []
+        DB.customers = []
+        DB.schedules = []
     }
 
     public static connection(): DB {
@@ -16,7 +16,7 @@ class DB {
     }
 
     public findCustomer(cpf: String) {
-        const customer =  DB.customer.find( item => item.cpf === cpf)
+        const customer =  DB.customers.find( item => item.cpf === cpf)
         return {
             success: customer ? true: false,
             data: customer || null,
@@ -26,33 +26,33 @@ class DB {
 
     public addCustomer(data: any) {
 
-        let result = !DB.customer.find(item => item.cpf === data.cpf) ? DB.customer.push(data) : null
+        let result = !DB.customers.find(item => item.cpf === data.cpf) ? DB.customers.push({...data}) : null
 
         return {
             success: result ? true: false,
-            data: DB.customer.find( item => item.cpf === data.cpf && item.name === data.name) || null,
+            data: DB.customers.find( item => item.cpf === data.cpf && item.name === data.name) || null,
             message: result ? 'item successfully saved' : 'item already exists'
         }
     }
 
     public updateCustomer(data: any) {
-        let customerIndex =  DB.customer.findIndex( item => item.cpf === data.cpf )
+        let customerIndex =  DB.customers.findIndex( item => item.cpf === data.cpf )
         if (customerIndex > -1) {
-            DB.customer[customerIndex] = data
+            DB.customers[customerIndex] = { ...data }
         }
 
         return {
             success: customerIndex > -1 ? true: false,
-            data: DB.customer.find( item => item.cpf === data.cpf ) || null,
+            data: DB.customers.find( item => item.cpf === data.cpf ) || null,
             message: customerIndex > -1 ? 'item successfully updated' : 'item not found'
         }
     }
 
     public removeCustomer(cpf: String): any {
-        let customer =  DB.customer.find( item => item.cpf === cpf )
+        let customer =  DB.customers.find( item => item.cpf === cpf )
 
         if (customer) {
-            DB.customer = DB.customer.filter( item => item.cpf !== cpf)
+            DB.customers = DB.customers.filter( item => item.cpf !== cpf)
         }
 
         return {
@@ -60,6 +60,19 @@ class DB {
             data: customer || null,
             message: customer ? 'item successfully removed' : 'item not found'
         }
+    }
+
+    public listCustomer() {
+        const customers = DB.customers
+        return {
+            success: customers ? true: false,
+            data: customers || null,
+            message: customers ? 'items successfully removed' : 'items not found'
+        }
+    }
+
+    public static resetForUnitTest() {
+        DB.instance = new DB()
     }
 }
 
