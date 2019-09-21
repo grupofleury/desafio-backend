@@ -1,5 +1,5 @@
 class DB {
-    private static collection: DB
+    private static instance: DB
     private static customer: Array<any>
     private static schedule: Array<any>
 
@@ -8,11 +8,15 @@ class DB {
         DB.schedule = []
     }
 
-    public static connection(): Object {
-        if (!DB.collection) {
-            DB.collection = new DB()
+    public static connection(): DB {
+        if (!DB.instance) {
+            DB.instance =  new DB()
         }
-        return DB.collection
+        return DB.instance
+    }
+
+    public getCustomer(cpf: String) {
+        return DB.customer.find( item => item.cpf === cpf)
     }
 
     public addCustomer(data: any) {
