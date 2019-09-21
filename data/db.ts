@@ -30,6 +30,19 @@ class DB {
         }
     }
 
+    public updateCustomer(data: any) {
+        let customerIndex =  DB.customer.findIndex( item => item.cpf === data.cpf )
+        if (customerIndex > -1) {
+            DB.customer[customerIndex] = data
+        }
+
+        return {
+            success: customerIndex > -1 ? true: false,
+            data: DB.customer.find( item => item.cpf === data.cpf ) || null,
+            message: customerIndex > -1 ? 'item successfully saved' : 'item already exists'
+        }
+    }
+
     public addSchedule(data: any) {
         DB.schedule.push(data)
         return DB.schedule.find( item => item.cpf == data.cpf )
