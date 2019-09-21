@@ -39,7 +39,7 @@ class DB {
         return {
             success: customerIndex > -1 ? true: false,
             data: DB.customer.find( item => item.cpf === data.cpf ) || null,
-            message: customerIndex > -1 ? 'item successfully saved' : 'item already exists'
+            message: customerIndex > -1 ? 'item successfully updated' : 'item not found'
         }
     }
 

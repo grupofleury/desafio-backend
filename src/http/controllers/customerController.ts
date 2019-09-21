@@ -7,6 +7,7 @@ class CustomerController {
     public constructor () {
         this.service = new CustomerService()
         this.save = this.save.bind(this)
+        this.update = this.update.bind(this)
     }
 
     public save(request: Request, response: Response) {
@@ -14,6 +15,15 @@ class CustomerController {
 
         if (!customer.success) {
             response.status(409)
+        }
+        response.send(customer)
+    }
+
+    public update(request: Request, response: Response) {
+        const customer =  this.service.update(request.body)
+
+        if (!customer.success) {
+            response.status(404)
         }
         response.send(customer)
     }
