@@ -1,8 +1,8 @@
 import { Router } from 'express'
 
-const routes = Router()
+const ExamRoutes = Router()
 import  ExamController  from '../http/controllers/examController'
 
-routes.get('/exams', ExamController.list)
+ExamRoutes.get('/exams', ExamController.list)
 
-export default routes
+export { ExamRoutes }
