@@ -20,8 +20,8 @@ class DB {
     }
 
     public addCustomer(data: any) {
-        DB.customer.push(data)
-        return DB.customer.find( item => item.cpf === data.cpf)
+        !DB.customer.find(item => item.cpf === data.cpf) ? DB.customer.push(data) : null
+        return DB.customer.find( item => item.cpf === data.cpf && item.name === data.name) || null
     }
 
     public addSchedule(data: any) {

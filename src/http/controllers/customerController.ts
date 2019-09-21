@@ -11,6 +11,9 @@ class CustomerController {
 
     public save(request: Request, response: Response) {
         const result =  this.service.save(request.body)
+        if (!result) {
+            response.status(409)
+        }
         response.send(result)
     }
 }

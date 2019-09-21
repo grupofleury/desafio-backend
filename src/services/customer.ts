@@ -7,7 +7,7 @@ class CustomerService {
         this.connection = DB.connection()
     }
 
-    public save(data:Object) {
+    public save(data: any) {
         return this.connection.addCustomer(data)
     }
 }
