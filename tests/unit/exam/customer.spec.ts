@@ -10,7 +10,7 @@ test('should save a client to the database by service', () => {
 
     const service = new CustomerService()
     const customerStored = service.save(customer)
-    expect(customer).toEqual(customerStored)
+    expect(customer).toEqual(customerStored.data)
 })
 
 test('should return null and not save a client', () => {
@@ -26,5 +26,5 @@ test('should return null and not save a client', () => {
     const otherService = new CustomerService()
     const responseOtherService = otherService.save({ ...customer, name: 'João' })
     
-    expect(responseOtherService).toEqual(null)
+    expect(responseOtherService.success).toEqual(false)
 })

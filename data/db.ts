@@ -20,8 +20,14 @@ class DB {
     }
 
     public addCustomer(data: any) {
-        !DB.customer.find(item => item.cpf === data.cpf) ? DB.customer.push(data) : null
-        return DB.customer.find( item => item.cpf === data.cpf && item.name === data.name) || null
+
+        let result = !DB.customer.find(item => item.cpf === data.cpf) ? DB.customer.push(data) : null
+
+        return {
+            success: result ? true: false,
+            data: DB.customer.find( item => item.cpf === data.cpf && item.name === data.name) || null,
+            message: result ? 'item successfully saved' : 'item already exists'
+        }
     }
 
     public addSchedule(data: any) {

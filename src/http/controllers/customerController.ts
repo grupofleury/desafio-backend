@@ -10,11 +10,12 @@ class CustomerController {
     }
 
     public save(request: Request, response: Response) {
-        const result =  this.service.save(request.body)
-        if (!result) {
+        const customer =  this.service.save(request.body)
+
+        if (!customer.success) {
             response.status(409)
         }
-        response.send(result)
+        response.send(customer)
     }
 }
 
