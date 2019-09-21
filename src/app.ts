@@ -1,6 +1,6 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
-import routes from './routes'
+import routes from './routes/exam'
 import * as swaggerDocument from '../swagger.json'
 
 class App {
