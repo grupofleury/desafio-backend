@@ -8,6 +8,7 @@ class CustomerController {
         this.service = new CustomerService()
         this.save = this.save.bind(this)
         this.update = this.update.bind(this)
+        this.remove = this.remove.bind(this)
     }
 
     public save(request: Request, response: Response) {
@@ -21,6 +22,15 @@ class CustomerController {
 
     public update(request: Request, response: Response) {
         const customer =  this.service.update(request.body)
+
+        if (!customer.success) {
+            response.status(404)
+        }
+        response.send(customer)
+    }
+
+    public remove(request: Request, response: Response) {
+        const customer =  this.service.remove(request.params.cpf)
 
         if (!customer.success) {
             response.status(404)

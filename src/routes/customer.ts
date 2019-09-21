@@ -5,5 +5,6 @@ const CustomerRoutes = Router()
 const controller = new CustomerController()
 CustomerRoutes.post('/customers', controller.save)
 CustomerRoutes.put('/customers', controller.update)
+CustomerRoutes.delete('/customers/:cpf', controller.remove)
 
 export  { CustomerRoutes }

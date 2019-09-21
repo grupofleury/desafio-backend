@@ -14,6 +14,10 @@ class CustomerService {
     public update(data: {cpf: String, name: String}): any {
         return this.connection.updateCustomer(data)
     }
+
+    public remove(cpf: String): any {
+        return this.connection.removeCustomer(cpf)
+    }
 }
 
 export default CustomerService

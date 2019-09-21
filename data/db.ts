@@ -43,9 +43,18 @@ class DB {
         }
     }
 
-    public addSchedule(data: any) {
-        DB.schedule.push(data)
-        return DB.schedule.find( item => item.cpf == data.cpf )
+    public removeCustomer(cpf: String): any {
+        let customer =  DB.customer.find( item => item.cpf === cpf )
+        console.log(customer)
+        if (customer) {
+            DB.customer = DB.customer.filter( item => item.cpf !== cpf)
+        }
+
+        return {
+            success: customer ? true: false,
+            data: customer || null,
+            message: customer ? 'item successfully removed' : 'item not found'
+        }
     }
 }
 
