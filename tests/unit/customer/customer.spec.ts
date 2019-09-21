@@ -1,14 +1,6 @@
 import DB from '../../../data/db'
 import CustomerService from '../../../src/services/customer'
-import Faker from 'faker'
-import { copyFileSync } from 'fs'
-import { getDefaultWatermarks } from 'istanbul-lib-report'
-
-const getCpf = () => Faker.random.number({ 'min': 100000000,'max': 999999999 }) + '-' + Faker.random.number({ 'min': 10, 'max': 99 })
-
-const fullName = () => Faker.name.firstName + ' ' + Faker.name.lastName
-
-const getDate = () => Faker.date.between('1920-01-01', '2019-09-01')
+import { getCpf, fullName, getDate } from '../utils/dataGenerate'
 
 let customer = {
     cpf: '',
@@ -40,7 +32,7 @@ test('should not save a customer', () => {
 
 test('should update a customer to the database by service', () => {
     service.save(customer)
-    customer = { ...customer, name: Faker.name.firstName + ' ' + fullName() }
+    customer = { ...customer, name: fullName() }
     const customerUpdated = service.update(customer)
     expect(customerUpdated.data).toEqual(customer)
 })
