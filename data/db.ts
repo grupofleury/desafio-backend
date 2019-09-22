@@ -35,15 +35,15 @@ class DB {
         }
     }
 
-    public updateCustomer(data: any) {
-        let customerIndex =  DB.customers.findIndex( item => item.cpf === data.cpf )
+    public updateCustomer(cpf: string, data: any) {
+        let customerIndex =  DB.customers.findIndex( item => item.cpf === cpf )
         if (customerIndex > -1) {
-            DB.customers[customerIndex] = { ...data }
+            DB.customers[customerIndex] = { ...data, cpf }
         }
 
         return {
             success: customerIndex > -1 ? true: false,
-            data: DB.customers.find( item => item.cpf === data.cpf ) || null,
+            data: DB.customers.find( item => item.cpf === cpf ) || null,
             message: customerIndex > -1 ? 'item successfully updated' : 'item not found'
         }
     }

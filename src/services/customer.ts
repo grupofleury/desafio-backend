@@ -12,8 +12,8 @@ class CustomerService {
         return this.connection.addCustomer(data)
     }
 
-    public update(data: Customer): any {
-        return this.connection.updateCustomer(data)
+    public update(cpf: string, data: Customer): any {
+        return this.connection.updateCustomer(cpf, data)
     }
 
     public remove(cpf: string): any {

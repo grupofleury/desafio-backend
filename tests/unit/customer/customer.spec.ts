@@ -33,7 +33,7 @@ test('should not save a customer', () => {
 test('should update a customer to the database by service', () => {
     service.save(customer)
     customer = { ...customer, name: fullName() }
-    const customerUpdated = service.update(customer)
+    const customerUpdated = service.update(customer.cpf, customer)
     expect(customerUpdated.data).toEqual(customer)
 })
 
@@ -44,7 +44,7 @@ test('should not update a customer', () => {
         name: fullName(),
         dateOfBirth: getDate()
     }
-    const customerUpdated = service.update(customer)
+    const customerUpdated = service.update(customer.cpf, customer)
     expect(customerUpdated.success).toEqual(false)
 })
 

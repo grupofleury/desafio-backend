@@ -64,10 +64,10 @@ describe('Scheduling exam', () => {
         await scheduleService.save(data)
         let connectionToSameTime = DB.connection()
         let secondCustomer = connectionToSameTime.addCustomer({ ...customer, cpf: getCpf() }).data
+        let thirdCustomer = connectionToSameTime.addCustomer({ ...customer, cpf: getCpf() }).data
 
         await scheduleService.save({ ...data, cpf: secondCustomer.cpf })
 
-        let thirdCustomer = connectionToSameTime.addCustomer({ ...customer, cpf: getCpf() }).data
 
         const thirdSchedule = await scheduleService.save({ ...data, cpf: thirdCustomer.cpf })
         expect(thirdSchedule).toEqual(null)
