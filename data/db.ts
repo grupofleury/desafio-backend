@@ -15,7 +15,7 @@ class DB {
         return DB.instance
     }
 
-    public findCustomer(cpf: String) {
+    public findCustomer(cpf: string) {
         const customer =  DB.customers.find( item => item.cpf === cpf)
         return {
             success: customer ? true: false,
@@ -48,7 +48,7 @@ class DB {
         }
     }
 
-    public removeCustomer(cpf: String): any {
+    public removeCustomer(cpf: string): any {
         let customer =  DB.customers.find( item => item.cpf === cpf )
 
         if (customer) {
@@ -81,7 +81,7 @@ class DB {
         return DB.schedules.find( item => item.cpf == data.cpf && item.examId === data.examId)
     }
 
-    public updateSchedule(id: Number, date: any): any {
+    public updateSchedule(id: number, date: any): any {
         let scheduleIndex =  DB.schedules.findIndex( item => item.id === id)
         if (scheduleIndex > -1) {
             DB.schedules[scheduleIndex] = { ...DB.schedules[scheduleIndex] , date: date}
@@ -94,15 +94,15 @@ class DB {
         }
     }
 
-    public getByScheduleByDate( examId: String, date: any ) {
+    public getByScheduleByDate( examId: string, date: any ) {
         return !!DB.schedules.find( item => item.examId === examId && item.date === date )
     }
 
-    public getScheduleByCpf(cpf: String) {
+    public getScheduleByCpf(cpf: string) {
         return DB.schedules.filter(item => item.cpf === cpf)
     }
 
-    public removeSchedule(id: Number): any {
+    public removeSchedule(id: number): any {
         let schedule =  DB.schedules.find( item => item.id === id )
 
         if (schedule) {

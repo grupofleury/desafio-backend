@@ -1,7 +1,5 @@
-import * as moment from "moment"
-
 export interface Customer {
-    name: String
-    cpf: String
-    dateOfBirth: moment.Moment
+    name?: string
+    cpf?: string
+    dateOfBirth?: string
 }

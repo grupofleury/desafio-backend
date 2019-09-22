@@ -1,15 +1,15 @@
 import { Exam } from '../models/exam'
 import ExamProvider from '../providers/exams'
 
-class ExamsService {
+class ExamService {
     
     public list(): any {
         return ExamProvider.list()
     }
 
-    public async get(id: String): Promise<Exam> {
+    public async get(id: string): Promise<Exam> {
         return await ExamProvider.byId(id)
     }
 }
 
-export default ExamsService
+export { ExamService }

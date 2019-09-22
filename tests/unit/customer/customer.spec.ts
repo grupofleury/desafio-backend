@@ -1,11 +1,11 @@
 import DB from '../../../data/db'
-import CustomerService from '../../../src/services/customer'
+import { CustomerService } from '../../../src/services/index'
 import { getCpf, fullName, getDate } from '../utils/dataGenerate'
 
 let customer = {
     cpf: '',
     name: '',
-    dateOfBirth: new Date()
+    dateOfBirth: ''
 }
 let service = new CustomerService()
 

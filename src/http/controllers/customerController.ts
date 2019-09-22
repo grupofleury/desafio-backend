@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import CustomerService from '../../services/customer'
+import { CustomerService } from '../../services/index'
 
 class CustomerController {
     private service: CustomerService
@@ -49,4 +49,4 @@ class CustomerController {
     }
 }
 
-export default CustomerController
+export { CustomerController }

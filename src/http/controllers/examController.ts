@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
-import ExamsService from '../../services/exam'
+import { ExamService } from '../../services/index'
 
 class ExamController {
 
-    private service: ExamsService
+    private service: ExamService
 
     public constructor () {
-        this.service = new ExamsService()
+        this.service = new ExamService()
         this.list = this.list.bind(this)
         this.get = this.get.bind(this)
     }
@@ -22,4 +22,4 @@ class ExamController {
     }
 }
 
-export default new ExamController()
+export { ExamController }

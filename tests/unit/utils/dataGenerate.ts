@@ -4,9 +4,9 @@ const getCpf = () => Faker.random.number({ 'min': 100000000,'max': 999999999 }) 
 
 const fullName = () => Faker.name.firstName() + ' ' + Faker.name.lastName()
 
-const getDate = () => Faker.date.between('1920-01-01', '2019-09-01')
+const getDate = () => Faker.date.between('1920-01-01', '2019-09-01').toString()
 
-const getFutureDate = () => Faker.date.between(new Date(), '2020-12-31')
+const getFutureDate = () => new Date(+(new Date()) - Math.floor(Math.random()*10000000000)).toString()
 
 const getExamsMock = () => '{"exams": [{"id":"1","name":"17 soro","value":35.60},{"id":"2","name":"Acidificação Urinária","value":84.90},{"id":"3","name":"Ácido Ascórbico, plasma","value":99.90}]}'
 

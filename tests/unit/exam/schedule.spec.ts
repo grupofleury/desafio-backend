@@ -1,8 +1,7 @@
 import request from 'request-promise-native'
 import DB from '../../../data/db'
 import { fullName, getCpf, getDate, getFutureDate, getExamsMock } from '../utils/dataGenerate'
-import ScheduleService from '../../../src/services/schedule'
-import moment from 'moment'
+import { ScheduleService } from '../../../src/services/index'
 
 jest.mock('request-promise-native')
 const mockedAxios = request as jest.Mocked<typeof request>
@@ -36,7 +35,7 @@ describe('Scheduling exam', () => {
         const data = {
             examId: (Math.floor(Math.random() * 3) + 1).toString(),
             cpf: customer.cpf,
-            date: moment(getFutureDate()).format()
+            date: getFutureDate()
         }
         mockedAxios.get.mockResolvedValue(examsMock)
         let examResult = await scheduleService.save(data)
@@ -59,7 +58,7 @@ describe('Scheduling exam', () => {
         const data = {
             examId: (Math.floor(Math.random() * 3) + 1).toString(),
             cpf: customer.cpf,
-            date: moment(getFutureDate()).format()
+            date: getFutureDate()
         }
         mockedAxios.get.mockResolvedValue(examsMock)
         await scheduleService.save(data)
@@ -80,7 +79,7 @@ describe('Scheduling exam', () => {
             const data = {
                 examId: (Math.floor(Math.random() * 3) + 1).toString(),
                 cpf: customer.cpf,
-                date: moment(getFutureDate()).format()
+                date: getFutureDate()
             }
             let saved = await scheduleService.save(data)
             sum += saved.price
@@ -93,16 +92,13 @@ describe('Scheduling exam', () => {
         const data = {
             examId: (Math.floor(Math.random() * 3) + 1).toString(),
             cpf: customer.cpf,
-            date: moment(getFutureDate()).format()
+            date: getFutureDate()
         }
         mockedAxios.get.mockResolvedValue(examsMock)
         let examResult = await scheduleService.save(data)
         const {  id } = examResult
-
-        const newDate = moment(getFutureDate()).format()
-
+        const newDate = getFutureDate()
         let updatedSchedule = await scheduleService.update(id, newDate)
-
         expect(updatedSchedule.data.date).toEqual(newDate)
     })
 
@@ -110,7 +106,7 @@ describe('Scheduling exam', () => {
         const data = {
             examId: (Math.floor(Math.random() * 3) + 1).toString(),
             cpf: customer.cpf,
-            date: moment(getFutureDate()).format()
+            date: getFutureDate()
         }
         mockedAxios.get.mockResolvedValue(examsMock)
         let examResult = await scheduleService.save(data)

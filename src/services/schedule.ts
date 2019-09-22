@@ -1,7 +1,6 @@
 import DB from '../../data/db'
-import ExamService from './exam'
-import CustomerService from './customer'
-import moment from 'moment'
+import { ExamService } from './index'
+import { CustomerService } from './index'
 import { Schedule } from '../models/schedule'
 
 class ScheduleService {
@@ -19,11 +18,11 @@ class ScheduleService {
         let exam = await this.exam.get(data.examId.toString())
         let customer = await this.customer.find(data.cpf)
         if (exam && customer.success) {
-            let formattedDate = moment(data.date).format()
+            let formattedDate = data.date
             const alreadyScheduled = this.connection.getByScheduleByDate(data.examId.toString(), formattedDate)
             if (!alreadyScheduled) {
                 data.price = exam.value
-                formattedDate = moment(data.date).format()
+                formattedDate = data.date
                 data = { ...data, date: formattedDate }
                 return this.connection.schedule({ ...data, examId: data.examId.toString() })
             }
@@ -31,24 +30,24 @@ class ScheduleService {
         return null
     }
 
-    public listByCpf(cpf: String) {
+    public listByCpf(cpf: string) {
         let schedules: any = this.connection.getScheduleByCpf(cpf)
         let pricesSum = 0
         if (schedules) {
-            pricesSum = schedules.reduce( (sum: Number, currentPrice: any) => sum + currentPrice.price, 0)
+            pricesSum = schedules.reduce( (sum: number, currentPrice: any) => sum + currentPrice.price, 0)
             schedules = { schedules, total: pricesSum }
         }
         return schedules
     }
 
-    public async update(id: Number, date: any) {
-        let formattedDate = moment(date).format()
+    public async update(id: number, date: any) {
+        let formattedDate = date
         return this.connection.updateSchedule(id, formattedDate)
     }
 
-    public async remove(id: Number) {
+    public async remove(id: number) {
         return this.connection.removeSchedule(id)
     }
 }
 
-export default ScheduleService
+export { ScheduleService }

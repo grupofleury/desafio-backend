@@ -16,11 +16,11 @@ class CustomerService {
         return this.connection.updateCustomer(data)
     }
 
-    public remove(cpf: String): any {
+    public remove(cpf: string): any {
         return this.connection.removeCustomer(cpf)
     }
 
-    public find(cpf: String): any {
+    public find(cpf: string): any {
         return this.connection.findCustomer(cpf)
     }
     
@@ -29,4 +29,4 @@ class CustomerService {
     }
 }
 
-export default CustomerService
+export { CustomerService }

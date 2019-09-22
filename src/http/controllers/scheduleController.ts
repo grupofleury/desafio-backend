@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import ScheduleService from '../../services/schedule'
+import { ScheduleService } from '../../services/index'
 
 class ScheduleController {
 
@@ -58,4 +58,4 @@ class ScheduleController {
     }
 }
 
-export default new ScheduleController()
+export { ScheduleController }

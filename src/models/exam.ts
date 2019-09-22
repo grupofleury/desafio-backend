@@ -1,5 +1,5 @@
 export interface Exam {
-    id?: String
-    name: String
-    value?: Number
+    id?: string
+    name: string
+    value?: number
 }

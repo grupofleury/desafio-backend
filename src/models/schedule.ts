@@ -1,7 +1,7 @@
 export interface Schedule {
-    id: Number
-    examId: String
-    cpf: String
+    id?: number
+    examId: string
+    cpf: string
     date?: string
-    price?: Number
+    price?: number
 }

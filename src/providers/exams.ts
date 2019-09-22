@@ -8,7 +8,7 @@ class ExamProvider {
         return formatter.extractFields(JSON.parse(exams.toString()).exams)
     }
 
-    static async byId(id: String): Promise<any> {        
+    static async byId(id: string): Promise<any> {        
         let exams =  await request.get('http://www.mocky.io/v2/5d681ede33000054e7e65c3f')
         let formatted =  JSON.parse(exams.toString()).exams
         return formatted.find( (item: any) => item.id === id)
