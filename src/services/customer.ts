@@ -1,4 +1,5 @@
 import DB from '../../data/db'
+import { Customer } from '../models/customer'
 
 class CustomerService {
     private connection: DB
@@ -7,11 +8,11 @@ class CustomerService {
         this.connection = DB.connection()
     }
 
-    public save(data: any) {
+    public save(data: Customer) {
         return this.connection.addCustomer(data)
     }
 
-    public update(data: any): any {
+    public update(data: Customer): any {
         return this.connection.updateCustomer(data)
     }
 
@@ -23,7 +24,7 @@ class CustomerService {
         return this.connection.findCustomer(cpf)
     }
     
-    public list() {
+    public list(): any {
         return this.connection.listCustomer()
     }
 }

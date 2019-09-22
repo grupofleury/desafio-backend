@@ -12,7 +12,7 @@ class CustomerController {
         this.find = this.find.bind(this)
     }
 
-    public save(request: Request, response: Response) {
+    public save(request: Request, response: Response): void {
         const customer =  this.service.save(request.body)
 
         if (!customer.success) {
@@ -21,7 +21,7 @@ class CustomerController {
         response.send(customer)
     }
 
-    public update(request: Request, response: Response) {
+    public update(request: Request, response: Response): void {
         const customer =  this.service.update(request.body)
 
         if (!customer.success) {
@@ -30,7 +30,7 @@ class CustomerController {
         response.send(customer)
     }
 
-    public remove(request: Request, response: Response) {
+    public remove(request: Request, response: Response): void {
         const customer =  this.service.remove(request.params.cpf)
 
         if (!customer.success) {
@@ -39,7 +39,7 @@ class CustomerController {
         response.send(customer)
     }
 
-    public find(request: Request, response: Response) {
+    public find(request: Request, response: Response): void {
         const customer =  this.service.find(request.params.cpf)
 
         if (!customer.success) {

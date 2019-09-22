@@ -2,6 +2,7 @@ import DB from '../../data/db'
 import ExamService from './exam'
 import CustomerService from './customer'
 import moment from 'moment'
+import { Schedule } from '../models/schedule'
 
 class ScheduleService {
     private connection: DB
@@ -14,7 +15,7 @@ class ScheduleService {
         this.customer = new CustomerService()
     }
 
-    public async save(data: any) {
+    public async save(data: Schedule) {
         let exam = await this.exam.get(data.examId.toString())
         let customer = await this.customer.find(data.cpf)
         if (exam && customer.success) {
@@ -22,7 +23,8 @@ class ScheduleService {
             const alreadyScheduled = this.connection.getByScheduleByDate(data.examId.toString(), formattedDate)
             if (!alreadyScheduled) {
                 data.price = exam.value
-                data = { ...data, date: moment(data.date).format() }
+                formattedDate = moment(data.date).format()
+                data = { ...data, date: formattedDate }
                 return this.connection.schedule({ ...data, examId: data.examId.toString() })
             }
         }
