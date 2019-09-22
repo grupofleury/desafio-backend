@@ -39,13 +39,13 @@ class ScheduleController {
 
     public async get(request: Request, response: Response): Promise<Response> {
         const result = await this.service.listByCpf(request.params.cpf)
-        if (!result.length) {
+        if (!result.schedules.length) {
             response.status(409)
         }
         return response.send({
-            data: result.length ? result : null,
-            success: result.length ? true : false,
-            message: result.length ? 'data found successfully' : 'data search failed'
+            data: result.schedules.length ? result : null,
+            success: result.schedules.length ? true : false,
+            message: result.schedules.length ? 'data found successfully' : 'data search failed'
         })
     }
 

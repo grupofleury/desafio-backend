@@ -32,13 +32,13 @@ class ScheduleService {
     }
 
     public listByCpf(cpf: String) {
-        let result: any = this.connection.getScheduleByCpf(cpf)
+        let schedules: any = this.connection.getScheduleByCpf(cpf)
         let pricesSum = 0
-        if (result) {
-            pricesSum = result.reduce( (sum: Number, currentPrice: any) => sum + currentPrice.price, 0)
-            result = { result, total: pricesSum }
+        if (schedules) {
+            pricesSum = schedules.reduce( (sum: Number, currentPrice: any) => sum + currentPrice.price, 0)
+            schedules = { schedules, total: pricesSum }
         }
-        return result
+        return schedules
     }
 
     public async update(id: Number, date: any) {
