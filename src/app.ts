@@ -1,3 +1,4 @@
+import './config/init'
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 import { CustomerRoutes, ExamRoutes, ScheduleRoute } from './routes/index'
