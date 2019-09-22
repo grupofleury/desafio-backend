@@ -61,12 +61,12 @@ describe('Scheduling exam', () => {
             date: moment(getFutureDate()).format()
         }
         mockedAxios.get.mockResolvedValue(examsMock)
-        let examResult = await scheduleService.save(data)
+        await scheduleService.save(data)
         let connectionToSameTime = DB.connection()
 
         let otherCustomer = connectionToSameTime.addCustomer({ ...customer, cpf: getCpf() }).data
 
-        let otherExamSameTime = await scheduleService.save({ otherCustomer })
+        let otherExamSameTime = await scheduleService.save({ ...data, cpf: otherCustomer.cpf })
         expect(otherExamSameTime).toEqual(null)
     })
 })
