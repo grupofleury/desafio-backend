@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "86948c1b-d6af-4383-bd11-212d5a3661b1",
+		"name": "challenge-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "schedule",
+			"item": [
+				{
+					"name": "schedule",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"examId\": 4,\n\t\"cpf\": \"11122233349\",\n\t\"date\": \"2019/12/12 08:04:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4446/schedules",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"schedules"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "update schedule",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"date\": \"2019/12/13 08:04:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4446/schedules/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"schedules",
+								"1"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "getbycpf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4446/schedules/11122233349",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"schedules",
+								"11122233349"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "remove schedule",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"examId\": 3,\n\t\"cpf\": \"33309812324\",\n\t\"date\": \"2019/12/12 08:04:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4446/schedules/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"schedules",
+								"2"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "exam",
+			"item": [
+				{
+					"name": "exam-list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4446/exams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"exams"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "exam by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4446/exams/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"exams",
+								"2"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "mock-api",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://www.mocky.io/v2/5d681ede33000054e7e65c3f",
+							"protocol": "http",
+							"host": [
+								"www",
+								"mocky",
+								"io"
+							],
+							"path": [
+								"v2",
+								"5d681ede33000054e7e65c3f"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "save customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Roberta Dias\",\n\t\"cpf\":\"11122233349\",\n\t\"dateOfBirth\": \"17/02/1980\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4446/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "update customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Fernanda Pereira\",\n\t\"dateOfBirth\": \"17/02/1992\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4446/customers/11122233349",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"customers",
+								"11122233349"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "remove customer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4446/customers/11122233349",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"customers",
+								"11122233349"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				},
+				{
+					"name": "find customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4446/customers/11122233345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4446",
+							"path": [
+								"customers",
+								"11122233345"
+							]
+						},
+						"description": "Welcome route test"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
