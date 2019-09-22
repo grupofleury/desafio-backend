@@ -18,15 +18,96 @@
         "application/json"
     ],
     "paths": {
-        "/": {
+        "/customers/{cpf}": {
             "get": {
                 "tags": [
-                    "Welcome"
+                    "Customer"
                 ],
                 "summary": "Default route",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "cpf",
+                        "required": true,
+                        "description": "Customer CPF",
+                        "schema": {
+                            "$ref": "#/definitions/cpf"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customers"
+                        }
+                    }
+                }
+            }
+        },
+        "/customers": {
+            "post": {
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Create a new customer",
+                "requestBody": {
+                    "description": "Customer Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Customer"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "cpf": {
+            "properties": {
+                "string": {
+                    "type": "string"
+                }
+            }
+        },
+        "Customer": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "cpf": {
+                    "type": "string"
+                },
+                "dataOfBirth": {
+                    "type": "string"
+                }
+            }
+        },
+        "Customers": {
+            "type": "object",
+            "properties": {
+                "customers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Customer"
                     }
                 }
             }
