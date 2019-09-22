@@ -1,4 +1,5 @@
 class DB {
+
     private static instance: DB
     private static customers: Array<any>
     private static schedules: Array<any>
@@ -12,11 +13,13 @@ class DB {
         if (!DB.instance) {
             DB.instance =  new DB()
         }
+
         return DB.instance
     }
 
     public findCustomer(cpf: string) {
         const customer =  DB.customers.find( item => item.cpf === cpf)
+
         return {
             success: customer ? true: false,
             data: customer || null,
@@ -25,7 +28,6 @@ class DB {
     }
 
     public addCustomer(data: any) {
-
         let result = !DB.customers.find(item => item.cpf === data.cpf) ? DB.customers.push({...data}) : null
 
         return {
@@ -37,6 +39,7 @@ class DB {
 
     public updateCustomer(cpf: string, data: any) {
         let customerIndex =  DB.customers.findIndex( item => item.cpf === cpf )
+
         if (customerIndex > -1) {
             DB.customers[customerIndex] = { ...data, cpf }
         }
@@ -71,11 +74,7 @@ class DB {
         }
     }
 
-    public static resetForUnitTest() {
-        DB.instance = new DB()
-    }
-
-    public schedule(data: any): any {
+    public createSchedule(data: any): any {
         let id = DB.schedules.length + 1
         DB.schedules.push({ ...data, id })
         return DB.schedules.find( item => item.cpf == data.cpf && item.examId === data.examId)
@@ -83,6 +82,7 @@ class DB {
 
     public updateSchedule(id: number, date: any): any {
         let scheduleIndex =  DB.schedules.findIndex( item => item.id === id)
+        
         if (scheduleIndex > -1) {
             DB.schedules[scheduleIndex] = { ...DB.schedules[scheduleIndex] , date: date}
         }
@@ -98,7 +98,7 @@ class DB {
         return DB.schedules.filter( item => item.examId === examId && item.date === date )
     }
 
-    public getScheduleByCpf(cpf: string) {
+    public getScheduleByCpf(cpf: string): any {
         return DB.schedules.filter(item => item.cpf === cpf)
     }
 
@@ -114,6 +114,10 @@ class DB {
             data: schedule || null,
             message: schedule ? 'item successfully removed' : 'item not found'
         }
+    }
+
+    public static resetForUnitTest(): void {
+        DB.instance = new DB()
     }
  }
 
