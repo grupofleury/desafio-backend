@@ -1,6 +1,6 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
-import { CustomerRoutes, ExamRoutes } from './routes/index'
+import { CustomerRoutes, ExamRoutes, ScheduleRoute } from './routes/index'
 import * as swaggerDocument from '../swagger.json'
 
 class App {
@@ -16,6 +16,7 @@ class App {
     private routes (): void {
         this.express.use(CustomerRoutes)
         this.express.use(ExamRoutes)
+        this.express.use(ScheduleRoute)
     }
     
     private middlwares (): void {
