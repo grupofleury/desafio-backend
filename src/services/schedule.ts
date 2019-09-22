@@ -21,11 +21,21 @@ class ScheduleService {
             let formattedDate = moment(data.date).format()
             const alreadyScheduled = this.connection.getByScheduleByDate(data.examId.toString(), formattedDate)
             if (!alreadyScheduled) {
+                data.price = exam.value
                 data = { ...data, date: moment(data.date).format() }
                 return this.connection.schedule({ ...data, examId: data.examId.toString() })
             }
         }
         return null
+    }
+
+    public listByCpf(cpf: String) {
+        const result = this.connection.getScheduleByCpf(cpf)
+        let pricesSum = 0
+        if (!!result) {
+            pricesSum = result.reduce( (sum, currentPrice) => sum + currentPrice.price, 0)
+        }
+        return { ...result, total: pricesSum }
     }
 
 }

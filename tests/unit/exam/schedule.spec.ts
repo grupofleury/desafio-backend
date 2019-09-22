@@ -69,4 +69,22 @@ describe('Scheduling exam', () => {
         let otherExamSameTime = await scheduleService.save({ ...data, cpf: otherCustomer.cpf })
         expect(otherExamSameTime).toEqual(null)
     })
+
+    it('should return exams by cpf and calculate the total value', async () => {
+
+        mockedAxios.get.mockResolvedValue(examsMock)
+        let sum = 0
+        for(let index = 0; index < 10; index++) {
+
+            const data = {
+                examId: (Math.floor(Math.random() * 3) + 1).toString(),
+                cpf: customer.cpf,
+                date: moment(getFutureDate()).format()
+            }
+            let saved = await scheduleService.save(data)
+            sum += saved.price
+        }
+        let scheduleByCpf = scheduleService.listByCpf(customer.cpf)
+        expect(scheduleByCpf.total).toEqual(sum)
+    })
 })

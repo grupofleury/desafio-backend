@@ -83,6 +83,10 @@ class DB {
     public getByScheduleByDate( examId: String, date: any ) {
         return !!DB.schedules.find( item => item.examId === examId && item.date === date )
     }
-}
+
+    public getScheduleByCpf(cpf: String) {
+        return DB.schedules.filter(item => item.cpf === cpf)
+    }
+ }
 
 export default DB
