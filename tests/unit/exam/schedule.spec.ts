@@ -63,11 +63,14 @@ describe('Scheduling exam', () => {
         mockedAxios.get.mockResolvedValue(examsMock)
         await scheduleService.save(data)
         let connectionToSameTime = DB.connection()
+        let secondCustomer = connectionToSameTime.addCustomer({ ...customer, cpf: getCpf() }).data
 
-        let otherCustomer = connectionToSameTime.addCustomer({ ...customer, cpf: getCpf() }).data
+        await scheduleService.save({ ...data, cpf: secondCustomer.cpf })
 
-        let otherExamSameTime = await scheduleService.save({ ...data, cpf: otherCustomer.cpf })
-        expect(otherExamSameTime).toEqual(null)
+        let thirdCustomer = connectionToSameTime.addCustomer({ ...customer, cpf: getCpf() }).data
+
+        const thirdSchedule = await scheduleService.save({ ...data, cpf: thirdCustomer.cpf })
+        expect(thirdSchedule).toEqual(null)
     })
 
     it('should return exams by cpf and calculate the total value', async () => {
