@@ -74,6 +74,15 @@ class DB {
     public static resetForUnitTest() {
         DB.instance = new DB()
     }
+
+    public schedule(data: any): any {
+        DB.schedules.push({...data})
+        return DB.schedules.find( item => item.cpf == data.cpf && item.examId === data.examId)
+    }
+
+    public getByScheduleByDate( examId: String, date: any ) {
+        return DB.schedules.find( item => item.examId === examId && item.date === date)
+    }
 }
 
 export default DB
