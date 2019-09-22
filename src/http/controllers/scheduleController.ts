@@ -10,6 +10,7 @@ class ScheduleController {
         this.schedule = this.schedule.bind(this)
         this.update = this.update.bind(this)
         this.get = this.get.bind(this)
+        this.remove = this.remove.bind(this)
     }
 
     public async schedule(request: Request, response: Response): Promise<Response> {
@@ -38,14 +39,22 @@ class ScheduleController {
 
     public async get(request: Request, response: Response): Promise<Response> {
         const result = await this.service.listByCpf(request.params.cpf)
-        if (!result) {
+        if (!result.length) {
             response.status(409)
         }
         return response.send({
-            data: result ? result : null,
-            success: result ? true : false,
-            message: result ? 'data found successfully' : 'data search failed'
+            data: result.length ? result : null,
+            success: result.length ? true : false,
+            message: result.length ? 'data found successfully' : 'data search failed'
         })
+    }
+
+    public async remove(request: Request, response: Response): Promise<Response> {
+        const result = await this.service.remove(parseInt(request.params.id))
+        if (!result) {
+            response.status(409)
+        }
+        return response.send(result)
     }
 }
 
