@@ -44,6 +44,9 @@ class ScheduleService {
         return this.connection.updateSchedule(id, formattedDate)
     }
 
+    public async remove(id: Number) {
+        return this.connection.removeSchedule(id)
+    }
 }
 
 export default ScheduleService

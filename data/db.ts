@@ -101,6 +101,20 @@ class DB {
     public getScheduleByCpf(cpf: String) {
         return DB.schedules.filter(item => item.cpf === cpf)
     }
+
+    public removeSchedule(id: Number): any {
+        let schedule =  DB.schedules.find( item => item.id === id )
+
+        if (schedule) {
+            DB.schedules = DB.schedules.filter( item => item.id !== id)
+        }
+
+        return {
+            success: schedule ? true: false,
+            data: schedule || null,
+            message: schedule ? 'item successfully removed' : 'item not found'
+        }
+    }
  }
 
 export default DB

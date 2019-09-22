@@ -105,4 +105,19 @@ describe('Scheduling exam', () => {
 
         expect(updatedSchedule.data.date).toEqual(newDate)
     })
+
+    it('should remove a schedue by id', async () => {
+        const data = {
+            examId: (Math.floor(Math.random() * 3) + 1).toString(),
+            cpf: customer.cpf,
+            date: moment(getFutureDate()).format()
+        }
+        mockedAxios.get.mockResolvedValue(examsMock)
+        let examResult = await scheduleService.save(data)
+        const {  id } = examResult
+
+        let removed = await scheduleService.remove(id)
+
+        expect(removed.data).toEqual(examResult)
+    })
 })
