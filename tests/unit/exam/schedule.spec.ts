@@ -40,7 +40,8 @@ describe('Scheduling exam', () => {
         }
         mockedAxios.get.mockResolvedValue(examsMock)
         let examResult = await scheduleService.save(data)
-        expect(examResult).toEqual(data)
+        const {  id, ...received } = examResult
+        expect(received).toEqual(data)
     })
 
     it('should not be scheduled an exam  for the wrong exam id', async () => {

@@ -30,12 +30,13 @@ class ScheduleService {
     }
 
     public listByCpf(cpf: String) {
-        const result = this.connection.getScheduleByCpf(cpf)
+        let result: any = this.connection.getScheduleByCpf(cpf)
         let pricesSum = 0
-        if (!!result) {
-            pricesSum = result.reduce( (sum, currentPrice) => sum + currentPrice.price, 0)
+        if (result) {
+            pricesSum = result.reduce( (sum: Number, currentPrice: any) => sum + currentPrice.price, 0)
+            result = { result, total: pricesSum }
         }
-        return { ...result, total: pricesSum }
+        return result
     }
 
 }

@@ -8,11 +8,12 @@ class ScheduleController {
     public constructor () {
         this.service = new ScheduleService()
         this.schedule = this.schedule.bind(this)
+        this.get = this.get.bind(this)
     }
 
     public async schedule(request: Request, response: Response): Promise<Response> {
         const result = await this.service.save(request.body)
-        if(!!result) {
+        if(!result) {
             response.status(409)
         }
 
@@ -23,6 +24,18 @@ class ScheduleController {
                 message: !!result ? 'Successful Scheduling' : 'Schedule failed'
             }
         )
+    }
+
+    public async get(request: Request, response: Response): Promise<Response> {
+        const result = await this.service.listByCpf(request.params.cpf)
+        if (!result) {
+            response.status(409)
+        }
+        return response.send({
+            data: result ? result : null,
+            success: result ? true : false,
+            message: result ? 'data found successfully' : 'data search failed'
+        })
     }
 }
 

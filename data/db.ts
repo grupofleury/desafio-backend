@@ -76,7 +76,8 @@ class DB {
     }
 
     public schedule(data: any): any {
-        DB.schedules.push({...data})
+        let id = DB.schedules.length + 1
+        DB.schedules.push({ ...data, id })
         return DB.schedules.find( item => item.cpf == data.cpf && item.examId === data.examId)
     }
 
