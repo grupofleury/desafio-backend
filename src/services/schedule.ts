@@ -39,7 +39,7 @@ class ScheduleService {
         return result
     }
 
-    public async update(id: any, date: any) {
+    public async update(id: Number, date: any) {
         let formattedDate = moment(date).format()
         return this.connection.updateSchedule(id, formattedDate)
     }

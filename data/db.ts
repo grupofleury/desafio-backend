@@ -81,8 +81,8 @@ class DB {
         return DB.schedules.find( item => item.cpf == data.cpf && item.examId === data.examId)
     }
 
-    public updateSchedule(id: any, date: any): any {
-        let scheduleIndex =  DB.schedules.findIndex( item => item.id === id )
+    public updateSchedule(id: Number, date: any): any {
+        let scheduleIndex =  DB.schedules.findIndex( item => item.id === id)
         if (scheduleIndex > -1) {
             DB.schedules[scheduleIndex] = { ...DB.schedules[scheduleIndex] , date: date}
         }

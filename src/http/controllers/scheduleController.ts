@@ -8,6 +8,7 @@ class ScheduleController {
     public constructor () {
         this.service = new ScheduleService()
         this.schedule = this.schedule.bind(this)
+        this.update = this.update.bind(this)
         this.get = this.get.bind(this)
     }
 
@@ -24,6 +25,15 @@ class ScheduleController {
                 message: !!result ? 'Successful Scheduling' : 'Schedule failed'
             }
         )
+    }
+
+    public async update(request: Request, response: Response): Promise<Response> {
+        const result = await this.service.update(parseInt(request.params.id), request.body.date)
+        if(!result) {
+            response.status(409)
+        }
+
+        return response.send(result)
     }
 
     public async get(request: Request, response: Response): Promise<Response> {
