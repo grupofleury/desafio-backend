@@ -17,21 +17,21 @@ class ScheduleService {
 
     public async save(data: Schedule) {
 
-        let exam = await this.exam.get(data.examId.toString())
-        let customer = await this.customer.find(data.cpf)
+        const exam = await this.exam.get(data.examId.toString())
+        const customer = await this.customer.find(data.cpf)
 
         if (exam && customer.success) {
 
             let formattedDate = data.date
 
             const customersAtThisTime = this.connection.getByScheduleByDate(data.examId.toString(), formattedDate)
-            let maxByTime = process.env.MAX_BY_TIME || 2
+            const maxByTime = process.env.MAX_BY_TIME || 2
 
             if (customersAtThisTime.length < maxByTime) {
                 data.price = exam.value
                 formattedDate = data.date
                 data = { ...data, date: formattedDate }
-                return this.connection.schedule({ ...data, examId: data.examId.toString() })
+                return this.connection.createSchedule({ ...data, examId: data.examId.toString() })
             }
         }
 
@@ -52,7 +52,7 @@ class ScheduleService {
     }
 
     public async update(id: number, date: any) {
-        let formattedDate = date
+        const formattedDate = date
         return this.connection.updateSchedule(id, formattedDate)
     }
 

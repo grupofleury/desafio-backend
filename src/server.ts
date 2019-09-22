@@ -1,3 +1,3 @@
 import App from './app'
-
-App.start(4446)
+const port = parseInt(<string>process.env.PORT) || 4446
+App.start(port)

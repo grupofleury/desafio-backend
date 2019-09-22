@@ -22,7 +22,7 @@ class CustomerController {
     }
 
     public update(request: Request, response: Response): void {
-        const customer =  this.service.update(request.body)
+        const customer =  this.service.update(request.params.cpf, request.body)
 
         if (!customer.success) {
             response.status(404)
