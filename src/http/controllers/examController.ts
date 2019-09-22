@@ -1,12 +1,17 @@
 import { Request, Response } from 'express'
-import apiExam from '../../services/apiExams'
-import formatter from '../../helpers/formatter'
+import ExamsService from '../../services/exam'
 
 class ExamController {
+    
+    private service: ExamsService
+
+    public constructor () {
+        this.service = new ExamsService()
+        this.list = this.list.bind(this)
+    }
     public async list(request: Request, response: Response): Promise<Response> {
-        const exams = await apiExam.list()
-        const responseFormatted = formatter.extractFields(JSON.parse(exams.toString()).exams)
-        return response.send(responseFormatted)
+        const exams = await this.service.list()
+        return response.send(exams)
     }
 }
 
