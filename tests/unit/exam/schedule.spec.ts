@@ -88,4 +88,21 @@ describe('Scheduling exam', () => {
         let scheduleByCpf = scheduleService.listByCpf(customer.cpf)
         expect(scheduleByCpf.total).toEqual(sum)
     })
+
+    it('should edit a schedule by id', async () => {
+        const data = {
+            examId: (Math.floor(Math.random() * 3) + 1).toString(),
+            cpf: customer.cpf,
+            date: moment(getFutureDate()).format()
+        }
+        mockedAxios.get.mockResolvedValue(examsMock)
+        let examResult = await scheduleService.save(data)
+        const {  id } = examResult
+
+        const newDate = moment(getFutureDate()).format()
+
+        let updatedSchedule = await scheduleService.update(id, newDate)
+
+        expect(updatedSchedule.data.date).toEqual(newDate)
+    })
 })

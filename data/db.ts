@@ -81,6 +81,19 @@ class DB {
         return DB.schedules.find( item => item.cpf == data.cpf && item.examId === data.examId)
     }
 
+    public updateSchedule(id: any, date: any): any {
+        let scheduleIndex =  DB.schedules.findIndex( item => item.id === id )
+        if (scheduleIndex > -1) {
+            DB.schedules[scheduleIndex] = { ...DB.schedules[scheduleIndex] , date: date}
+        }
+
+        return {
+            success: scheduleIndex > -1 ? true: false,
+            data: DB.schedules.find( item => item.id === id ) || null,
+            message: scheduleIndex > -1 ? 'item successfully updated' : 'item not found'
+        }
+    }
+
     public getByScheduleByDate( examId: String, date: any ) {
         return !!DB.schedules.find( item => item.examId === examId && item.date === date )
     }
