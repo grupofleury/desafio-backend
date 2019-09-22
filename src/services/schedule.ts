@@ -15,13 +15,14 @@ class ScheduleService {
     }
 
     public async save(data: any) {
-        let exam = await this.exam.get(data.examId)
+        let exam = await this.exam.get(data.examId.toString())
         let customer = await this.customer.find(data.cpf)
         if (exam && customer.success) {
-            const alreadyScheduled = this.connection.getByScheduleByDate(data.examId, data.date)
+            let formattedDate = moment(data.date).format()
+            const alreadyScheduled = this.connection.getByScheduleByDate(data.examId.toString(), formattedDate)
             if (!alreadyScheduled) {
                 data = { ...data, date: moment(data.date).format() }
-                return this.connection.schedule(data)
+                return this.connection.schedule({ ...data, examId: data.examId.toString() })
             }
         }
         return null

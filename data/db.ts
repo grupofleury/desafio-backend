@@ -81,7 +81,7 @@ class DB {
     }
 
     public getByScheduleByDate( examId: String, date: any ) {
-        return DB.schedules.find( item => item.examId === examId && item.date === date)
+        return !!DB.schedules.find( item => item.examId === examId && item.date === date )
     }
 }
 

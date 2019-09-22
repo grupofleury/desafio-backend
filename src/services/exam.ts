@@ -6,8 +6,9 @@ class ExamsService {
         return ExamProvider.list()
     }
 
-    public get(id: Number) {
-        const exams = this.list()
+    public async get(id: any): Promise<any> {
+        const exams = await this.list()
+        return exams.find( (item: any) => item.id === id)
     }
 }
 
