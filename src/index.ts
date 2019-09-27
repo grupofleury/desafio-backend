@@ -1,3 +1,3 @@
-import Server from './server'
-const PORT = process.env.POT || 3000 
-Server.listen(PORT)
+import Server from "./server";
+const PORT = 3000;
+Server.listen(PORT);

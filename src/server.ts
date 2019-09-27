@@ -1,25 +1,33 @@
-import * as express from 'express';
+import * as express from "express";
+import routes from "./routes/index";
+import { config } from "dotenv";
+import { resolve } from "path";
 
+import "./database/index";
 class App {
   public app: express.Application;
-  router: express.Router;
+
   constructor() {
     this.app = express();
-    this.routes()
+    config({
+      path: resolve(__dirname, "../", ".env")
+    });
+    this.middlewares();
+    this.routes();
   }
 
-  routes() {
-    this.router = express.Router();
-
-    this.router.get('/', (req, res) => {
-      res.send('ok')
-    })
-    this.app.use(this.router)
-
+  routes(): void {
+    this.app.use(routes);
   }
 
-  listen(PORT){
-    this.app.listen(PORT, () => console.log(`Server it's running at port: ${PORT}`))
+  middlewares() {
+    this.app.use(express.json());
+  }
+
+  listen(PORT: number) {
+    this.app.listen(PORT, () =>
+      console.log(`Server it's running at port: ${PORT}`)
+    );
   }
 }
-export default new App()
+export default new App();
