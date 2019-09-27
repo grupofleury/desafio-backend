@@ -1,0 +1,24 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "outDir": "./server",
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noUnusedLocals": true,
+        "sourceMap": false,
+        "declaration": false,
+        "pretty": true,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/middlewares/custom.d.ts"
+    ],
+    "exclude": [ 
+        "node_modules"
+    ]
+}
