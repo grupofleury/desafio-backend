@@ -19,8 +19,16 @@ API Rest para atender o teste proposto.
 
 Para rodar no Docker é necessário fazer o build da imagem que está configurado no Dockerfile, para isso com o Docker instalado execute os seguintes comandos no terminal:
 
-- \$ docker build -t api .
-- \$ docker docker run -p 3000:3000 -h 0.0.0.0 api
+```
+  $ docker build -t api .
+  $ docker docker run -p 3000:3000 -h 0.0.0.0 api
+```
+
+Ou utilize o Docker Compose rodando:
+
+```
+  $ docker-compose up -d --build
+```
 
 Acesse em: http://localhost:3000/
 
