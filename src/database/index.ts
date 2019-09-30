@@ -1,18 +1,21 @@
-import * as path from "path";
-import { Sequelize } from "sequelize-typescript";
-import { config } from './config'
+import * as path from 'path';
+import { Sequelize } from 'sequelize-typescript';
 
 /**
  * Responsavel pela conexao com banco de dados
  */
 class Database {
-  constructor() {
-    this.connect();
-  }
+  constructor() {}
 
   public async connect(): Promise<Sequelize> {
     const dbconn = new Sequelize({
-      ...config[process.env.NODE_ENV === 'dev' ? 'dev' : 'prod'],
+      dialect: process.env.DB_DIALECT || 'sqlite',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_DATABASE) || 5432,
+      database: process.env.DB_DATABASE,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      storage: './db.sqlite',
       operatorsAliases: false,
       logging: false,
       pool: {
@@ -21,15 +24,14 @@ class Database {
         acquire: 30000,
         idle: 10000
       },
-      modelPaths: [path.normalize(`${__dirname}/../models`)],
-      
+      modelPaths: [path.normalize(`${__dirname}/../models`)]
     });
 
     await dbconn.authenticate();
 
-    await dbconn.sync({  });
+    await dbconn.sync({});
 
     return dbconn;
   }
 }
-export default new Database();
+export default Database;

@@ -6,7 +6,7 @@
   "author": "vinniimiranda <vinniimiranda@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -x ts-node src/index.ts"
+    "dev": "nodemon src/index.ts"
   },
   "dependencies": {
     "@types/express": "^4.17.1",
