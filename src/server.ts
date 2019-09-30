@@ -1,7 +1,9 @@
-import * as express from 'express';
+import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 import routes from './routes/index';
 import { config } from 'dotenv';
 import { resolve } from 'path';
+import * as swaggerDocument from '../swagger.json';
 
 import Database from './database/index';
 class App {
@@ -24,6 +26,7 @@ class App {
 
   middlewares() {
     this.app.use(express.json());
+    this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
 
   listen(PORT: number) {

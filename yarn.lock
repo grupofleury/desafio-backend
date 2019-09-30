@@ -364,7 +364,7 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express@^4.17.1":
+"@types/express@*", "@types/express@^4.17.1":
   version "4.17.1"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.1.tgz#4cf7849ae3b47125a567dfee18bfca4254b88c5c"
   integrity sha512-VfH/XCP0QbQk5B5puLqTLEeFgR8lfCJHZJKkInZ9mkYd+u8byX0kztXEQxEk4wZXJs8HI+7km2ALXjn4YKcX9w==
@@ -492,6 +492,14 @@
   integrity sha512-wcax7/ip4XSSJRLbNzEIUVy2xjcBIZZAuSd2vtltQfRK7kxhx5WMHbLHkYdxN3wuQCrwpYrg86/9byDjPXoGMA==
   dependencies:
     "@types/superagent" "*"
+
+"@types/swagger-ui-express@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/swagger-ui-express/-/swagger-ui-express-3.0.1.tgz#2ffc0abcea9588501435f8162ab3193497180292"
+  integrity sha512-AHIIs9tUDimRAKvmHHBXxNfavjcvZuGgu/iXaSVpBk+C6EO/H1PUBIq4l5opFXLbV+hBuVbYnpycbobhSoMjTA==
+  dependencies:
+    "@types/express" "*"
+    "@types/serve-static" "*"
 
 "@types/validator@*", "@types/validator@10.11.3":
   version "10.11.3"
@@ -4025,6 +4033,18 @@ supports-color@^6.1.0:
   integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
+
+swagger-ui-dist@^3.18.1:
+  version "3.23.11"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.23.11.tgz#cb15882591bb79cf8d009aafacc01e8135ff3ef2"
+  integrity sha512-ipENHHH/sqpngTpHXUwg55eAOZ7b2UVayUwwuWPA6nQSPhjBVXX4zOPpNKUwQIFOl3oIwVvZF7mqoxH7pMgVzA==
+
+swagger-ui-express@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-4.1.1.tgz#64a111b26c75f75e4bfe2eea3399ac500724e5ce"
+  integrity sha512-PDt7A4JZYszP2/AcnsYj24u1RwVRV3/8LvCZSL6EcxKq918OBhS1e7NHqS+2woBHi0zn8HjeiJVxXDBKVxgwYw==
+  dependencies:
+    swagger-ui-dist "^3.18.1"
 
 symbol-tree@^3.2.2:
   version "3.2.4"

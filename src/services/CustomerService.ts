@@ -1,7 +1,7 @@
-import Customer from "../models/CustomerModel";
-import { ApiError } from "../helpers/ApiError";
-import CreateCustomerSchema from "../validation/customer/create.schema";
-import UpdateCustomerSchema from "../validation/customer/update.schema";
+import Customer from '../models/CustomerModel';
+import { ApiError } from '../helpers/ApiError';
+import CreateCustomerSchema from '../validation/customer/create.schema';
+import UpdateCustomerSchema from '../validation/customer/update.schema';
 
 export default class CustomerService {
   public static async index() {
@@ -26,7 +26,7 @@ export default class CustomerService {
     return await Customer.create({
       ...body
     }).catch(err => {
-      throw new ApiError(err, 500);
+      throw new ApiError(err, 400);
     });
   }
 
@@ -37,21 +37,23 @@ export default class CustomerService {
 
     const customer = await Customer.findByPk(id);
     if (!customer) {
-      throw new ApiError("Customer not found", 404);
+      throw new ApiError('Customer not found', 404);
     }
 
-    return await customer.update({
-      ...body
-    }).catch(err => {
-      throw new ApiError(err, 500);
-    });
+    return await customer
+      .update({
+        ...body
+      })
+      .catch(err => {
+        throw new ApiError(err, 500);
+      });
   }
 
   public static async delete(id) {
     const customer = await Customer.findByPk(id);
 
     if (!customer) {
-      throw new ApiError("Customer not found", 404);
+      throw new ApiError('Customer not found', 404);
     }
 
     await customer.destroy({ force: true });

@@ -1,5 +1,5 @@
-import { Request, Response, Router } from "express";
-import ExamService from "../services/ExamService";
+import { Request, Response, Router } from 'express';
+import ExamService from '../services/ExamService';
 class ExamController {
   private router = Router();
   constructor() {
@@ -7,7 +7,7 @@ class ExamController {
   }
 
   public routes() {
-    this.router.get("/", this.index);
+    this.router.get('/', this.index);
     return this.router;
   }
 
@@ -16,7 +16,8 @@ class ExamController {
       const exams = await ExamService.index();
       res.status(200).json({ exams });
     } catch (error) {
-      res.json({ message: "Deu ruim" });
+      const { name: message, statusCode } = error;
+      res.status(statusCode || 500).json({ message });
     }
   }
 }
