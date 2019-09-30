@@ -1,0 +1,413 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Desafio Fleruy Backend using Nodejs and Typescript"
+  },
+
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/customers": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Create a new customer",
+        "requestBody": {
+          "description": "Customer Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Customer"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Customer"],
+        "summary": "Return all customers",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        }
+      }
+    },
+    "/customers/document/{cpf}": {
+      "get": {
+        "summary": "Return a customer by his document",
+        "tags": ["Customer"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cpf",
+            "required": true,
+            "description": "Customer document",
+            "schema": {
+              "$ref": "#/definitions/cpf"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "404": {
+            "description": "Failed. Customer not found."
+          }
+        }
+      }
+    },
+    "/customers/{id}": {
+      "put": {
+        "summary": "Update an Customer by his Id",
+        "tags": ["Customer"],
+        "requestBody": {
+          "description": "Customer Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Customer"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Customer with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad request"
+          },
+          "404": {
+            "description": "Failed. Customer not found."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Customer with given CPF",
+        "tags": ["Customer"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete Customer with id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "$ref": "#/definitions/cpf"
+            }
+          },
+          "404": {
+            "description": "Failed. Customer not found."
+          }
+        }
+      }
+    },
+
+    "/schedule": {
+      "post": {
+        "tags": ["Schedule"],
+        "summary": "Create a new Schedule",
+        "requestBody": {
+          "description": "Schedule Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Schedule"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Schedule"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Schedule"],
+        "summary": "Create a new Schedule",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Schedule"
+            }
+          }
+        }
+      }
+    },
+    "/schedule/document/{cpf}": {
+      "get": {
+        "tags": ["Schedule"],
+        "summary": "Default route",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cpf",
+            "required": true,
+            "description": "Customer cpf",
+            "schema": {
+              "$ref": "#/definitions/cpf"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Schedule"
+            }
+          }
+        }
+      }
+    },
+    "/schedule/{id}": {
+      "put": {
+        "summary": "Update Schedule by his Id",
+        "tags": ["Schedule"],
+        "requestBody": {
+          "description": "Schedule Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/ScheduleUpdate"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Schedule id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "$ref": "#/definitions/ScheduleUpdate"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad request"
+          },
+          "404": {
+            "description": "Failed. Schedule not found."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Schedule by his Id",
+        "tags": ["Schedule"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Schedule id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "404": {
+            "description": "Failed. Schedule not found."
+          }
+        }
+      }
+    },
+    "/exams": {
+      "get": {
+        "tags": ["Exam"],
+        "summary": "Return all available exams",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Exams"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "properties": {
+        "integer": {
+          "type": "integer"
+        }
+      }
+    },
+    "cpf": {
+      "properties": {
+        "string": {
+          "type": "string"
+        }
+      }
+    },
+    "Customer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        }
+      }
+    },
+    "Customers": {
+      "type": "object",
+      "properties": {
+        "customers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Customer"
+          }
+        }
+      }
+    },
+    "Schedule": {
+      "type": "object",
+      "properties": {
+        "examId": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "hour": {
+          "type": "string"
+        }
+      }
+    },
+    "ScheduleUpdate": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "hour": {
+          "type": "string"
+        }
+      }
+    },
+    "Schedulers": {
+      "type": "object",
+      "properties": {
+        "schedulers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Schedule"
+          }
+        }
+      }
+    },
+    "SchedulersUpdate": {
+      "type": "object",
+      "properties": {
+        "schedulers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ScheduleUpdate"
+          }
+        }
+      }
+    },
+    "Exam": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Exams": {
+      "type": "object",
+      "properties": {
+        "exams": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Exam"
+          }
+        }
+      }
+    }
+  }
+}
