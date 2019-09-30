@@ -7,6 +7,7 @@ API Rest para atender o teste proposto.
 - Primeiro você deve clonar este diretório da branch master;
 - Executar o comando Yarn para instalar todas dependências do projeto ;
 - Edite o arquivo .env para configurar o banco de dados (utilize o sqlite caso queira rodar de forma local);
+- Edite o parâmetro que define a quantidade de agendadomentos para o mesmo exame, dia e horário através da variável de ambiente MAX_CLIENTS
 
 ### Rodando localmente
 
@@ -21,7 +22,7 @@ Para rodar no Docker é necessário fazer o build da imagem que está configurad
 - \$ docker build -t api .
 - \$ docker docker run -p 3000:3000 -h 0.0.0.0 api
 
-Acesse em: http://0.0.0.0:3000/api/v1
+Acesse em: http://0.0.0.0:3000/
 
 A aplicação será subida em um container e você poderá acessa-la normalmente.
 
