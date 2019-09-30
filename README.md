@@ -22,7 +22,7 @@ Para rodar no Docker é necessário fazer o build da imagem que está configurad
 - \$ docker build -t api .
 - \$ docker docker run -p 3000:3000 -h 0.0.0.0 api
 
-Acesse em: http://0.0.0.0:3000/
+Acesse em: http://localhost:3000/
 
 A aplicação será subida em um container e você poderá acessa-la normalmente.
 
