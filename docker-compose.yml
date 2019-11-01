@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  api:
+    build: .
+    env_file:
+      - ./env/local.env
+    ports:
+      - "4446:4446"
+    environment:
+      - NODE_ENV=local
